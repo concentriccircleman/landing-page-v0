@@ -18,7 +18,7 @@ export default function Header() {
         </Link>
 
         <div className="hidden sm:flex items-center gap-3">
-          <Link href="/signin">
+          <Link href="/login">
             <button className="text-sm bg-foreground text-background px-3 py-1.5 hover:brightness-80 duration-200 w-fit">
               Sign In
             </button>

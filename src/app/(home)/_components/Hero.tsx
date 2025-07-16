@@ -46,8 +46,6 @@ export default function Hero() {
               transition={{ ...fadeTransition }}
               href="/signup"
               className="w-fit"
-              target="_blank"
-              rel="noopener noreferrer"
             >
               <motion.button className="text-base bg-foreground text-background px-5 py-2 hover:brightness-80 duration-200 w-fit">
                 Hire Sentra
