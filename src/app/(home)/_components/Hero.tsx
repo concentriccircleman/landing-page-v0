@@ -7,6 +7,8 @@ import HeroHeader from "./HeroHeader";
 import { ResponsiveLogoCarousel } from "./ByVariants";
 import { motion } from "motion/react";
 import { useAnimation } from "@/app/providers";
+import { cn } from "@/lib/utils";
+import AnimatedListDemo from "./AnimatedList";
 
 export default function Hero() {
   const { isLoaded } = useAnimation();
@@ -16,7 +18,7 @@ export default function Hero() {
       <HeroHeader />
 
       <div className="relative z-10 flex flex-col w-full h-full text-foreground bg-transparent justify-center items-start pointer-events-auto">
-        <div className="mt-24 mb-16 xs:my-16 px-8 max-w-2xl h-full flex items-center">
+        <div className="mt-24 mb-16 ml-32 xs:my-16 px-8 max-w-2xl h-full flex items-center">
           <div className="flex flex-col gap-6">
             <motion.h1
               className="text-3xl/tight s:text-4xl/tight md:text-5xl/tight lg:text-6xl/tight font-medium"
@@ -25,7 +27,7 @@ export default function Hero() {
               animate={isLoaded ? "visible" : "hidden"}
               transition={{ ...fadeTransition }}
             >
-              Your Company&apos;s Superintelligence
+              Catch Misalignment Before It Costs You
             </motion.h1>
             <motion.p
               className="text-sm xs:text-base s:text-lg md:text-xl text-foreground/80"
@@ -66,6 +68,16 @@ export default function Hero() {
             </motion.div>
           </div>
         </div>
+        {/* <div className="hidden sm:flex mt-24 mb-16 xs:my-16 px-8 max-w-5xl h-full items-center justify-center">
+          <div className="flex flex-col gap-6">
+            <AnimatedListDemo
+              className={cn(
+                "h-full min-h-[350px] max-h-[350px] sm:min-h-[500px] sm:max-h-[500px] transition-all duration-400 ease-out",
+                "group-hover:scale-105"
+              )}
+            />
+          </div>
+        </div> */}
       </div>
 
       <HeroFooter />
