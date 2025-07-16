@@ -1,0 +1,25 @@
+{
+    "env": {
+      "APP_ORIGIN": "https://sentra-app.vercel.app"
+    },
+  
+    "rewrites": [
+      { "source": "/login",               "destination": "@APP_ORIGIN/login" },
+      { "source": "/signup",              "destination": "@APP_ORIGIN/signup" },
+      { "source": "/signup-success",      "destination": "@APP_ORIGIN/signup-success" },
+      { "source": "/activate-account",    "destination": "@APP_ORIGIN/activate-account" },
+      { "source": "/employee-onboarding", "destination": "@APP_ORIGIN/employee-onboarding" },
+  
+      { "source": "/meeting/:path*",      "destination": "@APP_ORIGIN/meeting/:path*" },
+      { "source": "/meeting-memory/:path*","destination": "@APP_ORIGIN/meeting-memory/:path*" },
+      { "source": "/meeting-room/:path*", "destination": "@APP_ORIGIN/meeting-room/:path*" },
+      { "source": "/voice-meeting/:path*", "destination": "@APP_ORIGIN/voice-meeting/:path*" },
+  
+      { "source": "/onboarding/:path*",   "destination": "@APP_ORIGIN/onboarding/:path*" },
+  
+      { "source": "/app/:path*",          "destination": "@APP_ORIGIN/app/:path*" },
+      { "source": "/dashboard/:path*",    "destination": "@APP_ORIGIN/dashboard/:path*" },
+  
+      { "source": "/api/:path*",          "destination": "@APP_ORIGIN/api/:path*" }
+    ]
+  }

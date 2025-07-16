@@ -4,7 +4,6 @@ import { fadeTransition, fadeVariants } from "@/app/_animations/fadeVariants";
 
 import HeroFooter from "./HeroFooter";
 import HeroHeader from "./HeroHeader";
-import Link from "next/link";
 import { ResponsiveLogoCarousel } from "./ByVariants";
 import { motion } from "motion/react";
 import { useAnimation } from "@/app/providers";

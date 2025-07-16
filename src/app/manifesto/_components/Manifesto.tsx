@@ -27,19 +27,20 @@ export default function Manifesto() {
           </p>
 
           <p className="text-base text-black/80 mb-6 md:mb-8">
-            At growing Series A+ organizations, it's easy to hear stories like
-            the following:
+            At growing Series A+ organizations, it&apos;s easy to hear stories
+            like the following:
           </p>
 
           <p className="text-base text-black/80 mb-6 md:mb-8 italic">
-            "One time the inventory team deprecated an ad type without telling
-            us. So we wasted a month building support for it even though it was
-            deprecated." - SWE in a 100+ engineer company
+            &quot;One time the inventory team deprecated an ad type without
+            telling us. So we wasted a month building support for it even though
+            it was deprecated.&quot; - SWE in a 100+ engineer company
           </p>
 
           <p className="text-base text-black/80 mb-6 md:mb-8">
-            A month's salary for 10 developers is $100,000+. Misalignment costs
-            companies millions every year. It's death by a thousand cuts.
+            A month&apos;s salary for 10 developers is $100,000+. Misalignment
+            costs companies millions every year. It&apos;s death by a thousand
+            cuts.
           </p>
 
           <p className="text-base text-black/80 mb-6 md:mb-8">
@@ -52,7 +53,7 @@ export default function Manifesto() {
           </p>
 
           <p className="text-base text-black/80 mb-6 md:mb-8">
-            And the current "solutions"?
+            And the current &quot;solutions&quot;?
           </p>
 
           <p className="text-base text-black/80 mb-6 md:mb-8">
@@ -63,7 +64,7 @@ export default function Manifesto() {
             Companies today drown in dashboards, OKRs, CRMs, Jira tickets, and
             endless Slack threads. Yet despite the infinity gauntlet of SaaS
             infrastructure, companies still remain chronically misaligned. In
-            fact, these systems don't solve misalignment. They amplify it:
+            fact, these systems don&apos;t solve misalignment. They amplify it:
           </p>
 
           <p className="text-base text-black/80 mb-6 md:mb-8">
@@ -89,8 +90,8 @@ export default function Manifesto() {
           </p>
 
           <p className="text-base text-black/80 mb-6 md:mb-8">
-            This isn't a people problem, it's a systems problem. And our current
-            systems fail by design.
+            This isn&apos;t a people problem, it&apos;s a systems problem. And
+            our current systems fail by design.
           </p>
 
           <h2 className="text-2xl font-medium mb-6 md:mb-8">What we believe</h2>
@@ -130,15 +131,15 @@ export default function Manifesto() {
           <p className="text-base text-black/80 mb-6 md:mb-8">
             Sentra continuously evolves its living map of the company,
             connecting the dots to deeply understand how the organization is
-            working together. Sentra's multi-agent architecture allows it to
-            then find exactly where and why teams and people are falling out of
-            sync, and notifies those who have the power to fix them before
+            working together. Sentra&apos;s multi-agent architecture allows it
+            to then find exactly where and why teams and people are falling out
+            of sync, and notifies those who have the power to fix them before
             misalignment grows.
           </p>
 
           <p className="text-base text-black/80 mb-6 md:mb-8">
-            Sentra's job is simple: keep everyone on the same page. Quietly,
-            consistently, humanely.
+            Sentra&apos;s job is simple: keep everyone on the same page.
+            Quietly, consistently, humanely.
           </p>
 
           <p className="text-base text-black/80 mb-6 md:mb-8">
@@ -148,24 +149,24 @@ export default function Manifesto() {
           </p>
 
           <h2 className="text-2xl font-medium mb-6 md:mb-8">
-            What Sentra isn't
+            What Sentra isn&apos;t
           </h2>
 
           <p className="text-base text-black/80 mb-6 md:mb-8">
             <strong>Sentra is not an efficiency monitor.</strong>
             <br />
             <br />
-            We don't care about squeezing "more output" from employees. We care
-            about making the time they spend matter.
+            We don&apos;t care about squeezing &quot;more output&quot; from
+            employees. We care about making the time they spend matter.
             <br />
             <br />
             <strong>Sentra is not Big Brother.</strong>
             <br />
             <br />
-            Sentra will never "monitor" workers 24/7. Sentra will only know what
-            you share to it. We don't believe in productivity heatmaps or mouse
-            trackers disguised as dashboards. Those scream insecurity, and erode
-            trust between people.
+            Sentra will never &quot;monitor&quot; workers 24/7. Sentra will only
+            know what you share to it. We don&apos;t believe in productivity
+            heatmaps or mouse trackers disguised as dashboards. Those scream
+            insecurity, and erode trust between people.
             <br />
             <br />
             <strong>Sentra is not a replacement for managers.</strong>
@@ -179,10 +180,11 @@ export default function Manifesto() {
             <strong>Sentra is not just for leadership.</strong>
             <br />
             <br />
-            This isn't some top-down command tool. It's a co-pilot that supports
-            every individual throughout the day. Sentra makes sure the right
-            people know the right things at the right time, without another
-            meeting. We're making a Jarvis that's for the entire company.
+            This isn&apos;t some top-down command tool. It&apos;s a co-pilot
+            that supports every individual throughout the day. Sentra makes sure
+            the right people know the right things at the right time, without
+            another meeting. We&apos;re making a Jarvis that&apos;s for the
+            entire company.
             <br />
             <br />
             <strong>Sentra is not another SaaS.</strong>
@@ -203,8 +205,8 @@ export default function Manifesto() {
             amplifies the problem. Tracking mouse movements, keystrokes, or
             constantly monitoring screens is extremely invasive. It frames
             teammates as suspects rather than collaborators. As a leader, by
-            adopting these tools, you're fundamentally telling your teams they
-            are untrustworthy.
+            adopting these tools, you&apos;re fundamentally telling your teams
+            they are untrustworthy.
           </p>
 
           <p className="text-base text-black/80 mb-6 md:mb-8">
@@ -237,15 +239,15 @@ export default function Manifesto() {
             dashboards want them to be. Voice is our most natural interface.
             Speaking is way easier than typing and captures nuances lost in
             text. Voice also eliminates delay. Questions receive instant clear
-            responses. You don't have to wait on someone for further
+            responses. You don&apos;t have to wait on someone for further
             clarification.
           </p>
 
           <p className="text-base text-black/80 mb-6 md:mb-8">
-            Sentra's voice, cadence, and care are designed for dialogue. Every
-            interaction helps build trust, not erode it. We believe this is how
-            AI should be designed moving forward: an AI we welcome, not one we
-            hide from.
+            Sentra&apos;s voice, cadence, and care are designed for dialogue.
+            Every interaction helps build trust, not erode it. We believe this
+            is how AI should be designed moving forward: an AI we welcome, not
+            one we hide from.
           </p>
 
           <h2 className="text-2xl font-medium mb-6 md:mb-8">
@@ -254,9 +256,9 @@ export default function Manifesto() {
 
           <p className="text-base text-black/80 mb-6 md:mb-8">
             For fast-growing companies, good work culture and relationships make
-            or break your success. Misaligned teams aren't just slow, they're
-            confused, unhappy, and checked out. Unresolved friction chips away
-            at morale.
+            or break your success. Misaligned teams aren&apos;t just slow,
+            they&apos;re confused, unhappy, and checked out. Unresolved friction
+            chips away at morale.
           </p>
 
           <p className="text-base text-black/80 mb-6 md:mb-8">
@@ -267,8 +269,8 @@ export default function Manifesto() {
           <h2 className="text-2xl font-medium mb-6 md:mb-8">Join us</h2>
 
           <p className="text-base text-black/80 mb-6 md:mb-8">
-            We're not just another SaaS. We're building a new contract between
-            humans and technology.
+            We&apos;re not just another SaaS. We&apos;re building a new contract
+            between humans and technology.
           </p>
 
           <p className="text-base text-black/80 mb-6 md:mb-8">

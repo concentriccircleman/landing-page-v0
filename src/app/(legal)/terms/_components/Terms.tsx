@@ -29,9 +29,9 @@ export default function Terms() {
           <div className="text-base text-black/80 space-y-6 md:space-y-8 overflow-y-auto py-4">
             <p>
               Welcome, and thank you for your interest in Dynamis Labs, Inc.
-              ("Sentra," "we," or "us") and our website, along with our related
-              websites, applications, and other services provided by us
-              (collectively, the "Service").
+              (&quot;Sentra,&quot; &quot;we,&quot; or &quot;us&quot;) and our
+              website, along with our related websites, applications, and other
+              services provided by us (collectively, the &quot;Service&quot;).
             </p>
 
             <p>
@@ -56,13 +56,14 @@ export default function Terms() {
               OTHERWISE ACCESSING OR USING THE SERVICE, YOU AGREE THAT YOU HAVE
               READ AND UNDERSTOOD, AND, AS A CONDITION TO YOUR USE OF THE
               SERVICE, YOU AGREE TO BE BOUND BY, THE FOLLOWING TERMS AND
-              CONDITIONS, INCLUDING Sentra'S PRIVACY POLICY (COLLECTIVELY, THE
-              "TERMS"). REFERENCES TO "YOU" AND "YOUR" REFER TO THE INDIVIDUAL
-              ACCEPTING THESE TERMS, CREATING AN ACCOUNT, OR OTHERWISE USING OR
-              ACCESSING THE SERVICE. IF THE SERVICE IS BEING USED ON BEHALF OF A
-              COMPANY, ORGANIZATION, OR OTHER ENTITY BY AN INDIVIDUAL AUTHORIZED
-              TO ACCEPT THIS AGREEMENT ON ITS BEHALF, THEN ALL REFERENCES TO
-              "YOU" OR "YOUR" REFER TO SUCH ENTITY AND ALL OF THOSE ACTING ON
+              CONDITIONS, INCLUDING Sentra&apos;S PRIVACY POLICY (COLLECTIVELY,
+              THE &quot;TERMS&quot;). REFERENCES TO &quot;YOU&quot; AND
+              &quot;YOUR&quot; REFER TO THE INDIVIDUAL ACCEPTING THESE TERMS,
+              CREATING AN ACCOUNT, OR OTHERWISE USING OR ACCESSING THE SERVICE.
+              IF THE SERVICE IS BEING USED ON BEHALF OF A COMPANY, ORGANIZATION,
+              OR OTHER ENTITY BY AN INDIVIDUAL AUTHORIZED TO ACCEPT THIS
+              AGREEMENT ON ITS BEHALF, THEN ALL REFERENCES TO &quot;YOU&quot; OR
+              &quot;YOUR&quot; REFER TO SUCH ENTITY AND ALL OF THOSE ACTING ON
               BEHALF OF SUCH ENTITY. IF YOU ARE NOT ELIGIBLE, OR DO NOT AGREE TO
               THE TERMS, THEN YOU DO NOT HAVE OUR PERMISSION TO USE THE SERVICE.
             </p>
@@ -167,17 +168,17 @@ export default function Terms() {
             <p>
               <strong>4.3 Subscription Service.</strong> The Service includes
               subscription-based plans with automatically recurring payments for
-              periodic charges ("Subscription Service"). The Subscription
-              Service will begin on the date when you purchase your first
-              subscription to the Service and continue for the subscription
-              period that you select on your account, and will automatically
-              renew for successive periods unless you cancel the Subscription
-              Service or we terminate it. Your account will be charged
-              automatically on the renewal date of your Subscription Service for
-              all applicable fees and taxes for the next Subscription Period.
-              You must cancel your Subscription Service before it renews in
-              order to avoid billing of the next periodic Subscription Fee to
-              your account.
+              periodic charges (&quot;Subscription Service&quot;). The
+              Subscription Service will begin on the date when you purchase your
+              first subscription to the Service and continue for the
+              subscription period that you select on your account, and will
+              automatically renew for successive periods unless you cancel the
+              Subscription Service or we terminate it. Your account will be
+              charged automatically on the renewal date of your Subscription
+              Service for all applicable fees and taxes for the next
+              Subscription Period. You must cancel your Subscription Service
+              before it renews in order to avoid billing of the next periodic
+              Subscription Fee to your account.
             </p>
             <p>
               <strong>4.4 Delinquent Accounts.</strong> Sentra may suspend or
@@ -249,9 +250,9 @@ export default function Terms() {
               an account on the third-party service. By using one of these
               tools, you hereby authorize Sentra to transfer that information to
               the applicable third-party service. Third-party services are not
-              under Sentra's control, and, to the fullest extent permitted by
-              law, Sentra is not responsible for any third-party service's use
-              of your exported information.
+              under Sentra&apos;s control, and, to the fullest extent permitted
+              by law, Sentra is not responsible for any third-party
+              service&apos;s use of your exported information.
             </p>
             <p>
               <strong>7.2 Third-Party Software.</strong> The Service may include
@@ -273,10 +274,10 @@ export default function Terms() {
               the Service will permit Users to submit, upload, publish, or
               otherwise transmit content to the Service, including work reports,
               meeting transcripts, and company internal documents of work
-              progression ("User Content"). You retain any copyright and other
-              proprietary rights that you may hold in the User Content that you
-              provide to the Service, subject to the licenses granted in these
-              Terms.
+              progression (&quot;User Content&quot;). You retain any copyright
+              and other proprietary rights that you may hold in the User Content
+              that you provide to the Service, subject to the licenses granted
+              in these Terms.
             </p>
             <p>
               <strong>8.2 Limited License Grant to Sentra.</strong> By providing
@@ -347,7 +348,7 @@ export default function Terms() {
               </li>
               <li>Interfere with security-related features of the Service;</li>
               <li>
-                Interfere with the operation of the Service or any User's
+                Interfere with the operation of the Service or any User&apos;s
                 enjoyment of the Service;
               </li>
               <li>
@@ -432,15 +433,15 @@ export default function Terms() {
               its affiliates and their respective shareholders, directors,
               managers, members, officers, employees, consultants, and agents
               from and against every claim brought by a third party, and any
-              related liability, damage, loss, and expense, including attorneys'
-              fees and costs, arising out of or connected with: (1) your
-              unauthorized use of, or misuse of, the Service; (2) your violation
-              of any portion of these Terms, any representation, warranty, or
-              agreement referenced in these Terms, or any applicable law or
-              regulation; (3) your violation of any third-party right, including
-              any intellectual property right or privacy, confidentiality, other
-              property, or privacy right; or (4) any dispute or issue between
-              you and any third party.
+              related liability, damage, loss, and expense, including
+              attorneys&apos; fees and costs, arising out of or connected with:
+              (1) your unauthorized use of, or misuse of, the Service; (2) your
+              violation of any portion of these Terms, any representation,
+              warranty, or agreement referenced in these Terms, or any
+              applicable law or regulation; (3) your violation of any
+              third-party right, including any intellectual property right or
+              privacy, confidentiality, other property, or privacy right; or (4)
+              any dispute or issue between you and any third party.
             </p>
 
             <h2 className="text-xl font-medium text-black mt-8 mb-4">
@@ -461,10 +462,11 @@ export default function Terms() {
             </p>
             <p>
               <strong>14.2</strong> THE SERVICE AND ALL MATERIALS AND CONTENT
-              AVAILABLE THROUGH THE SERVICE ARE PROVIDED "AS IS" AND ON AN "AS
-              AVAILABLE" BASIS. Sentra DISCLAIMS ALL WARRANTIES OF ANY KIND,
-              WHETHER EXPRESS OR IMPLIED, RELATING TO THE SERVICE AND ALL
-              MATERIALS AND CONTENT AVAILABLE THROUGH THE SERVICE.
+              AVAILABLE THROUGH THE SERVICE ARE PROVIDED &quot;AS IS&quot; AND
+              ON AN &quot;AS AVAILABLE&quot; BASIS. Sentra DISCLAIMS ALL
+              WARRANTIES OF ANY KIND, WHETHER EXPRESS OR IMPLIED, RELATING TO
+              THE SERVICE AND ALL MATERIALS AND CONTENT AVAILABLE THROUGH THE
+              SERVICE.
             </p>
 
             <h2 className="text-xl font-medium text-black mt-8 mb-4">

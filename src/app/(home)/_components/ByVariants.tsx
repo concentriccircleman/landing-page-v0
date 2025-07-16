@@ -1,4 +1,5 @@
 import { Marquee } from "@/components/Marquee";
+import Image from "next/image";
 
 const LOGOS = [
   "https://cdn.brandfetch.io/google.com/w/400/h/400/logo?c=1id_elLz2Bd5Ej-dWo7",
@@ -9,6 +10,16 @@ const LOGOS = [
   "https://cdn.brandfetch.io/salesforce.com/w/400/h/400/logo?c=1id_elLz2Bd5Ej-dWo7",
   "https://cdn.brandfetch.io/instacart.com/w/400/h/400/logo?c=1id_elLz2Bd5Ej-dWo7",
 ];
+
+// const LOGOS = [
+//   "/logos/google.png",
+//   "/logos/microsoft.png",
+//   "/logos/twitter.png",
+//   "/logos/motorola.png",
+//   "/logos/qualcomm.png",
+//   "/logos/salesforce.png",
+//   "/logos/instacart.png",
+// ];
 
 export function ResponsiveLogoCarousel() {
   return (
