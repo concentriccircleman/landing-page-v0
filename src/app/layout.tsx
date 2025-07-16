@@ -12,10 +12,8 @@ export default function RootLayout({
   return (
     <html lang="en">
       <head>
-        <script
-          src="https://cdn.delve.co/src/delve-cookie-consent-default.js"
-          async
-        />
+        {/* eslint-disable-next-line @next/next/no-sync-scripts */}
+        <script src="https://cdn.delve.co/src/delve-cookie-consent-default.js" />
         <script id="delve-cookie-init">
           {`
             DelveCookieConsent.init({
