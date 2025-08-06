@@ -9,10 +9,10 @@ html {
 :root {
   --foreground: #000000;
   --background: #ffffff;
-  --border: #444444;
+  --border: #d5d5d5;
   --secondary: #777777;
 
-  /* took this from design agency */
+  /* took this from design agency */    
   --color-primary-50: oklch(97.7% 0.013 236.62);
   --color-primary-100: oklch(95.1% 0.026 236.824);
   --color-primary-200: oklch(90.1% 0.058 230.902);
@@ -37,12 +37,10 @@ html {
   --breakpoint-2xl: 1280px;
   --breakpoint-3xl: 1400px;
   --breakpoint-4xl: 1536px;
-  --breakpoint-5xl: 1600px;
-  --breakpoint-6xl: 1792px;
-  --breakpoint-7xl: 1920px;
-  --breakpoint-8xl: 2048px;
-  --breakpoint-9xl: 2560px;
-  --breakpoint-10xl: 3840px;
+  --breakpoint-5xl: 1728px;
+  --breakpoint-6xl: 1920px;
+  --breakpoint-7xl: 2560px;
+  --breakpoint-8xl: 3840px;
 }
 
 @theme inline {
@@ -68,6 +66,10 @@ html {
   --animate-marquee-vertical: marquee-vertical var(--duration) linear infinite;
 }
 
+::selection {
+  background-color: var(--color-primary-500);
+  color: var(--color-background);
+}
 
 body {
   /* foreground: var(--foreground); */

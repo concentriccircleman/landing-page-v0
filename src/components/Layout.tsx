@@ -11,20 +11,40 @@ export default function Layout({
 }: Readonly<{
   children: React.ReactNode;
 }>) {
-  const isLanding = usePathname() === "/";
+  const pathname = usePathname();
+  const isLanding = pathname === "/";
+  
+  // Valid routes in the app
+  const validRoutes = ["/", "/about", "/manifesto", "/privacy", "/terms"];
+  const isNotFound = !validRoutes.includes(pathname);
 
   return (
     <Providers>
-      <div
-        className={`min-h-screen flex flex-col ${
-          isLanding ? "bg-foreground" : "bg-background"
-        }`}
-      >
-        {!isLanding && <Header />}
-        <MobileMenu />
-        <main className={`flex-1 flex flex-col ${isLanding ? "" : "py-8"}`}>
-          {children}
-        </main>
+      <div className="min-h-screen flex flex-col">
+        {isLanding ? (
+          <>
+            <MobileMenu />
+            <main className="flex-1 flex flex-col mb-32">
+              {children}
+            </main>
+          </>
+        ) : isNotFound ? (
+          <>
+            <Header />
+            <MobileMenu />
+            <main className="flex-1 flex flex-col">
+              {children}
+            </main>
+          </>
+        ) : (
+          <div className="flex-1 flex flex-col max-w-screen-4xl mx-auto w-full bg-background">
+            <Header />
+            <MobileMenu />
+            <main className="flex-1 flex flex-col py-8">
+              {children}
+            </main>
+          </div>
+        )}
         <Footer />
       </div>
     </Providers>

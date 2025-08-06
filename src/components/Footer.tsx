@@ -43,7 +43,7 @@ const footerLinks: FooterLinks = {
 export default function Footer() {
   return (
     <footer className={`w-full z-20 ${ibmPlexMono.className} bg-foreground`}>
-      <div className="mx-auto px-4 py-8">
+      <div className="max-w-screen-4xl mx-auto px-4 py-8">
         <div className="grid grid-cols-1 xs:grid-cols-2 md:grid-cols-4 gap-8 mb-8">
           <div>
             <h3 className="text-sm font-medium text-background mb-4">Legal</h3>
@@ -110,7 +110,7 @@ export default function Footer() {
           Subprocessors include Amazon Web Services, Github, Slack, Google Cloud
           Platform, and OpenAI.
         </p>
-        <div className="pt-6 border-t border-border">
+        <div className="pt-6 border-t border-secondary">
           <p className="text-xs text-secondary">
             &copy; {new Date().getFullYear()} Dynamis Labs. All rights reserved.
           </p>

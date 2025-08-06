@@ -7,7 +7,7 @@ export default function Header() {
   return (
     <section className="sticky top-0 left-0 w-full z-50 bg-background">
       {/* <div className="absolute top-full w-full h-10 bg-gradient-to-t from-transparent to-red-500" /> */}
-      <div className="w-full flex justify-between items-center p-4 pointer-events-auto text-foreground">
+      <div className="w-full max-w-screen-4xl mx-auto flex justify-between items-center p-4 pointer-events-auto text-foreground">
         <Link
           href="/"
           scroll={false}
