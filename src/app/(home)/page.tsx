@@ -15,9 +15,9 @@ export default function HomePage() {
     <>
       <Hero />
       <Storytelling />
-      {/* <Highlights /> */}
-      <BentoGrid />
+      <Highlights />
       {/* <Adoption /> */}
+      <BentoGrid />
       <Security />
       <CTA />
     </>

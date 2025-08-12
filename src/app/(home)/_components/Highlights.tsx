@@ -1,20 +1,29 @@
 "use client";
 
 import Image from "next/image";
-function HighlightCard({ title, subtitle, imageSrc }: { title: string; subtitle: string; imageSrc: string }) {
+function HighlightCard({
+  title,
+  subtitle,
+  imageSrc,
+}: {
+  title: string;
+  subtitle: string;
+  imageSrc: string;
+}) {
   return (
-    <div className="text-left">
-      <div className="flex items-center justify-center h-48 bg-primary-100 mb-4">
-        <div className="w-fit h-fit bg-primary-200 flex items-center justify-center">
-          <Image src={imageSrc} alt={title} width={500} height={300} className="object-contain" />
-        </div>
+    <div className="flex flex-col h-full gap-3">
+      <div className="relative w-full">
+        <Image
+          src={imageSrc}
+          alt={title}
+          width={400}
+          height={300}
+          sizes="(min-width: 768px) 33vw, 100vw"
+          className="w-full h-auto object-contain"
+        />
       </div>
-      <h3 className="text-lg text-foreground mb-3">
-        {title}
-      </h3>
-      <p className="text-sm text-secondary leading-relaxed">
-        {subtitle}
-      </p>
+      <h3 className="text-xl text-foreground mb-2">{title}</h3>
+      <p className="text-base text-secondary leading-relaxed">{subtitle}</p>
     </div>
   );
 }
@@ -22,29 +31,30 @@ function HighlightCard({ title, subtitle, imageSrc }: { title: string; subtitle:
 export default function Highlights() {
   return (
     <div className="max-w-screen-4xl mx-auto w-full px-4 mt-32">
-      <div className="mb-44">
-        <h2 className="text-2xl md:text-3xl tracking-tight text-foreground mb-3">
+      <div className="mb-8">
+        <h2 className="text-3xl md:text-4xl tracking-tight text-foreground mb-3">
           Proactive AI, powered by memory
         </h2>
         <p className="text-lg text-secondary max-w-3xl">
-          Sentra keeps everyone on the same page using first-of-its-kind memory technology
+          Sentra keeps everyone on the same page using first-of-its-kind memory
+          technology
         </p>
       </div>
-      <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-        <HighlightCard 
-          title="Shared team memory"
-          subtitle="Sentra sits in all your tools — writing a history book of your company."
+      <div className="w-full grid grid-cols-1 md:grid-cols-3 gap-8">
+        <HighlightCard
+          title="Builds a memory of your company"
+          subtitle="Sentra connects to your existing tools, creating a unified timeline of decisions and commitments."
           imageSrc="/unified-knowledge.svg"
         />
-        <HighlightCard 
+        <HighlightCard
           title="Combat misalignment in real time"
-          subtitle="Sentra detects when team efforts drift from goals and alerts leaders before problems compound."
+          subtitle="Through conversations with your team, Sentra learns your priorities and strategic context."
           imageSrc="/alignment.svg"
         />
-        <HighlightCard 
-          title="A memory that remembers your preferences"
-          subtitle="Sentra learns each person's role and preferences, tailoring how it assists and what it remembers for everyone."
-          imageSrc="/preferences.svg"
+        <HighlightCard
+          title="Spots misalignment before it spreads"
+          subtitle="With real-time awareness, Sentra identifies conflicts and breakdowns before they become problems."
+          imageSrc="/action-log.svg"
         />
       </div>
     </div>

@@ -7,12 +7,13 @@
       { "source": "/employee-onboarding", "destination": "https://sentra-app.vercel.app/employee-onboarding" },
   
       { "source": "/meeting/:path*",        "destination": "https://sentra-app.vercel.app/meeting/:path*" },
+      { "source": "/report/:path*",   "destination": "https://sentra-app.vercel.app/report/:path*" },
       { "source": "/meeting-memory/:path*", "destination": "https://sentra-app.vercel.app/meeting-memory/:path*" },
       { "source": "/meeting-room/:path*",   "destination": "https://sentra-app.vercel.app/meeting-room/:path*" },
       { "source": "/voice-meeting/:path*",  "destination": "https://sentra-app.vercel.app/voice-meeting/:path*" },
   
       { "source": "/onboarding/:path*",   "destination": "https://sentra-app.vercel.app/onboarding/:path*" },
-  
+      { "source": "/reset-password/:path*",   "destination": "https://sentra-app.vercel.app/reset-password/:path*" },
       { "source": "/app/:path*",          "destination": "https://sentra-app.vercel.app/app/:path*" },
       { "source": "/dashboard/:path*",    "destination": "https://sentra-app.vercel.app/dashboard/:path*" },
   
