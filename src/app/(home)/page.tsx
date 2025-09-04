@@ -16,7 +16,6 @@ export default function HomePage() {
       <Hero />
       <Storytelling />
       <Highlights />
-      {/* <Adoption /> */}
       <BentoGrid />
       <Security />
       <CTA />
