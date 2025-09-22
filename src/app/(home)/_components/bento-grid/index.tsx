@@ -23,7 +23,7 @@ export default function BentoGrid() {
 
         <Bento
           title="Misalignment radar"
-          subtitle="Goals shift rapidly. Messages get lost in translation. Syncrhonization becomes harder. Sentra senses these patterns before they become problems."
+          subtitle="Goals shift rapidly. Messages get lost in translation. Synchronization becomes harder. Sentra senses these patterns before they become problems."
           size="compact"
           image={{
             src: "/misalignment-radar.svg",
