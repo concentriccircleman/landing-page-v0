@@ -35,7 +35,7 @@ const footerLinks: FooterLinks = {
   company: [
     { path: "/about", label: "About" },
     { path: "/manifesto", label: "Manifesto" },
-    { path: "https://dynamislabs.ai", label: "Careers" },
+    { path: "https://jobs.ashbyhq.com/sentra", label: "Careers" },
     { path: "/data-privacy", label: "How We Handle Data" },
   ],
 };
