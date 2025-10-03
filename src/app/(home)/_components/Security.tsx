@@ -15,7 +15,7 @@ export default function Security() {
             Enterprise-grade security
           </h2>
           <p className="text-secondary mb-6 leading-relaxed">
-            Your data security is our top priority. Sentra maintains SOC 2 compliant. We adhere to ISO standards and GDPR regulations (certifications pending), ensuring the highest levels of data protection and privacy for your organization.
+            Your data security is our top priority. Sentra is SOC 2 compliant. We adhere to ISO standards and GDPR regulations (certifications pending), ensuring the highest levels of data protection and privacy for your organization.
           </p>
           <Link 
             href="https://trust.delve.co/sentra"

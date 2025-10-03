@@ -11,7 +11,7 @@ export default function BentoGrid() {
       <BentoContainer>
         <Bento
           title="Always working"
-          subtitle="Replace 5 direct reports, bureaucratic SOPs, and hours of writing training with a one-time ask to Sentra for weekly updates. P.S. Sentra can do other jobs too."
+          subtitle="Replace 5 status reports, bureaucratic SOPs, and hours of writing training with a one-time ask to Sentra for weekly updates. P.S. Sentra can do other jobs too."
           size="compact"
           image={{
             src: "/always-working.svg",
