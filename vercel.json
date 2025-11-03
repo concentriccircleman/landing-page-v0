@@ -1,32 +1,34 @@
 {
-    "rewrites": [
-      { "source": "/login",               "destination": "https://sentra-app.vercel.app/login" },
-      { "source": "/signup",              "destination": "https://sentra-app.vercel.app/signup" },
-      { "source": "/signup-success",      "destination": "https://sentra-app.vercel.app/signup-success" },
-      { "source": "/activate-account",    "destination": "https://sentra-app.vercel.app/activate-account" },
-      { "source": "/employee-onboarding", "destination": "https://sentra-app.vercel.app/employee-onboarding" },
-  
-      { "source": "/meeting/:path*",        "destination": "https://sentra-app.vercel.app/meeting/:path*" },
-      { "source": "/report/:path*",   "destination": "https://sentra-app.vercel.app/report/:path*" },
-      { "source": "/meeting-memory/:path*", "destination": "https://sentra-app.vercel.app/meeting-memory/:path*" },
-      { "source": "/meeting-room/:path*",   "destination": "https://sentra-app.vercel.app/meeting-room/:path*" },
-      { "source": "/voice-meeting/:path*",  "destination": "https://sentra-app.vercel.app/voice-meeting/:path*" },
-  
-      { "source": "/onboarding/:path*",   "destination": "https://sentra-app.vercel.app/onboarding/:path*" },
-      { "source": "/reset-password/:path*",   "destination": "https://sentra-app.vercel.app/reset-password/:path*" },
-      { "source": "/app/:path*",          "destination": "https://sentra-app.vercel.app/app/:path*" },
-      { "source": "/dashboard/:path*",    "destination": "https://sentra-app.vercel.app/dashboard/:path*" },
-  
-      { "source": "/assets/:path*",  "destination": "https://sentra-app.vercel.app/assets/:path*" },
-      { "source": "/images/:path*",  "destination": "https://sentra-app.vercel.app/images/:path*" },
-      { "source": "/icons/:path*",   "destination": "https://sentra-app.vercel.app/icons/:path*" },
-      { "source": "/fonts/:path*",   "destination": "https://sentra-app.vercel.app/fonts/:path*" },
-      { "source": "/audios/:path*",  "destination": "https://sentra-app.vercel.app/audios/:path*" },
-      { "source": "/videos/:path*",  "destination": "https://sentra-app.vercel.app/videos/:path*" },
-      
-      { "source": "/placeholder.svg", "destination": "https://sentra-app.vercel.app/placeholder.svg" },
-      { "source": "/vite.svg",        "destination": "https://sentra-app.vercel.app/vite.svg" },
+  "rewrites": [
+    { "source": "/login",               "destination": "https://sentra-app.vercel.app/login" },
+    { "source": "/signup",              "destination": "https://sentra-app.vercel.app/signup" },
+    { "source": "/signup-success",      "destination": "https://sentra-app.vercel.app/signup-success" },
+    { "source": "/activate-account",    "destination": "https://sentra-app.vercel.app/activate-account" },
+    { "source": "/employee-onboarding", "destination": "https://sentra-app.vercel.app/employee-onboarding" },
 
-      { "source": "/api/:path*",          "destination": "https://sentra-app.vercel.app/api/:path*" }
-    ]
-  }
+    { "source": "/meeting/:path*",        "destination": "https://sentra-app.vercel.app/meeting/:path*" },
+    { "source": "/report/:path*",   "destination": "https://sentra-app.vercel.app/report/:path*" },
+    { "source": "/meeting-memory/:path*", "destination": "https://sentra-app.vercel.app/meeting-memory/:path*" },
+    { "source": "/meeting-room/:path*",   "destination": "https://sentra-app.vercel.app/meeting-room/:path*" },
+    { "source": "/voice-meeting/:path*",  "destination": "https://sentra-app.vercel.app/voice-meeting/:path*" },
+
+    { "source": "/onboarding/:path*",   "destination": "https://sentra-app.vercel.app/onboarding/:path*" },
+    { "source": "/reset-password/:path*",   "destination": "https://sentra-app.vercel.app/reset-password/:path*" },
+    { "source": "/app/:path*",          "destination": "https://sentra-app.vercel.app/app/:path*" },
+    { "source": "/dashboard/:path*",    "destination": "https://sentra-app.vercel.app/dashboard/:path*" },
+
+    { "source": "/assets/:path*",  "destination": "https://sentra-app.vercel.app/assets/:path*" },
+    { "source": "/images/:path*",  "destination": "https://sentra-app.vercel.app/images/:path*" },
+    { "source": "/icons/:path*",   "destination": "https://sentra-app.vercel.app/icons/:path*" },
+    { "source": "/fonts/:path*",   "destination": "https://sentra-app.vercel.app/fonts/:path*" },
+    { "source": "/audios/:path*",  "destination": "https://sentra-app.vercel.app/audios/:path*" },
+    { "source": "/videos/:path*",  "destination": "https://sentra-app.vercel.app/videos/:path*" },
+    { "source": "/app-store/:path*", "destination": "https://sentra-app.vercel.app/app-store/:path*" },
+    { "source": "/meeting-details/:path*", "destination": "https://sentra-app.vercel.app/meeting-details/:path*" },
+    
+    { "source": "/placeholder.svg", "destination": "https://sentra-app.vercel.app/placeholder.svg" },
+    { "source": "/vite.svg",        "destination": "https://sentra-app.vercel.app/vite.svg" },
+
+    { "source": "/api/:path*",          "destination": "https://sentra-app.vercel.app/api/:path*" }
+  ]
+}
