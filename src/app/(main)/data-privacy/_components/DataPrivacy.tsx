@@ -61,7 +61,7 @@ export default function DataPrivacy() {
           </h2>
 
           {/* Voice Check-ins Section */}
-          <div className="border border-foreground/20 rounded-lg p-6 mb-8">
+          {/*<div className="border border-foreground/20 rounded-lg p-6 mb-8">
             <div className="flex items-center justify-between mb-4">
               <h3 className="text-xl font-medium text-foreground">
                 1. Sentra&apos;s check-ins (1:1)
@@ -190,18 +190,18 @@ export default function DataPrivacy() {
                   backend refactor; at risk for sprint delivery"
                 </p>
               </div>
-            </div> */}
-          </div>
+            </div> */}{/*
+          </div>*/}
 
           {/* Meeting Data Section */}
           <div className="border border-foreground/20 rounded-lg p-6 mb-8">
             <div className="flex items-center justify-between mb-4">
               <h3 className="text-xl font-medium text-foreground">
-                2. Meeting Data
+                Meeting Data
               </h3>
-              <span className="bg-orange-100 text-orange-800 px-3 py-1 rounded-full text-sm font-medium">
+              {/*<span className="bg-orange-100 text-orange-800 px-3 py-1 rounded-full text-sm font-medium">
                 Participant-Only for Raw Data
-              </span>
+              </span>*/}
             </div>
 
             <div className="bg-yellow-50 border border-yellow-200 rounded-lg p-4 mb-6">
@@ -287,23 +287,21 @@ export default function DataPrivacy() {
                       <div className="flex items-center">
                         <span className="text-green-500 mr-2">✓</span>
                         <span className="text-foreground/80 text-sm">
-                          Meeting summaries and action items (public meetings
-                          only)
+                          Public meeting notes and summaries
                         </span>
                       </div>
                       <div className="flex items-center">
                         <span className="text-green-500 mr-2">✓</span>
                         <span className="text-foreground/80 text-sm">
-                          Key decisions for company memory (public meetings
-                          only)
+                          Any meeting shared with them
                         </span>
                       </div>
-                      <div className="flex items-center">
+                      {/*<div className="flex items-center">
                         <span className="text-red-500 mr-2">✗</span>
                         <span className="text-foreground/80 text-sm">
                           No access to raw transcripts
                         </span>
-                      </div>
+                      </div>*/}
                       <div className="flex items-center">
                         <span className="text-red-500 mr-2">✗</span>
                         <span className="text-foreground/80 text-sm">
@@ -320,13 +318,19 @@ export default function DataPrivacy() {
                       <div className="flex items-center">
                         <span className="text-green-500 mr-2">✓</span>
                         <span className="text-foreground/80 text-sm">
-                          High-level meeting outcomes (public meetings only)
+                          Access to meetings they attended
+                        </span>
+                      </div>
+                      <div className="flex items-center">
+                        <span className="text-green-500 mr-2">✓</span>
+                        <span className="text-foreground/80 text-sm">
+                          Any meeting shared with them
                         </span>
                       </div>
                       <div className="flex items-center">
                         <span className="text-red-500 mr-2">✗</span>
                         <span className="text-foreground/80 text-sm">
-                          No access to detailed discussions or transcripts
+                          No access to other meeting notes or transcripts
                         </span>
                       </div>
                       <div className="flex items-center">
