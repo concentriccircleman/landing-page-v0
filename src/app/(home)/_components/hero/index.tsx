@@ -12,7 +12,7 @@ export default function Hero() {
   const { isLoaded } = useAnimation();
 
   return (
-    <section className="relative w-full min-h-screen flex flex-col text-background hero-gradient">
+    <section className="relative w-full h-screen flex flex-col text-background hero-gradient">
       <HeroHeader />
       <div className="flex-1 flex flex-col">
         <motion.div

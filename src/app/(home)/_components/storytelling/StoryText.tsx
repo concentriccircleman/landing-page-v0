@@ -23,7 +23,7 @@ export default function StoryText({ storyOpacity, scrollYProgress }: StoryTextPr
         className="text-5xl font-bold text-foreground leading-tight"
         style={{ opacity: phase1Opacity }}
       >
-        Many companies pride themselves on agility.
+        All great companies start small, but greatness comes with <span className="italic">scale</span>. 
       </motion.h2>
 
       {/* Phase 2: But over time, they start to feel way, way slower */}
@@ -31,8 +31,8 @@ export default function StoryText({ storyOpacity, scrollYProgress }: StoryTextPr
         className="absolute inset-0 text-5xl font-bold text-foreground leading-tight"
         style={{ opacity: phase2Opacity }}
       >
-        But over time, they start to feel way, way{' '}
-        <span className="italic">slower</span>.
+        Scaling is extraordinarily painful.{' '}
+        ...decisions <span className="italic">fragment</span>, context <span className="italic">scatters</span>, and teams <span className="italic">become misaligned</span>. 
       </motion.h2>
     </motion.div>
   )

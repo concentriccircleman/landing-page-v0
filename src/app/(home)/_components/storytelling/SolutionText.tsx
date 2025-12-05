@@ -13,8 +13,8 @@ export default function SolutionText({ solutionOpacity }: SolutionTextProps) {
       style={{ opacity: solutionOpacity }}
     >
       <div className="text-center px-8 max-w-4xl">
-        <h2 className="text-5xl md:text-7xl lg:text-8xl font-bold text-foreground leading-tight">
-          Scaling is hard. Sentra is here to help.
+        <h2 className="text-5xl font-bold text-foreground leading-tight">
+        But what if you could remember every key decision, stay aligned, and <span className="underline">focus on what matters</span>?
         </h2>
       </div>
     </motion.div>

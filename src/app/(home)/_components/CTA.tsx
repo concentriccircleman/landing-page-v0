@@ -9,11 +9,13 @@ export default function CTA() {
         <h1 className="text-3xl md:text-4xl lg:text-5xl font-medium text-foreground mb-6">
           Sentralize Your Company
         </h1>
-        <div className="text-lg md:text-xl text-secondary mb-8 max-w-3xl mx-auto space-y-4">
-          <p className="text-center">&ldquo;Sentra is going to be the most useful tool ever.&rdquo;</p>
-          <p className="text-center">&ldquo;I see value in this. I can act on this information.&rdquo;</p>
-          <p className="text-center">&ldquo;This is the exact kind of thing leadership needs.&rdquo;</p>
-          <p className="text-center">- first cohort of series A founders</p>
+        <div className="text-lg md:text-xl text-secondary mb-8 max-w-6xl mx-auto">
+          <div className="flex flex-col md:flex-row gap-6 md:gap-8">
+            <p className="text-center flex-1">&ldquo;I&apos;ve tried 5 other status report tools, yours is the only one that works. The one thing Sentra does well that others can&apos;t is that Sentra can contextualize what&apos;s important for me to know.&rdquo;</p>
+            {/* <p className="text-center flex-1">&ldquo;Wow. The report is fantastic.&rdquo;</p> */}
+            <p className="text-center flex-1">&ldquo;Of all the AI tools that I&apos;ve tried, Sentra is actually useful.  I make a million promises across zoom meetings, slack, and emails---faster than I can write them down, and Sentra is the only tool that allowed me to start catching onto them.&rdquo;</p>
+          </div>
+
         </div>
         
         <Link 

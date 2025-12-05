@@ -74,6 +74,7 @@ html {
 body {
   /* foreground: var(--foreground); */
   color: var(--background);
+  /* background-color: var(--foreground); */
 }
 
 body::after {

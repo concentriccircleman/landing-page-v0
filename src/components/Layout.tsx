@@ -24,7 +24,7 @@ export default function Layout({
         {isLanding ? (
           <>
             <MobileMenu />
-            <main className="flex-1 flex flex-col mb-32">
+            <main className="flex-1 flex flex-col">
               {children}
             </main>
           </>
