@@ -2,9 +2,9 @@
 
 import { useScroll, useTransform } from 'motion/react'
 import { useRef } from 'react'
-import AnimatedBars from './AnimatedBars'
-import StoryText from './StoryText'
-import SolutionText from './SolutionText'
+import AnimatedBars from './animated-bars'
+import StoryText from './story-text'
+import SolutionText from './solution-text'
 
 
 export default function Storytelling() {
@@ -23,14 +23,15 @@ export default function Storytelling() {
   const solutionOpacity = useTransform(scrollYProgress, [0.6, 0.7], [0, 1])
 
   return (
-    <>
-      {/* animated bars - grow from top and bottom edges - rendered outside stacking context */}
-      <AnimatedBars barHeight={barHeight} />
-      
+    <div>
+      <div className="hidden lg:block">
+        <AnimatedBars barHeight={barHeight} />
+      </div>
+
       <div ref={containerRef} className="relative h-[400vh] bg-background hidden lg:block max-w-screen-4xl mx-auto w-full px-4">
         {/* sticky container that holds everything in place while user scrolls */}
         <div className="sticky top-0 h-screen w-full flex items-center justify-center overflow-hidden">
-          
+
           {/* main story text - always visible, sticky in center */}
           <StoryText storyOpacity={storyOpacity} scrollYProgress={scrollYProgress} />
 
@@ -38,6 +39,6 @@ export default function Storytelling() {
           <SolutionText solutionOpacity={solutionOpacity} />
         </div>
       </div>
-    </>
+    </div>
   )
 }

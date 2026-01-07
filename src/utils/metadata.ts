@@ -1,22 +1,35 @@
-type MetaDataProps = {
+import type { Metadata } from "next";
+import { siteUrl } from "@/utils/site-url";
+
+interface MetadataProps {
   title?: string;
   description?: string;
   canonical?: string;
-};
+}
 
 const defaultMetadata = {
   title: "Sentra",
   description:
     "Sentra is your AI teammate who creates a unified company memory, remembering details everyone forgot and alerting you when your teams are misaligned.",
-  canonical: "/",
 };
 
-// Takes in title, description, and other props and returns a Next.js metadata object
-export function createMetadata({
+export const createMetadata = ({
   title = defaultMetadata.title,
   description,
-  canonical = defaultMetadata.canonical,
-}: MetaDataProps) {
+  canonical,
+}: MetadataProps): Metadata => {
+  const finalTitle =
+    title !== defaultMetadata.title
+      ? `${title} - ${defaultMetadata.title}`
+      : defaultMetadata.title;
+
+  const canonicalUrl =
+    typeof canonical === "string" && canonical.length > 0
+      ? canonical.startsWith("http")
+        ? canonical
+        : `${siteUrl}${canonical}`
+      : undefined;
+
   const finalDescription =
     description ??
     (title !== defaultMetadata.title
@@ -24,15 +37,10 @@ export function createMetadata({
       : defaultMetadata.description);
 
   return {
-    metadataBase: new URL("https://sentra.app"),
-    title:
-      title !== defaultMetadata.title
-        ? `${title} - ${defaultMetadata.title}`
-        : defaultMetadata.title,
+    metadataBase: new URL(siteUrl),
+    title: finalTitle,
     description: finalDescription,
-    alternates: {
-      canonical,
-    },
+    alternates: canonicalUrl ? { canonical } : undefined,
     keywords: [
       "sentra",
       "ai teammate",
@@ -48,19 +56,38 @@ export function createMetadata({
       "knowledge documentation",
     ],
     openGraph: {
-      title,
+      title: finalTitle,
       description: finalDescription,
+      siteName: "Sentra",
       type: "website",
-      url: canonical,
+      url: canonicalUrl,
       images: [
         {
-          url: "https://sentra.app/opengraph-image.png",
+          url: `${siteUrl}/opengraph-image.png`,
           width: 1200,
           height: 630,
-          alt: "OG Image",
+          alt: "Sentra",
         },
       ],
     },
-    robots: "index, follow",
+    twitter: {
+      card: "summary_large_image",
+      title: finalTitle,
+      description: finalDescription,
+      images: [`${siteUrl}/twitter-image.png`],
+      site: "@sentra_app",
+      creator: "@sentra_app",
+    },
+    robots: {
+      index: true,
+      follow: true,
+      googleBot: {
+        index: true,
+        follow: true,
+        "max-video-preview": -1,
+        "max-image-preview": "large",
+        "max-snippet": -1,
+      },
+    },
   };
-}
+};

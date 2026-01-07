@@ -1,18 +1,19 @@
 "use client";
 
-import { fadeTransition, fadeVariants } from "@/app/_animations/fadeVariants";
+import { fadeTransition, fadeVariants } from "@/app/_animations/fade-variants";
 
-import HeroHeader from "./HeroHeader";
+import HeroHeader from "./hero-header";
 import Link from "next/link";
-import { ResponsiveLogoCarousel } from "./ByVariants";
+import { ResponsiveLogoCarousel } from "./by-variants";
 import { motion } from "motion/react";
 import { useAnimation } from "@/app/providers";
+import { bookDemoUrl } from "@/utils/external-links";
 
 export default function Hero() {
   const { isLoaded } = useAnimation();
 
   return (
-    <section className="relative w-full h-screen flex flex-col text-background hero-gradient">
+    <section className="relative w-full h-screen flex flex-col text-background hero-gradient hero-grid-lines">
       <HeroHeader />
       <div className="flex-1 flex flex-col">
         <motion.div
@@ -32,9 +33,10 @@ export default function Hero() {
                 Sentra is your organizational memory system that transforms your company&apos;s 
                 collective knowledge, data and decisions into living intelligence. 
                 </p>
-                <div></div>
                 <Link
-                  href="/signup"
+                  href={bookDemoUrl}
+            target="_blank"
+            rel="noreferrer"
                   className="w-fit mt-2 text-base bg-background text-foreground px-5 py-2 hover:brightness-80 duration-200 hover:cursor-pointer"
                 >
                   Sentralize Your Company

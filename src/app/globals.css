@@ -4,6 +4,7 @@
 html {
   overflow-y: auto;
   -webkit-overflow-scrolling: touch;
+  scroll-behavior: smooth;
 }
 
 :root {
@@ -11,8 +12,24 @@ html {
   --background: #ffffff;
   --border: #d5d5d5;
   --secondary: #777777;
+  --muted: #666666;
+  --brand: var(--color-primary-500);
 
-  /* took this from design agency */
+  /* extra custom not part of default sugar-high */
+  --sh-background: #f2f2f2;
+
+  /* default by sugar-high */
+  --sh-identifier:  #0f172a; /* main text (navy) */
+  --sh-sign:        #64748b; /* punctuation (blue-gray) */
+  --sh-keyword:     #be123c; /* keywords (red/rose) */
+  --sh-class:       #7c3aed; /* classes/types (purple) */
+  --sh-property:    #2563eb; /* properties (blue) */
+  --sh-entity:      #d97706; /* entities/tags (orange) */
+  --sh-jsxliterals: #0891b2; /* jsx literals (teal/cyan) */
+  --sh-string:      #15803d; /* strings (green) */
+  --sh-comment:     #94a3b8; /* comments (light blue-gray) */
+
+  /* design agency */
   --color-primary-50: oklch(97.7% 0.013 236.62);
   --color-primary-100: oklch(95.1% 0.026 236.824);
   --color-primary-200: oklch(90.1% 0.058 230.902);
@@ -48,6 +65,9 @@ html {
   --color-background: var(--background);
   --color-border: var(--border);
   --color-secondary: var(--secondary);
+  --color-muted: var(--muted);
+  --color-brand: var(--brand);
+  --color-sh-background: var(--sh-background);
 
   --color-primary-50: var(--color-primary-50);
   --color-primary-100: var(--color-primary-100);
@@ -67,19 +87,19 @@ html {
 }
 
 ::selection {
-  background-color: var(--color-primary-500);
+  background-color: var(--color-brand);
   color: var(--color-background);
 }
 
 body {
   /* foreground: var(--foreground); */
-  color: var(--background);
+  color: var(--color-foreground);
   /* background-color: var(--foreground); */
 }
 
-body::after {
+.hero-grid-lines::after {
   content: "";
-  position: fixed;
+  position: absolute;
   top: 0;
   left: 0;
   width: 100%;
@@ -97,7 +117,7 @@ body::after {
 .hero-gradient {
   background: linear-gradient(
     to top right,
-    var(--color-primary-500) 0%,
+    var(--brand) 0%,
     var(--color-primary-700) 15%,
     var(--foreground) 40%
   );
@@ -121,4 +141,13 @@ body::after {
   to {
     transform: translateY(calc(-100% - var(--gap)));
   }
+}
+
+/* syntax highlighting */
+/* `pre` will just have the styling of code without the syntax highlighting */
+pre {
+  background-color: var(--color-sh-background);
+  border-color: var(--color-border);
+  border-width: 1px;  
+  padding: 1rem;
 }

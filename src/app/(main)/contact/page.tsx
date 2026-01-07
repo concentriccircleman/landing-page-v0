@@ -1,13 +1,9 @@
-import Contact from "./_components/Contact";
-import type { Metadata } from "next";
-import { createMetadata } from "@/utils/metadata";
+import { redirect } from "next/navigation";
+import { bookDemoUrl } from "@/utils/external-links";
 
-export const metadata: Metadata = createMetadata({
-  title: "Contact",
-  description:
-    "Get in touch with Sentra. Have questions about Sentra? Want to learn more about how we can help your team? Need support? Send us an email and our team will get back to you as soon as possible.",
-});
+// placeholder until attio connection
+const ContactPage = () => {
+  redirect(bookDemoUrl);
+};
 
-export default function ContactPage() {
-  return <Contact />;
-}
+export default ContactPage;

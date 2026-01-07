@@ -1,11 +1,12 @@
 "use client";
 
-import { BentoContainer, Bento } from "./Bento";
+import { BentoContainer, Bento } from "./bento";
+import Section from "@/components/section";
 
 export default function BentoGrid() {
   return (
-    <div className="max-w-screen-4xl mx-auto w-full px-4 mt-32">
-      <h2 className="text-3xl md:text-4xl tracking-tight text-foreground mb-8">
+    <Section as="div">
+      <h2 className="text-3xl md:text-4xl tracking-tight text-foreground mb-4">
         A new way to operate
       </h2>
       <BentoContainer>
@@ -94,6 +95,6 @@ export default function BentoGrid() {
           />
         </div>
       </BentoContainer>
-    </div>
+    </Section>
   );
 }
