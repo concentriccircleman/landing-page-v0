@@ -4,6 +4,10 @@ import { cn } from "@/lib/utils";
 import { motion } from "motion/react";
 import { useState, useEffect, useRef } from "react";
 import Image from "next/image";
+import integrationsImage from "@/assets/illustrations/integrations.svg";
+import whereYouAreImage from "@/assets/illustrations/where-you-are.svg";
+import assignJobsImage from "@/assets/illustrations/assign-jobs.svg";
+import founderSupportImage from "@/assets/illustrations/founder-support.svg";
 
 const ANIMATION_DURATION = 7000; // in milliseconds
 
@@ -32,10 +36,10 @@ const features = [
 
 function AdoptionImage({ featureIndex }: { featureIndex: number }) {
   const imageSources = [
-    "/integrations.svg",
-    "/where-you-are.svg",
-    "/assign-jobs.svg",
-    "/founder-support.svg",
+    integrationsImage,
+    whereYouAreImage,
+    assignJobsImage,
+    founderSupportImage,
   ];
 
   const imageAlts = [

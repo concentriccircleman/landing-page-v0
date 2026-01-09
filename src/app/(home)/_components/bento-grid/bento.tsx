@@ -1,7 +1,7 @@
 "use client";
 
 import React from "react";
-import Image from "next/image";
+import Image, { type ImageProps } from "next/image";
 import { cn } from "@/lib/utils";
 
 interface BentoContainerProps {
@@ -18,7 +18,7 @@ interface BentoProps {
   size?: "compact" | "normal";
   textSize?: "normal" | "large";
   image?: {
-    src: string;
+    src: ImageProps["src"];
     alt: string;
     width?: number;
     height?: number;

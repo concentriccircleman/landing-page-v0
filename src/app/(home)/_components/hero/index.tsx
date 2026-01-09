@@ -35,8 +35,8 @@ export default function Hero() {
                 </p>
                 <Link
                   href={bookDemoUrl}
-            target="_blank"
-            rel="noreferrer"
+                  target="_blank"
+                  rel="noreferrer"
                   className="w-fit mt-2 text-base bg-background text-foreground px-5 py-2 hover:brightness-80 duration-200 hover:cursor-pointer"
                 >
                   Sentralize Your Company

@@ -1,6 +1,9 @@
 "use client";
 
-import Image from "next/image";
+import Image, { type ImageProps } from "next/image";
+import unifiedKnowledgeImage from "@/assets/illustrations/unified-knowledge.svg";
+import alignmentImage from "@/assets/illustrations/alignment.svg";
+import misalignmentRadarImage from "@/assets/illustrations/misalignment-radar.svg";
 function HighlightCard({
   title,
   subtitle,
@@ -8,7 +11,7 @@ function HighlightCard({
 }: {
   title: string;
   subtitle: string;
-  imageSrc: string;
+  imageSrc: ImageProps["src"];
 }) {
   return (
     <div className="flex flex-col h-full gap-3">
@@ -44,17 +47,17 @@ export default function Highlights() {
         <HighlightCard
           title="A &quot;git log&quot; of your company's decisions"
           subtitle="Sentra understands how the company changes by creating a unified timeline of decisions and commitments."
-          imageSrc="/unified-knowledge.svg"
+          imageSrc={unifiedKnowledgeImage}
         />
         <HighlightCard
           title="A ground-zero understanding"
           subtitle="By being present with your team, Sentra learns your company's priorities and strategic context."
-          imageSrc="/alignment.svg"
+          imageSrc={alignmentImage}
         />
         <HighlightCard
           title="Identify risks in real time"
           subtitle="With real-time awareness, Sentra identifies conflicts and breakdowns before they become problems."
-          imageSrc="/misalignment-radar.svg"
+          imageSrc={misalignmentRadarImage}
         />
       </div>
     </div>

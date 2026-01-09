@@ -3,6 +3,7 @@
 import { fadeTransition, fadeVariants } from "@/app/_animations/fade-variants";
 import Image from "next/image";
 import Link from "next/link";
+import sentraLogo from "@/assets/brand/sentra.png";
 import MobileMenu from "@/components/mobile-menu";
 import { motion } from "motion/react";
 import { useAnimation } from "@/app/providers";
@@ -43,7 +44,7 @@ const HeroHeader = () => {
           scroll={false}
           className="flex items-center gap-2 hover:opacity-80 duration-200"
         >
-          <Image src="/sentra.png" alt="Sentra" width={30} height={30} />
+          <Image src={sentraLogo} alt="Sentra" width={30} height={30} />
           <span className="text-base font-medium">Sentra</span>
         </Link>
 
