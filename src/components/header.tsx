@@ -4,7 +4,6 @@ import Image from "next/image";
 import Link from "next/link";
 import sentraLogo from "@/assets/brand/sentra.png";
 import MobileMenu from "@/components/mobile-menu";
-import { bookDemoUrl } from "@/utils/external-links";
 
 const Header = () => {
   return (
@@ -27,12 +26,10 @@ const Header = () => {
             Sign In
           </Link>
           <Link
-            href={bookDemoUrl}
-            target="_blank"
-            rel="noreferrer"
+            href="/contact"
             className="h-8 inline-flex items-center text-xs bg-primary-600 text-background px-3 hover:brightness-80 duration-200 hover:cursor-pointer font-medium"
           >
-            Book a demo
+            Contact Sales
           </Link>
           <MobileMenu />
         </div>
@@ -48,12 +45,10 @@ const Header = () => {
             Sign In
           </Link>
           <Link
-            href={bookDemoUrl}
-            target="_blank"
-            rel="noreferrer"
+            href="/contact"
             className="h-8 inline-flex items-center text-sm bg-primary-600 text-background px-3 hover:brightness-80 duration-200 w-fit hover:cursor-pointer"
           >
-            Book a demo
+            Contact Sales
           </Link>
         </div>
       </div>

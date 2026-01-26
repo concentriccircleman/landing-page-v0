@@ -5,7 +5,6 @@ import { useEffect, useState } from "react";
 import { motion } from "motion/react";
 import { cn } from "@/utils/cn";
 import Section from "@/components/section";
-import { bookDemoUrl } from "@/utils/external-links";
 
 const testimonials = [
   "I've tried 5 other status report tools, yours is the only one that works. The one thing Sentra does well that others can't is that Sentra can contextualize what's important for me to know.",
@@ -80,12 +79,10 @@ const CTA = () => {
         </div>
 
         <Link
-          href={bookDemoUrl}
-          target="_blank"
-          rel="noreferrer"
+          href="/contact"
           className="inline-flex items-center gap-2 bg-foreground text-background px-8 py-3 text-lg font-medium hover:brightness-80 duration-200 hover:cursor-pointer"
         >
-          Book a demo
+          Sentralize Your Company
         </Link>
       </div>
     </Section>

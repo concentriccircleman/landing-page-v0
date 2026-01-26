@@ -8,7 +8,6 @@ import MobileMenu from "@/components/mobile-menu";
 import { motion } from "motion/react";
 import { useAnimation } from "@/app/providers";
 import { useEffect, useState } from "react";
-import { bookDemoUrl } from "@/utils/external-links";
 
 const HeroHeader = () => {
   const { isLoaded } = useAnimation();
@@ -56,12 +55,10 @@ const HeroHeader = () => {
             Sign In
           </Link>
           <Link
-            href={bookDemoUrl}
-            target="_blank"
-            rel="noreferrer"
+            href="/contact"
             className="h-8 inline-flex items-center text-xs bg-primary-600 text-background px-3 hover:brightness-80 duration-200 hover:cursor-pointer font-medium"
           >
-            Book a demo
+            Contact Sales
           </Link>
           <MobileMenu />
         </div>
@@ -77,12 +74,10 @@ const HeroHeader = () => {
             Sign In
           </Link>
           <Link
-            href={bookDemoUrl}
-            target="_blank"
-            rel="noreferrer"
+            href="/contact"
             className="h-8 inline-flex items-center text-sm bg-primary-600 text-background px-3 hover:brightness-80 duration-200 w-fit hover:cursor-pointer"
           >
-            Book a demo
+            Contact Sales
           </Link>
         </div>
       </motion.div>

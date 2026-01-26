@@ -1,9 +1,7 @@
-import { redirect } from "next/navigation";
-import { bookDemoUrl } from "@/utils/external-links";
+import Contact from "@/app/(main)/contact/_components/contact";
 
-// placeholder until attio connection
 const ContactPage = () => {
-  redirect(bookDemoUrl);
+  return <Contact />;
 };
 
 export default ContactPage;
