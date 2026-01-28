@@ -37,7 +37,7 @@ const isAllowedNextImageRemoteSource = (source: string) => {
 export const mdxComponents = {
   h1: (props: ComponentPropsWithoutRef<"h1">) => (
     <h1
-      className="scroll-mt-18 text-3xl/snug font-medium tracking-tight text-foreground"
+      className="scroll-mt-28 text-3xl/snug font-medium tracking-tight text-foreground"
       {...props}
     />
   ),
@@ -46,13 +46,13 @@ export const mdxComponents = {
 
     if (!headingId) {
       return (
-        <h2 className="scroll-mt-18 text-xl font-medium tracking-tight text-foreground" {...props} />
+        <h2 className="scroll-mt-28 text-xl font-medium tracking-tight text-foreground" {...props} />
       );
     }
 
     return (
       <ScrollSpySection asChild value={headingId}>
-        <h2 className="scroll-mt-18 text-xl font-medium tracking-tight text-foreground" {...props} />
+        <h2 className="scroll-mt-28 text-xl font-medium tracking-tight text-foreground" {...props} />
       </ScrollSpySection>
     );
   },
@@ -61,19 +61,19 @@ export const mdxComponents = {
 
     if (!headingId) {
       return (
-        <h3 className="scroll-mt-18 text-lg font-medium tracking-tight text-foreground" {...props} />
+        <h3 className="scroll-mt-28 text-lg font-medium tracking-tight text-foreground" {...props} />
       );
     }
 
     return (
       <ScrollSpySection asChild value={headingId}>
-        <h3 className="scroll-mt-18 text-lg font-medium tracking-tight text-foreground" {...props} />
+        <h3 className="scroll-mt-28 text-lg font-medium tracking-tight text-foreground" {...props} />
       </ScrollSpySection>
     );
   },
   h4: (props: ComponentPropsWithoutRef<"h4">) => (
     <h4
-      className="scroll-mt-18 text-base font-medium tracking-tight text-foreground"
+      className="scroll-mt-28 text-base font-medium tracking-tight text-foreground"
       {...props}
     />
   ),

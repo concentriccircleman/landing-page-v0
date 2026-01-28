@@ -120,7 +120,7 @@ const Contact = () => {
   return (
     <div className="w-full px-4">
       <div className="border border-foreground/15 bg-background">
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-10 p-8 md:p-12">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-10 p-6 md:p-12">
           <div className="flex flex-col gap-4">
             <h2 className="text-3xl md:text-4xl font-medium text-foreground">
               Contact Sales

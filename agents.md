@@ -1,3 +1,10 @@
+# Philosophy
+This codebase will outlive you. Every shortcut becomes someone else's burden. Every
+hack compounds into technical debt that slows the whole team down.
+You are not just writing code. You are shaping the future of this project. The
+patterns you establish will be copied. The corners you cut will be cut again.
+Fight entropy. Leave the codebase better than you found it.
+
 ### Sentra Landing Page — Agent Rules
 
 ### Non‑negotiables
@@ -38,7 +45,7 @@
 ### Styling patterns (Tailwind v4)
 - **MUST** use Tailwind utilities and the existing design tokens:
   - Use `bg-foreground`, `text-background`, `bg-background`, `text-foreground`, `bg-primary-*`, etc.
-  - Use the custom layout pattern: `max-w-screen-4xl mx-auto w-full`.
+  - Use the custom layout pattern: `max-w-screen-2xl mx-auto w-full`.
 - **MUST NOT** use inline CSS (`style={{ ... }}`) no matter what.
   - **ONLY exception**: when Tailwind cannot achieve the **exact** behavior. In that case, keep the inline style minimal and tightly scoped.
 - **MUST** prefer existing helpers for class composition:

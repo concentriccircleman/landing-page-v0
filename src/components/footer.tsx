@@ -30,20 +30,21 @@ const footerLinks: FooterLinks = {
       path: "https://trust.delve.co/sentra",
       label: "Security",
     },
+    { path: "/data-privacy", label: "How We Handle Data" },
   ],
   company: [
     { path: "/about", label: "About" },
     { path: "/manifesto", label: "Manifesto" },
+    { path: "/contact", label: "Enterprise" },
     { path: "/blog", label: "Blog" },
-    { path: "https://jobs.ashbyhq.com/sentra", label: "Careers" },
-    { path: "/data-privacy", label: "How We Handle Data" },
+    { path: "/careers", label: "Careers" },
   ],
 };
 
 export default function Footer() {
   return (
     <footer className={`w-full z-20 ${ibmPlexMono.className} bg-foreground`}>
-      <div className="max-w-screen-4xl mx-auto px-4 py-8">
+      <div className="max-w-screen-2xl mx-auto px-4 py-8">
         <div className="grid grid-cols-1 xs:grid-cols-2 md:grid-cols-4 gap-8 mb-8">
           <div>
             <h3 className="text-sm font-medium text-background mb-4">Legal</h3>

@@ -7,11 +7,11 @@ const Privacy = () => {
             Privacy Policy
           </h1>
 
-          <p className="text-lg text-foreground/60 mb-8 md:mb-12 font-light italic">
+          <p className="text-lg text-muted-foreground mb-8 md:mb-12 font-light italic">
             Last Updated: March 26, 2025
           </p>
 
-          <p className="text-base text-foreground/80 mb-6 md:mb-8">
+          <p className="text-base text-muted-foreground mb-6 md:mb-8">
             Dynamis Labs, Inc. (&ldquo;Sentra,&rdquo; &ldquo;we,&rdquo;
             &ldquo;our,&rdquo; and/or &ldquo;us&rdquo;) values the privacy of
             individuals who use our website and related services (collectively,
@@ -28,7 +28,7 @@ const Privacy = () => {
             Information We Collect
           </h2>
 
-          <p className="text-base text-foreground/80 mb-6 md:mb-8">
+          <p className="text-base text-muted-foreground mb-6 md:mb-8">
             We may collect a variety of information from or about you or your
             devices from various sources, as described below.
           </p>
@@ -37,14 +37,14 @@ const Privacy = () => {
             A. Information You Provide to Us
           </h3>
 
-          <p className="text-base text-foreground/80 mb-4">
+          <p className="text-base text-muted-foreground mb-4">
             <strong>Registration and Profile Information.</strong> When you sign
             up for an account, we ask you for your name, email address, and
             phone number. We will also collect any information you choose to
             provide as part of your account profile.
           </p>
 
-          <p className="text-base text-foreground/80 mb-4">
+          <p className="text-base text-muted-foreground mb-4">
             <strong>Communications.</strong> If you contact us directly, we may
             receive additional information about you, such as your name, email
             address, phone number, the contents of a message or attachments that
@@ -55,7 +55,7 @@ const Privacy = () => {
             better customer experience and improve our Services.
           </p>
 
-          <p className="text-base text-foreground/80 mb-6 md:mb-8">
+          <p className="text-base text-muted-foreground mb-6 md:mb-8">
             <strong>Payment Information.</strong> If you make a purchase through
             our Services, your payment-related information, such as credit card
             or other financial information, is collected by our third-party
@@ -66,7 +66,7 @@ const Privacy = () => {
             B. Information We Collect When You Use Our Services
           </h3>
 
-          <p className="text-base text-foreground/80 mb-4">
+          <p className="text-base text-muted-foreground mb-4">
             <strong>Device Information.</strong> We receive information about
             the device and software you use to access our Services, including IP
             address (which can be used to tell us your general location
@@ -76,13 +76,13 @@ const Privacy = () => {
             tokens.
           </p>
 
-          <p className="text-base text-foreground/80 mb-4">
+          <p className="text-base text-muted-foreground mb-4">
             <strong>User-Generated Content.</strong> When you use our Services
             we receive information about the content you generate, including any
             content created through engaging with our platform.
           </p>
 
-          <p className="text-base text-foreground/80 mb-4">
+          <p className="text-base text-muted-foreground mb-4">
             <strong>Usage Information.</strong> To help us understand how you
             use our Services and to help us improve them, we automatically
             receive information about your interactions with our Services, like
@@ -91,7 +91,7 @@ const Privacy = () => {
             visits.
           </p>
 
-          <p className="text-base text-foreground/80 mb-4">
+          <p className="text-base text-muted-foreground mb-4">
             <strong>Google Workspace Data.</strong> If you connect a Google
             account or a Google Workspace account, we receive only the calendar
             information and account metadata you authorize via Google OAuth.
@@ -101,7 +101,7 @@ const Privacy = () => {
             create, improve, or train generalized AI or ML models.
           </p>
 
-          <p className="text-base text-foreground/80 mb-6 md:mb-8">
+          <p className="text-base text-muted-foreground mb-6 md:mb-8">
             <strong>Information from Cookies and Similar Technologies.</strong>{" "}
             We and our third-party partners collect information using cookies,
             pixel tags, or similar technologies. Our third-party partners, such
@@ -114,11 +114,11 @@ const Privacy = () => {
             How We Use the Information We Collect
           </h2>
 
-          <p className="text-base text-foreground/80 mb-4">
+          <p className="text-base text-muted-foreground mb-4">
             We use the information we collect:
           </p>
 
-          <ul className="text-base text-foreground/80 mb-4 list-disc list-inside space-y-2">
+          <ul className="text-base text-muted-foreground mb-4 list-disc list-inside space-y-2">
             <li>To provide, maintain, improve, and enhance our Services</li>
             <li>
               To personalize your experience on our Services such as by
@@ -161,7 +161,7 @@ const Privacy = () => {
             </li>
           </ul>
 
-          <p className="text-base text-foreground/80 mb-6 md:mb-8">
+          <p className="text-base text-muted-foreground mb-6 md:mb-8">
             We do not use information obtained through Google Workspace APIs to
             develop, improve, or train generalized AI/ML models; we process that
             data only to operate the features you explicitly request, currently
@@ -172,26 +172,26 @@ const Privacy = () => {
             How We Disclose the Information We Collect
           </h2>
 
-          <p className="text-base text-foreground/80 mb-4">
+          <p className="text-base text-muted-foreground mb-4">
             <strong>Affiliates.</strong> We may disclose any information we
             receive to our affiliates for any of the purposes described in this
             Privacy Policy.
           </p>
 
-          <p className="text-base text-foreground/80 mb-4">
+          <p className="text-base text-muted-foreground mb-4">
             <strong>Vendors and Service Providers.</strong> We may disclose any
             information we receive to vendors and service providers retained in
             connection with the provision of our Services.
           </p>
 
-          <p className="text-base text-foreground/80 mb-4">
+          <p className="text-base text-muted-foreground mb-4">
             <strong>Analytics Partners.</strong> We use analytics services such
             as Google Analytics to collect and process certain analytics data.
             These services may also collect information about your use of other
             websites, apps, and online resources.
           </p>
 
-          <p className="text-base text-foreground/80 mb-4">
+          <p className="text-base text-muted-foreground mb-4">
             <strong>As Required By Law and Similar Disclosures.</strong> We may
             access, preserve, and disclose your information if we believe doing
             so is required or appropriate to: (a) comply with law enforcement
@@ -200,7 +200,7 @@ const Privacy = () => {
             rights, property, or safety.
           </p>
 
-          <p className="text-base text-foreground/80 mb-4">
+          <p className="text-base text-muted-foreground mb-4">
             <strong>Merger, Sale, or Other Asset Transfers.</strong> We may
             transfer your information to service providers, advisors, potential
             transactional partners, or other third parties in connection with
@@ -212,7 +212,7 @@ const Privacy = () => {
             models.
           </p>
 
-          <p className="text-base text-foreground/80 mb-6 md:mb-8">
+          <p className="text-base text-muted-foreground mb-6 md:mb-8">
             <strong>Consent.</strong> We may also disclose your information with
             your permission.
           </p>
@@ -221,20 +221,20 @@ const Privacy = () => {
             Your Choices
           </h2>
 
-          <p className="text-base text-foreground/80 mb-4">
+          <p className="text-base text-muted-foreground mb-4">
             <strong>Marketing Communications.</strong> You can unsubscribe from
             our promotional emails via the link provided in the emails. Even if
             you opt out of receiving promotional messages from us, you will
             continue to receive administrative messages from us.
           </p>
 
-          <p className="text-base text-foreground/80 mb-4">
+          <p className="text-base text-muted-foreground mb-4">
             <strong>Do Not Track.</strong> There is no accepted standard on how
             to respond to Do Not Track signals, and we do not respond to such
             signals.
           </p>
 
-          <p className="text-base text-foreground/80 mb-6 md:mb-8">
+          <p className="text-base text-muted-foreground mb-6 md:mb-8">
             If you choose not to provide us with information we request, some
             features of our Services may not work as intended.
           </p>
@@ -243,7 +243,7 @@ const Privacy = () => {
             Google Workspace API Compliance
           </h2>
 
-          <p className="text-base text-foreground/80 mb-6 md:mb-8">
+          <p className="text-base text-muted-foreground mb-6 md:mb-8">
             Sentra&apos;s use and transfer of information received from Google
             Workspace APIs will adhere to the Google API Services User Data
             Policy, including its Limited Use requirements. We do not use Google
@@ -255,7 +255,7 @@ const Privacy = () => {
             Third Parties
           </h2>
 
-          <p className="text-base text-foreground/80 mb-6 md:mb-8">
+          <p className="text-base text-muted-foreground mb-6 md:mb-8">
             Our Services may contain links to other websites, products, or
             services that we do not own or operate. We are not responsible for
             the privacy practices of these third parties. Please be aware that
@@ -267,7 +267,7 @@ const Privacy = () => {
 
           <h2 className="text-xl font-medium text-foreground mb-4">Security</h2>
 
-          <p className="text-base text-foreground/80 mb-6 md:mb-8">
+          <p className="text-base text-muted-foreground mb-6 md:mb-8">
             We make reasonable efforts to protect your information by using
             physical and electronic safeguards designed to improve the security
             of the information we maintain. However, because no electronic
@@ -280,7 +280,7 @@ const Privacy = () => {
             Children&apos;s Privacy
           </h2>
 
-          <p className="text-base text-foreground/80 mb-6 md:mb-8">
+          <p className="text-base text-muted-foreground mb-6 md:mb-8">
             We do not knowingly collect, maintain, or use personal information
             from children under 13 years of age, and no part of our Services is
             directed to children. If you learn that a child has provided us with
@@ -292,7 +292,7 @@ const Privacy = () => {
             International Visitors
           </h2>
 
-          <p className="text-base text-foreground/80 mb-6 md:mb-8">
+          <p className="text-base text-muted-foreground mb-6 md:mb-8">
             Our Services are hosted in the United States and intended for
             visitors located within the United States. If you choose to use the
             Services from other regions of the world with laws governing data
@@ -307,7 +307,7 @@ const Privacy = () => {
             Update Your Information
           </h2>
 
-          <p className="text-base text-foreground/80 mb-6 md:mb-8">
+          <p className="text-base text-muted-foreground mb-6 md:mb-8">
             You can update your account and profile information or close your
             account through your profile settings.
           </p>
@@ -316,7 +316,7 @@ const Privacy = () => {
             Changes to this Privacy Policy
           </h2>
 
-          <p className="text-base text-foreground/80 mb-6 md:mb-8">
+          <p className="text-base text-muted-foreground mb-6 md:mb-8">
             We will post any adjustments to the Privacy Policy on this page, and
             the revised version will be effective when it is posted. If we
             materially change the ways in which we use or disclose personal
@@ -329,7 +329,7 @@ const Privacy = () => {
             Contact Information
           </h2>
 
-          <p className="text-base text-foreground/80 mb-6 md:mb-8">
+          <p className="text-base text-muted-foreground mb-6 md:mb-8">
             If you have any questions, comments, or concerns about this Privacy
             Policy, please email us at: support@sentra.app
           </p>

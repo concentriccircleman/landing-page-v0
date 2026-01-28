@@ -5,7 +5,7 @@ import { createMetadata } from "@/utils/metadata";
 export const metadata: Metadata = createMetadata({
   title: "Manifesto",
   description:
-    "Why misalignment quietly derails growing teams, and what Sentra believes about alignment, trust, and humane AI.",
+    "Sentra builds organizational memory that learns. Moving beyond static archives to an operational nervous system that understands how your company actually works.",
   canonical: "/manifesto",
 });
 

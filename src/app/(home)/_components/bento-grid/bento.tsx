@@ -43,7 +43,7 @@ export function BentoContainer({ children, className }: BentoContainerProps) {
       // always show right border on small to keep outer edge continuous
       "border-r md:border-r-0",
       // on md+, only the last column gets the right border
-      idxInGroup === colCount - 1 && "md:border-r",
+      idxInGroup % colCount === colCount - 1 && "md:border-r",
       // bottom edge only on the last group to avoid double seams
       isLastGroup && "border-b"
     );

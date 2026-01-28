@@ -19,7 +19,7 @@ const staticRouteLastModifiedByPath: Record<string, string> = {
   "/": "2026-01-06",
   "/about": "2026-01-06",
   "/data-privacy": "2026-01-06",
-  "/manifesto": "2026-01-06",
+  "/manifesto": "2026-01-27",
   "/terms": "2026-01-06",
   "/privacy": "2026-01-06",
   "/blog": "2026-01-06",

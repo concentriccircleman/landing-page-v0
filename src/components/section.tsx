@@ -19,7 +19,7 @@ export default function Section({
 }: SectionProps) {
   return (
     <Component
-      className={`max-w-screen-4xl mx-auto w-full px-4 ${className}`.trim()}
+      className={`max-w-screen-2xl mx-auto w-full px-4 ${className}`.trim()}
     >
       {children}
     </Component>

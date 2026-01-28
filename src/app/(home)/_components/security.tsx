@@ -4,7 +4,7 @@ import Link from "next/link";
 
 export default function Security() {
   return (
-    <section className="max-w-screen-4xl mx-auto w-full px-4 mt-32">
+    <section className="max-w-screen-2xl mx-auto w-full px-4">
       <h2 className="text-2xl md:text-4xl tracking-tight text-foreground mb-8">
         Ultimate data security, control, and sovereignty
       </h2>
@@ -21,7 +21,7 @@ export default function Security() {
             href="https://trust.delve.co/sentra"
             target="_blank"
             rel="noopener noreferrer"
-            className="inline-flex items-center gap-2 bg-foreground text-background px-5 py-2 hover:brightness-80 duration-200"
+            className="inline-flex items-center gap-2 bg-foreground text-background px-5 py-2 hover:opacity-80 duration-200"
           >
             Visit our Security & Trust Center
             <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">

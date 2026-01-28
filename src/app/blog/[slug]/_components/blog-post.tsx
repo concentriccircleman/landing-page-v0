@@ -93,10 +93,10 @@ const BlogPost = ({ Post, metadata, toc }: BlogPostProps) => {
   );
 
   return (
-    <ScrollSpy asChild orientation="vertical" offset={72}>
-      <div className="w-full max-w-screen-4xl mx-auto px-4">
+    <ScrollSpy asChild orientation="vertical" offset={96}>
+      <div className="w-full max-w-screen-2xl mx-auto px-4">
         <div className="flex flex-col gap-8 lg:flex-row lg:gap-10">
-          <aside className="hidden lg:block shrink-0 lg:w-48 lg:sticky lg:top-24 self-start">
+          <aside className="hidden lg:block shrink-0 lg:w-48 lg:sticky lg:top-32 self-start">
             <div className="flex flex-col gap-6 lg:flex-col">
               <div className="text-left">
                 {metadataDetails}

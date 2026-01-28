@@ -28,7 +28,7 @@ export default function Storytelling() {
         <AnimatedBars barHeight={barHeight} />
       </div>
 
-      <div ref={containerRef} className="relative h-[400vh] bg-background hidden lg:block max-w-screen-4xl mx-auto w-full px-4">
+      <div ref={containerRef} className="relative h-[400vh] bg-background hidden lg:block max-w-screen-2xl mx-auto w-full px-4">
         {/* sticky container that holds everything in place while user scrolls */}
         <div className="sticky top-0 h-screen w-full flex items-center justify-center overflow-hidden">
 

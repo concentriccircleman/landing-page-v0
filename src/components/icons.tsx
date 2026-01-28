@@ -17,7 +17,7 @@ export function MenuIcon({ "data-hide": dataHide, color = "#000000", ...props }:
       {...props}
     >
       <path
-        d="M5 14H27M5 18H27"
+        d="M5 12H27M5 16H27M5 20H27"
         stroke={color}
         strokeWidth="1.5"
         strokeLinecap="butt"
@@ -47,6 +47,25 @@ export function CrossIcon({ "data-hide": dataHide, color = "#000000", ...props }
         strokeLinecap="butt"
         strokeLinejoin="round"
       />
+    </svg>
+  );
+}
+
+export function ChevronDownIcon({ className }: { className?: string }) {
+  return (
+    <svg
+      xmlns="http://www.w3.org/2000/svg"
+      width="24"
+      height="24"
+      viewBox="0 0 24 24"
+      fill="none"
+      stroke="currentColor"
+      strokeWidth="1.5"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+      className={className}
+    >
+      <path d="M6 9L12 15L18 9" />
     </svg>
   );
 }

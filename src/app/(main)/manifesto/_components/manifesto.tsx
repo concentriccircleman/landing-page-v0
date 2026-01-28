@@ -1,286 +1,168 @@
 const Manifesto = () => {
   return (
-    <section className="flex flex-col justify-center items-center text-foreground pointer-events-none h-full bg-background">
-      <div className="px-4 max-w-3xl z-10 flex flex-col h-full w-full justify-center items-center pointer-events-auto">
-        <div className="flex flex-col">
-          <h1 className="text-3xl/snug font-medium tracking-tight text-foreground">
-            Sentra: a new kind of teamwork
+    <section className="flex flex-col items-center text-foreground pointer-events-none min-h-screen bg-background">
+      <div className="px-4 max-w-3xl z-10 flex flex-col w-full pointer-events-auto">
+        <div className="flex flex-col py-12 md:py-24">
+          <h1 className="text-3xl/snug font-medium tracking-tight text-foreground mb-8 md:mb-12">
+            Sentra: The Operational Nervous System
           </h1>
 
-          <p className="text-lg text-foreground/60 mb-8 md:mb-12 font-light italic">
-            Misalignment: the silent killer inside every growing org
+          <p className="text-base text-muted-foreground mb-6 md:mb-8">
+            Scaling breaks organizations in predictable ways. At 20 people, you
+            lose the ability to sync over lunch. At 50, product-engineering
+            alignment fractures. At 150, cross-functional context evaporates. At
+            500, executives are governing a company they no longer understand.
+            Companies scaled by adding processes to compensate. More standups.
+            More status docs. More dashboards. Each layer added friction while
+            reducing actual understanding. Notion pages went stale within weeks.
+            Confluence became a graveyard. The result: organizations tracked
+            everything about what happened and understood nothing about why.
           </p>
 
-          <p className="text-base text-foreground/80 mb-6 md:mb-8">
-            At growing Series A+ organizations, it&apos;s easy to hear stories
-            like the following:
+          <p className="text-base text-muted-foreground mb-6 md:mb-8">
+            The future belongs to companies where AI deeply understands the
+            business, not as a search engine over stale documents, but as a
+            living participant in how work actually happens. Memory is not an
+            archive. Archives store dead artifacts waiting to be searched. A
+            company with 10TB of Google Drive isn&apos;t knowledgeable. It&apos;s
+            hoarding. Memory understands. It connects. It learns continuously. A
+            library holds books. A scholar reads them, connects ideas across
+            volumes, and develops judgment over time. What we call
+            &quot;institutional memory&quot; today is actually institutional
+            amnesia with good filing.
           </p>
 
-          <p className="text-base text-foreground/80 mb-6 md:mb-8 italic">
-            &quot;One time the inventory team deprecated an ad type without
-            telling us. So we wasted a month building support for it even though
-            it was deprecated.&quot; - SWE in a 100+ engineer company
+          <p className="text-base text-muted-foreground mb-6 md:mb-8">
+            Today we rely on fragmented SaaS tools that require constant manual
+            feeding. We serve these tools. We update tickets. We log calls. The
+            tools don&apos;t serve us; they demand tribute. Sentra builds memory
+            that eliminates the need for tribute entirely. This was impossible
+            until very recently.
           </p>
 
-          <p className="text-base text-foreground/80 mb-6 md:mb-8">
-            A month&apos;s salary for 10 developers is $100,000+. Misalignment
-            costs companies millions every year. It&apos;s death by a thousand
-            cuts.
+          <p className="text-base text-muted-foreground mb-6 md:mb-8">
+            Why wasn&apos;t this built before? Because until now, AI was
+            retrieval, not reasoning. It could find a file. It couldn&apos;t
+            understand a company. Three thresholds changed that. First, the
+            digitization of dark matter: spoken decisions, hallway negotiations,
+            ad-hoc brainstorms used to evaporate the moment they happened, that
+            friction has collapsed. Second, context windows exploded from 4K to
+            over 1M tokens, so we can reason over organizational history, not
+            just search it. Third, continuous memory revision: Sentra maintains
+            a living state of your organization that updates as decisions occur,
+            without model retraining.
           </p>
 
-          <p className="text-base text-foreground/80 mb-6 md:mb-8">
-            Maintaining alignment in a growing organization is hard. The larger
-            the company, the harder it is to stay in sync. People start losing
-            sight of the bigger picture. Goals shift. Messages get lost in
-            translation. Duplicate efforts go unnoticed, cancelled project memos
-            never get delivered, and frustrations quietly mount until teams
-            become exhausted and disconnected.
+          <p className="text-base text-muted-foreground mb-6 md:mb-8">
+            Borrowing from Kahneman: organizational thinking happens in two
+            modes. System-2 is structured output, Jira tickets, PRDs, quarterly
+            reports. System-1 is raw cognition, the negotiation of reality in
+            meetings and conversations where decisions actually get made. Most
+            tools only capture System-2. But System-2 is derivative. By the time
+            something becomes a ticket, the actual thinking has already happened
+            elsewhere. Sentra captures System-1 directly, building genuine
+            understanding of how decisions are made, how projects evolve, and
+            how context flows through your company.
           </p>
 
-          <p className="text-base text-foreground/80 mb-6 md:mb-8">
-            And the current &quot;solutions&quot;?
+          <p className="text-base text-muted-foreground mb-6 md:mb-8">
+            When AI weaves System-1 and System-2 together across an entire
+            company, something new emerges. Call it System 3: collective
+            intelligence at the organizational level. The organization
+            doesn&apos;t just store its thinking. It actually thinks, as a
+            coherent entity, not just individuals trying to stay aligned.
+            Single-player AI optimizes one person&apos;s workflow. System 3 is
+            multiplayer cognition.
           </p>
 
-          <p className="text-base text-foreground/80 mb-6 md:mb-8">
-            Another tool. Another meeting. Another dashboard.
+          <p className="text-base text-muted-foreground mb-6 md:mb-8">
+            What does this look like? An engineer asks why the architecture
+            looks this way and gets the full decision history immediately, no
+            coffee chats, no archaeology through old PRDs. A VP joins; within a
+            week, they ask Sentra why the Q3 pricing decision was made, who
+            disagreed, and what changed since, context that used to take six
+            months of hallway conversations. A founder wakes up Monday and gets
+            a single synthesis across engineering, sales, and ops, not status
+            docs to reconcile, but a coherent narrative with risks surfaced. A
+            COO notices drift; instead of four meetings to triangulate, they get
+            the full decision history, blockers, and who needs to be in the
+            room. The coordination tax flattens. Process becomes optional.
           </p>
 
-          <p className="text-base text-foreground/80 mb-6 md:mb-8">
-            Companies today drown in dashboards, OKRs, CRMs, Jira tickets, and
-            endless Slack threads. Yet despite the infinity gauntlet of SaaS
-            infrastructure, companies still remain chronically misaligned. In
-            fact, these systems don&apos;t solve misalignment. They amplify it:
+          <p className="text-base text-muted-foreground mb-6 md:mb-8">
+            Today&apos;s AI agents are impressive but fundamentally
+            single-player. Claude Code, Copilot, Operator, they excel at tasks
+            one person can describe to one computer. They don&apos;t understand
+            organizations. The problem we&apos;re solving isn&apos;t &quot;how
+            do I automate my individual work.&quot; It&apos;s &quot;how do I
+            keep fifty people aligned when context fragments across hundreds of
+            conversations daily.&quot; Glean searches documents. Copilot
+            summarizes what&apos;s in front of you. Neither builds memory.
+            Neither connects a March conversation to a June decision to a
+            September consequence. Why can&apos;t they? Because this is a
+            research problem.
           </p>
 
-          <p className="text-base text-foreground/80 mb-6 md:mb-8">
-            <strong>Standups fail</strong> because honesty is risky. Nobody
-            wants to appear lost or unproductive, so they fabricate progress.
-            Valuable concerns go unvoiced.
-            <br />
-            <br />
-            <strong>Jira fails</strong> because it rewards performative
-            reporting over authentic communication. It becomes middle-management
-            theater, emphasizing meaningless metrics over real progress.
-            <br />
-            <br />
-            <strong>Meetings fail</strong> because they keep piling up, while
-            never connecting cross-team dots.
+          <p className="text-base text-muted-foreground mb-6 md:mb-8">
+            Making coherent sense of millions of tokens of organizational
+            context requires new science. We built Reflexion at MIT (NeurIPS
+            2023). Now we&apos;re extending it into Operational Reinforcement:
+            by maintaining short-term memory of errors as they form, we enable
+            real-time correction that dramatically improves performance.
+            We&apos;ve shown that 4-billion parameter models fine-tuned with
+            this approach match GPT-3.5 and GPT-4o on coding benchmarks.
+            We&apos;re extending these capabilities to increase context length,
+            improve temporal reasoning, and model how decisions propagate
+            through organizations.
           </p>
 
-          <p className="text-base text-foreground/80 mb-6 md:mb-8">
-            These systems keep information in silos. When information does
-            travel, it suffers from broken telephone: stripped of nuance,
-            distorted through layers of translation, or misrepresented entirely
-            by the time it reaches leadership or another team.
+          <p className="text-base text-muted-foreground mb-6 md:mb-8">
+            Our moat deepens with time. Every month Sentra operates inside a
+            company, it becomes harder to replace. The learned context of how
+            this specific organization communicates isn&apos;t exportable.
+            OpenAI starting fresh in 2027 has zero historical context for your
+            company.
           </p>
 
-          <p className="text-base text-foreground/80 mb-6 md:mb-8">
-            This isn&apos;t a people problem, it&apos;s a systems problem. And
-            our current systems fail by design.
+          <p className="text-base text-muted-foreground mb-6 md:mb-8">
+            If Sentra is ingesting every meeting and every chat, you&apos;re
+            right to ask: who else can see this? Your memory stays yours alone.
+            Your organizational memory is entirely isolated, your strategy
+            meeting can&apos;t leak into another customer&apos;s context. Your
+            data never trains a shared model. You control retention. Access
+            mirrors your org structure: an IC can&apos;t query executive
+            discussions. We earn trust through architecture, not promises.
           </p>
 
-          <h2 className="text-2xl font-medium mb-6 md:mb-8">What we believe</h2>
-
-          <p className="text-base text-foreground/80 mb-6 md:mb-8">
-            • Alignment is a continuous state, not a weekly checkbox.
-            <br />
-            • Trust is the foundation of alignment.
-            <br />• AI should empower humans, never surveil them.
+          <p className="text-base text-muted-foreground mb-6 md:mb-8">
+            There&apos;s a missing layer that actually runs enterprises: the
+            decision traces. The exceptions, overrides, precedents, and
+            reasoning that currently live in Slack threads and people&apos;s
+            heads. A VP approves a discount over Zoom. A support lead escalates
+            based on synthesis across three systems. The reasoning connecting
+            data to action was never treated as data. When Sentra captures this,
+            precedent becomes searchable. One-off exceptions turn into
+            institutional knowledge. OKRs reflect what&apos;s actually
+            happening. Project status updates itself. The engineer who quietly
+            unblocks three teams is finally seen. CRM entries populate from
+            conversations. When someone asks &quot;why did we do it this
+            way?&quot;, there&apos;s an answer, not a guess, but the actual
+            decision trace.
           </p>
 
-          <h2 className="text-2xl font-medium mb-6 md:mb-8">What Sentra is</h2>
-
-          <p className="text-base text-foreground/80 mb-6 md:mb-8">
-            Sentra is the first AI teammate built to continually enhance
-            alignment across an organization. It proactively senses when
-            problems may occur, and allows leaders to step in to intercept them.
-            It is the only chief of staff any company will ever need.
+          <p className="text-base text-muted-foreground mb-6 md:mb-8">
+            Over time, patterns will emerge across companies. Not shared data,
+            but shared learnings. A founder could understand how similar
+            decisions played out at companies like theirs, while every
+            company&apos;s memory stays isolated. No more tribute. The tools
+            finally serve you. Where founders stay in founder mode at two
+            hundred people, not because they sit in every meeting, but because
+            they have an agent that does, and actually understands what it
+            hears.
           </p>
 
-          <p className="text-base text-foreground/80 mb-6 md:mb-8">
-            Sentra regularly talks (yes, talks, with its own voice) to everyone
-            in the company, all the way from the execs down to the interns,
-            creating hundreds of trusted touch-points every week. These unique
-            conversations allow Sentra to do what no human can: talk to everyone
-            in an organization, no matter how large, and actually absorb each
-            and every detail. This makes Sentra the only entity in existence
-            with a high resolution understanding of the whole org in real time.
-          </p>
-
-          <p className="text-base text-foreground/80 mb-6 md:mb-8">
-            Teams can further invite Sentra to team meetings, Slack channels,
-            Jira, and Calendar and HR systems to enrich its contextual
-            awareness. Participation is always consensual.
-          </p>
-
-          <p className="text-base text-foreground/80 mb-6 md:mb-8">
-            Sentra continuously evolves its living map of the company,
-            connecting the dots to deeply understand how the organization is
-            working together. Sentra&apos;s multi-agent architecture allows it
-            to then find exactly where and why teams and people are falling out
-            of sync, and notifies those who have the power to fix them before
-            misalignment grows.
-          </p>
-
-          <p className="text-base text-foreground/80 mb-6 md:mb-8">
-            Sentra&apos;s job is simple: keep everyone on the same page.
-            Quietly, consistently, humanely.
-          </p>
-
-          <p className="text-base text-foreground/80 mb-6 md:mb-8">
-            Misalignment is often spotted too late. For the first time, leaders
-            can systematically intervene early, before wasted time, money,
-            politics, or morale damage sets in.
-          </p>
-
-          <h2 className="text-2xl font-medium mb-6 md:mb-8">
-            What Sentra isn&apos;t
-          </h2>
-
-          <p className="text-base text-foreground/80 mb-6 md:mb-8">
-            <strong>Sentra is not an efficiency monitor.</strong>
-            <br />
-            <br />
-            We don&apos;t care about squeezing &quot;more output&quot; from
-            employees. We care about making the time they spend matter.
-            <br />
-            <br />
-            <strong>Sentra is not Big Brother.</strong>
-            <br />
-            <br />
-            Sentra will never &quot;monitor&quot; workers 24/7. Sentra will only
-            know what you share to it. We don&apos;t believe in productivity
-            heatmaps or mouse trackers disguised as dashboards. Those scream
-            insecurity, and erode trust between people.
-            <br />
-            <br />
-            <strong>Sentra is not a replacement for managers.</strong>
-            <br />
-            <br />
-            Think of it as the always-on teammate who spots friction from a
-            birds-eye view before it becomes a problem. The second brain your
-            team never had.
-            <br />
-            <br />
-            <strong>Sentra is not just for leadership.</strong>
-            <br />
-            <br />
-            This isn&apos;t some top-down command tool. It&apos;s a co-pilot
-            that supports every individual throughout the day. Sentra makes sure
-            the right people know the right things at the right time, without
-            another meeting. We&apos;re making a Jarvis that&apos;s for the
-            entire company.
-            <br />
-            <br />
-            <strong>Sentra is not another SaaS.</strong>
-            <br />
-            <br />
-            This is the start of a new species of software: Autonomous
-            Organizational Intelligence.
-          </p>
-
-          <h2 className="text-2xl font-medium mb-6 md:mb-8">
-            Trust is everything
-          </h2>
-
-          <p className="text-base text-foreground/80 mb-6 md:mb-8">
-            Companies are beginning to use surveillance tech to solve
-            misalignment, believing the solution lies in monitoring employees
-            more closely. But surveillance disguised as productivity software
-            amplifies the problem. Tracking mouse movements, keystrokes, or
-            constantly monitoring screens is extremely invasive. It frames
-            teammates as suspects rather than collaborators. As a leader, by
-            adopting these tools, you&apos;re fundamentally telling your teams
-            they are untrustworthy.
-          </p>
-
-          <p className="text-base text-foreground/80 mb-6 md:mb-8">
-            Rather than aligning teams, these tools create paranoia, incentivize
-            performative behaviors, and ultimately exacerbate the very
-            misalignments you aim to resolve.
-          </p>
-
-          <p className="text-base text-foreground/80 mb-6 md:mb-8">
-            Real alignment is impossible without genuine trust. Trust is
-            foundational, not optional. It thrives in environments where people
-            feel respected, heard, and valued, not watched.
-          </p>
-
-          <p className="text-base text-foreground/80 mb-6 md:mb-8">
-            Sentra rejects surveillance culture entirely. We believe true
-            alignment emerges from collaboration, transparent systems, and
-            mutual respect. Sentra protects autonomy, ensures privacy, builds
-            aggregated/semi-anonymous reports, and focuses exclusively on
-            identifying systemic communication breakdowns, never shifting blame
-            to individuals or undermining their dignity.
-          </p>
-
-          <h2 className="text-2xl font-medium mb-6 md:mb-8">
-            AI must feel human
-          </h2>
-
-          <p className="text-base text-foreground/80 mb-6 md:mb-8">
-            Sentra is built to interface with humans as they are, not as
-            dashboards want them to be. Voice is our most natural interface.
-            Speaking is way easier than typing and captures nuances lost in
-            text. Voice also eliminates delay. Questions receive instant clear
-            responses. You don&apos;t have to wait on someone for further
-            clarification.
-          </p>
-
-          <p className="text-base text-foreground/80 mb-6 md:mb-8">
-            Sentra&apos;s voice, cadence, and care are designed for dialogue.
-            Every interaction helps build trust, not erode it. We believe this
-            is how AI should be designed moving forward: an AI we welcome, not
-            one we hide from.
-          </p>
-
-          <h2 className="text-2xl font-medium mb-6 md:mb-8">
-            The future of work is alignment, not surveillance
-          </h2>
-
-          <p className="text-base text-foreground/80 mb-6 md:mb-8">
-            For fast-growing companies, good work culture and relationships make
-            or break your success. Misaligned teams aren&apos;t just slow,
-            they&apos;re confused, unhappy, and checked out. Unresolved friction
-            chips away at morale.
-          </p>
-
-          <p className="text-base text-foreground/80 mb-6 md:mb-8">
-            Sentra is the immune system which quietly detects and heals those
-            cracks before they bleed out.
-          </p>
-
-          <h2 className="text-2xl font-medium mb-6 md:mb-8">Join us</h2>
-
-          <p className="text-base text-foreground/80 mb-6 md:mb-8">
-            We&apos;re not just another SaaS. We&apos;re building a new contract
-            between humans and technology.
-          </p>
-
-          <p className="text-base text-foreground/80 mb-6 md:mb-8">
-            And if we get it right, the organizations that run on Sentra will
-            feel different. More cohesive, more proactive, more resilient.
-          </p>
-
-          <p className="text-base text-foreground/80 mb-6 md:mb-8">
-            Not because their tools are louder. But because they finally listen.
-          </p>
-
-          <p className="text-base text-foreground/80 mb-6 md:mb-8 text-center">
-            contact@sentra.app
-          </p>
-
-          <p className="text-base text-foreground/80 mb-6 md:mb-8 text-right">
-            With conviction,
-          </p>
-
-          <p className="text-base text-foreground/80 mb-6 md:mb-8 text-right">
-            The Sentra Team
-          </p>
-
-          <p className="text-base text-foreground/80 mb-6 md:mb-8 text-right">
-            San Francisco, 2025
+          <p className="text-lg text-foreground font-medium">
+            Sentra. Memory that learns.
           </p>
         </div>
       </div>

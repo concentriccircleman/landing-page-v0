@@ -114,7 +114,7 @@ export default function Adoption() {
   };
 
   return (
-    <div className="max-w-screen-4xl mx-auto w-full px-4 mt-32">
+    <div className="max-w-screen-2xl mx-auto w-full px-4">
       <div className="hidden md:block">
         <div className="mb-8">
           <h2 className="text-3xl md:text-4xl tracking-tight text-foreground mb-3">
