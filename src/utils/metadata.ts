@@ -10,7 +10,7 @@ interface MetadataProps {
 const defaultMetadata = {
   title: "Sentra",
   description:
-    "Sentra is your AI teammate who creates a unified company memory, remembering details everyone forgot and alerting you when your teams are misaligned.",
+    "Sentra is your organizational memory system that transforms your company's collective knowledge, data and decisions into living intelligence.",
 };
 
 export const createMetadata = ({
