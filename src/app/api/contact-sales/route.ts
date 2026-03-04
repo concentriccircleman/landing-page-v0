@@ -50,6 +50,7 @@ interface ContactSalesWebhookResponse {
 
 const HEARD_ABOUT_US_OTHER_OPTION = "Other";
 
+
 interface ContactSalesMetadataResponse {
   companySizeOptions: string[];
   countryInputMode: "location" | "select" | "text";
@@ -60,6 +61,14 @@ interface AttioSelectOptionResponse {
   data?: Array<{
     title?: string;
     is_archived?: boolean;
+  }>;
+}
+
+interface AttioCompanyRecordQueryResponse {
+  data?: Array<{
+    id?: {
+      record_id?: string;
+    };
   }>;
 }
 
@@ -181,6 +190,34 @@ const getCountryCodeFromName = (countryName: string) => {
     (innerCountryOption) => normalizeKey(innerCountryOption.name) === normalizedName,
   );
   return countryOption?.code ?? null;
+};
+
+const findOrCreateCompanyByName = async (
+  companyName: string,
+  commonHeaders: HeadersInit,
+): Promise<string | null> => {
+  const queryResponse = (await postAttioJson("https://api.attio.com/v2/objects/companies/records/query", {
+    method: "POST",
+    headers: commonHeaders,
+    body: JSON.stringify({ filter: { name: companyName }, limit: 1 }),
+  })) as AttioCompanyRecordQueryResponse;
+
+  const existingRecordId = queryResponse?.data?.[0]?.id?.record_id ?? null;
+  if (existingRecordId) return existingRecordId;
+
+  const createResponse = (await postAttioJson("https://api.attio.com/v2/objects/companies/records", {
+    method: "POST",
+    headers: commonHeaders,
+    body: JSON.stringify({
+      data: {
+        values: {
+          name: [{ value: companyName }],
+        },
+      },
+    }),
+  })) as AttioRecordResponse;
+
+  return createResponse?.data?.id?.record_id ?? null;
 };
 
 const createLocationValue = (
@@ -354,6 +391,13 @@ export const POST = async (request: Request) => {
     Accept: "application/json",
   };
 
+  let companyRecordId: string | null = null;
+  try {
+    companyRecordId = await findOrCreateCompanyByName(trimmedPayload.company, commonHeaders);
+  } catch {
+    // Non-fatal: company linking is best-effort
+  }
+
   let personRecordId: string | null = null;
   try {
     const personResponse = (await postAttioJson(
@@ -372,6 +416,9 @@ export const POST = async (request: Request) => {
                   full_name: `${trimmedPayload.firstName} ${trimmedPayload.lastName}`.trim(),
                 },
               ],
+              ...(companyRecordId
+                ? { company: [{ target_record_id: companyRecordId, target_object: "companies" }] }
+                : {}),
             },
           },
         }),
