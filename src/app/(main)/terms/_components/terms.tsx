@@ -8,7 +8,7 @@ const Terms = () => {
           </h1>
 
           <p className="text-lg text-muted-foreground mb-8 md:mb-12 font-light italic">
-            Last Updated: July 2025
+            Last Updated: March 2026
           </p>
 
           <div className="text-base text-muted-foreground space-y-6 md:space-y-8 overflow-y-auto py-4">
@@ -286,10 +286,53 @@ const Terms = () => {
             </p>
 
             <h2 className="text-xl font-medium text-foreground mt-8 mb-4">
-              9. Communications
+              9. Meeting Recording and Transcription
             </h2>
             <p>
-              <strong>9.1 Text Messaging and Phone Calls.</strong> You agree
+              <strong>9.1 Meeting Recording Disclosure.</strong> When you use
+              Sentra&apos;s meeting bot or desktop meeting note taker, the
+              Service may capture audio, recordings, transcripts, and other
+              meeting content. These recordings and transcripts are processed
+              to provide meeting notes, summaries, and other features of the
+              Service. When the Sentra meeting bot joins a meeting, its
+              presence is intended to notify participants that the meeting may
+              be recorded or transcribed.
+            </p>
+            <p>
+              <strong>9.2 Recording Consent.</strong> You are solely
+              responsible for complying with all applicable laws regarding
+              recording or monitoring communications. If you use Sentra to
+              record, transcribe, or capture meeting content, you agree to
+              provide all required notices and obtain any necessary consent
+              from participants before doing so. Sentra does not control
+              whether such consent is obtained and disclaims liability arising
+              from a User&apos;s failure to comply with applicable recording
+              laws.
+            </p>
+            <p>
+              <strong>9.3 Local Recording Tools.</strong> If you use
+              Sentra&apos;s desktop meeting note taker or other local recording
+              tools, you acknowledge that recordings may capture audio or
+              meeting content from your device or communication software. You
+              are responsible for ensuring that all meeting participants are
+              informed and that your use complies with applicable laws.
+            </p>
+            <p>
+              <strong>9.4 License to Process Meeting Content.</strong> You
+              retain ownership of your meeting recordings, transcripts, and
+              related content. By using the Service, you grant Sentra a
+              limited license to process, store, and analyze meeting
+              recordings, transcripts, and related content solely for the
+              purpose of providing and improving the Service. We do not use
+              customer meeting content to train generalized AI models unless
+              explicitly permitted.
+            </p>
+
+            <h2 className="text-xl font-medium text-foreground mt-8 mb-4">
+              10. Communications
+            </h2>
+            <p>
+              <strong>10.1 Text Messaging and Phone Calls.</strong> You agree
               that Sentra and those acting on our behalf may send you text (SMS)
               messages and phone calls at the phone number you provide us. These
               communications may include operational messages about your use of
@@ -299,7 +342,7 @@ const Terms = () => {
               send or receive such messages, as specified by your carrier.
             </p>
             <p>
-              <strong>9.2 Email.</strong> We may send you emails concerning our
+              <strong>10.2 Email.</strong> We may send you emails concerning our
               products and services, as well as those of third parties, and you
               consent to the receipt of such emails. You may opt out of
               promotional emails by following the unsubscribe instructions in
@@ -307,7 +350,7 @@ const Terms = () => {
             </p>
 
             <h2 className="text-xl font-medium text-foreground mt-8 mb-4">
-              10. Prohibited Conduct
+              11. Prohibited Conduct
             </h2>
             <p>
               <strong>BY USING THE SERVICE, YOU AGREE NOT TO:</strong>
@@ -348,23 +391,23 @@ const Terms = () => {
               </li>
               <li>
                 Attempt to do any of the prohibited acts described in this
-                Section 10, or assist or permit any person in engaging in any of
-                the prohibited acts described in this Section 10.
+                Section 11, or assist or permit any person in engaging in any of
+                the prohibited acts described in this Section 11.
               </li>
             </ul>
 
             <h2 className="text-xl font-medium text-foreground mt-8 mb-4">
-              11. Intellectual Property Rights Protection
+              12. Intellectual Property Rights Protection
             </h2>
             <p>
-              <strong>11.1 Respect of Third-Party Rights.</strong> Sentra
+              <strong>12.1 Respect of Third-Party Rights.</strong> Sentra
               respects the intellectual property rights of others, takes the
               protection of intellectual property rights very seriously, and
               asks Users of the Service to do the same. Infringing activity will
               not be tolerated on or through the Service.
             </p>
             <p>
-              <strong>11.2 DMCA Notification.</strong> We comply with the
+              <strong>12.2 DMCA Notification.</strong> We comply with the
               provisions of the Digital Millennium Copyright Act applicable to
               Internet service providers (17 U.S.C. § 512, as amended). If you
               have an intellectual property rights-related complaint about any
@@ -374,16 +417,16 @@ const Terms = () => {
             </p>
 
             <h2 className="text-xl font-medium text-foreground mt-8 mb-4">
-              12. Term, Termination, and Modification of the Service
+              13. Term, Termination, and Modification of the Service
             </h2>
             <p>
-              <strong>12.1 Term.</strong> These Terms are effective beginning
+              <strong>13.1 Term.</strong> These Terms are effective beginning
               when you accept the Terms or first download, install, access, or
               use the Service, and end when terminated as described in Section
-              12.2.
+              13.2.
             </p>
             <p>
-              <strong>12.2 Termination.</strong> If you violate any provision of
+              <strong>13.2 Termination.</strong> If you violate any provision of
               these Terms, then your authorization to access the Service and
               these Terms automatically terminate. In addition, Sentra may, at
               its sole discretion, terminate these Terms or your account on the
@@ -392,7 +435,7 @@ const Terms = () => {
               without any liability to you arising from such termination.
             </p>
             <p>
-              <strong>12.3 Effect of Termination.</strong> Upon termination of
+              <strong>13.3 Effect of Termination.</strong> Upon termination of
               these Terms: (a) your license rights will terminate and you must
               immediately cease all use of the Service; (b) you will no longer
               be authorized to access your account or the Service; (c) you must
@@ -401,7 +444,7 @@ const Terms = () => {
               survive.
             </p>
             <p>
-              <strong>12.4 Modification of the Service.</strong> Sentra reserves
+              <strong>13.4 Modification of the Service.</strong> Sentra reserves
               the right to modify or discontinue all or any portion of the
               Service at any time, temporarily or permanently, without notice to
               you. Sentra will have no liability for any change to the Service,
@@ -410,7 +453,7 @@ const Terms = () => {
             </p>
 
             <h2 className="text-xl font-medium text-foreground mt-8 mb-4">
-              13. Indemnity
+              14. Indemnity
             </h2>
             <p>
               To the fullest extent permitted by law, you are responsible for
@@ -430,10 +473,10 @@ const Terms = () => {
             </p>
 
             <h2 className="text-xl font-medium text-foreground mt-8 mb-4">
-              14. Disclaimers; No Warranties by Sentra
+              15. Disclaimers; No Warranties by Sentra
             </h2>
             <p>
-              <strong>14.1 Disclaimers related to AI.</strong> To the maximum
+              <strong>15.1 Disclaimers related to AI.</strong> To the maximum
               extent permitted by applicable law, we disclaim any and all
               liability related to the use of AI tools. AI tools may return
               inaccurate information that does not accurately reflect real
@@ -446,7 +489,7 @@ const Terms = () => {
               SERVICE.
             </p>
             <p>
-              <strong>14.2</strong> THE SERVICE AND ALL MATERIALS AND CONTENT
+              <strong>15.2</strong> THE SERVICE AND ALL MATERIALS AND CONTENT
               AVAILABLE THROUGH THE SERVICE ARE PROVIDED &quot;AS IS&quot; AND
               ON AN &quot;AS AVAILABLE&quot; BASIS. Sentra DISCLAIMS ALL
               WARRANTIES OF ANY KIND, WHETHER EXPRESS OR IMPLIED, RELATING TO
@@ -455,10 +498,10 @@ const Terms = () => {
             </p>
 
             <h2 className="text-xl font-medium text-foreground mt-8 mb-4">
-              15. Limitation of Liability
+              16. Limitation of Liability
             </h2>
             <p>
-              <strong>15.1</strong> TO THE FULLEST EXTENT PERMITTED BY LAW, IN
+              <strong>16.1</strong> TO THE FULLEST EXTENT PERMITTED BY LAW, IN
               NO EVENT WILL Sentra BE LIABLE TO YOU FOR ANY INDIRECT,
               INCIDENTAL, SPECIAL, CONSEQUENTIAL OR PUNITIVE DAMAGES ARISING OUT
               OF OR RELATING TO YOUR ACCESS TO OR USE OF, OR YOUR INABILITY TO
@@ -466,7 +509,7 @@ const Terms = () => {
               SERVICE.
             </p>
             <p>
-              <strong>15.2</strong> THE AGGREGATE LIABILITY OF Sentra TO YOU FOR
+              <strong>16.2</strong> THE AGGREGATE LIABILITY OF Sentra TO YOU FOR
               ALL CLAIMS ARISING OUT OF OR RELATING TO THE USE OF OR ANY
               INABILITY TO USE ANY PORTION OF THE SERVICE OR OTHERWISE UNDER
               THESE TERMS IS LIMITED TO THE GREATER OF: (a) THE AMOUNT YOU HAVE
@@ -476,11 +519,11 @@ const Terms = () => {
             </p>
 
             <h2 className="text-xl font-medium text-foreground mt-8 mb-4">
-              16. Dispute Resolution and Arbitration
+              17. Dispute Resolution and Arbitration
             </h2>
             <p>
-              <strong>16.1 Generally.</strong> Except as described in Section
-              16.2 and 16.3, you and Sentra agree that every dispute arising in
+              <strong>17.1 Generally.</strong> Except as described in Section
+              17.2 and 17.3, you and Sentra agree that every dispute arising in
               connection with these Terms, the Service, or communications from
               us will be resolved through binding arbitration.
             </p>
@@ -492,7 +535,7 @@ const Terms = () => {
               </strong>
             </p>
             <p>
-              <strong>16.2 Exceptions.</strong> Although we are agreeing to
+              <strong>17.2 Exceptions.</strong> Although we are agreeing to
               arbitrate most disputes between us, nothing in these Terms will be
               deemed to waive, preclude, or otherwise limit the right of either
               party to: (a) bring an individual action in small claims court;
@@ -503,9 +546,9 @@ const Terms = () => {
               infringement claim.
             </p>
             <p>
-              <strong>16.3 Opt-Out.</strong> If you do not wish to resolve
+              <strong>17.3 Opt-Out.</strong> If you do not wish to resolve
               disputes by binding arbitration, you may opt out of the provisions
-              of this Section 16 within 30 days after the date that you agree to
+              of this Section 17 within 30 days after the date that you agree to
               these Terms by sending a letter to Dynamis Labs, Inc., Attention:
               Legal Department - Arbitration Opt-Out, that specifies: your full
               legal name, the email address or phone number associated with your
@@ -514,17 +557,17 @@ const Terms = () => {
             </p>
 
             <h2 className="text-xl font-medium text-foreground mt-8 mb-4">
-              17. Miscellaneous
+              18. Miscellaneous
             </h2>
             <p>
-              <strong>17.1 General Terms.</strong> These Terms, including the
+              <strong>18.1 General Terms.</strong> These Terms, including the
               Privacy Policy and any other agreements expressly incorporated by
               reference into these Terms, are the entire and exclusive
               understanding and agreement between you and Sentra regarding your
               use of the Service.
             </p>
             <p>
-              <strong>17.2 Governing Law.</strong> These Terms are governed by
+              <strong>18.2 Governing Law.</strong> These Terms are governed by
               the laws of the State of California without regard to conflict of
               law principles. You and Sentra submit to the personal and
               exclusive jurisdiction of the state courts and federal courts
@@ -532,14 +575,14 @@ const Terms = () => {
               any lawsuit or court proceeding permitted under these Terms.
             </p>
             <p>
-              <strong>17.3 Privacy Policy.</strong> Please read the Sentra
+              <strong>18.3 Privacy Policy.</strong> Please read the Sentra
               Privacy Policy carefully for information relating to our
               collection, use, storage, and disclosure of your personal
               information. The Sentra Privacy Policy is incorporated by this
               reference into, and made a part of, these Terms.
             </p>
             <p>
-              <strong>17.4 Contact Information.</strong> The Service is offered
+              <strong>18.4 Contact Information.</strong> The Service is offered
               by Dynamis Labs, Inc. You may contact us by sending correspondence
               to that address or by emailing us at: support@sentra.app
             </p>

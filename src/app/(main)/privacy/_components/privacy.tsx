@@ -8,7 +8,7 @@ const Privacy = () => {
           </h1>
 
           <p className="text-lg text-muted-foreground mb-8 md:mb-12 font-light italic">
-            Last Updated: March 26, 2025
+            Last Updated: March 12, 2026
           </p>
 
           <p className="text-base text-muted-foreground mb-6 md:mb-8">
@@ -101,6 +101,17 @@ const Privacy = () => {
             create, improve, or train generalized AI or ML models.
           </p>
 
+          <p className="text-base text-muted-foreground mb-4">
+            <strong>Meeting Recording and Transcription.</strong> When you use
+            Sentra&apos;s meeting bot or desktop meeting note taker, the
+            Services may capture audio, recordings, transcripts, and other
+            meeting content. These recordings and transcripts are processed to
+            provide meeting notes, summaries, and other features of the
+            Services. If you use Sentra&apos;s desktop meeting note taker or
+            other local recording tools, recordings may capture audio or meeting
+            content from your device or communication software.
+          </p>
+
           <p className="text-base text-muted-foreground mb-6 md:mb-8">
             <strong>Information from Cookies and Similar Technologies.</strong>{" "}
             We and our third-party partners collect information using cookies,
@@ -182,6 +193,15 @@ const Privacy = () => {
             <strong>Vendors and Service Providers.</strong> We may disclose any
             information we receive to vendors and service providers retained in
             connection with the provision of our Services.
+          </p>
+
+          <p className="text-base text-muted-foreground mb-4">
+            <strong>Meeting Infrastructure Providers.</strong> We may use
+            third-party service providers, such as Recall.ai or similar meeting
+            infrastructure platforms, to facilitate meeting recording,
+            transcription, and processing. These providers process meeting
+            audio, recordings, and transcripts on our behalf solely to provide
+            the Services.
           </p>
 
           <p className="text-base text-muted-foreground mb-4">
@@ -301,6 +321,20 @@ const Privacy = () => {
             regions to the U.S. for storage and processing. By providing any
             information, including personal information, on or to the Services,
             you consent to such transfer, storage, and processing.
+          </p>
+
+          <h2 className="text-xl font-medium text-foreground mb-4">
+            Data Retention for Meeting Content
+          </h2>
+
+          <p className="text-base text-muted-foreground mb-6 md:mb-8">
+            We retain meeting recordings, transcripts, and related content for
+            as long as your account is active or as needed to provide the
+            Services. You may delete meeting recordings and transcripts at any
+            time through your account or by contacting us at contact@sentra.app. Upon account termination, we
+            will delete or anonymize your meeting content in accordance with our
+            data retention practices, unless we are required to retain it by
+            applicable law.
           </p>
 
           <h2 className="text-xl font-medium text-foreground mb-4">
