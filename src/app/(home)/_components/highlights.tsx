@@ -67,7 +67,7 @@ export default function Highlights() {
         </p>
       </div>
 
-      <div className="flex gap-2 mb-8 border-b border-[#ebebeb]">
+      <div className="flex gap-2 mb-8 border-b border-[#d4d4d8]">
         {FEATURES.map((feature, i) => (
           <button
             key={feature.id}
@@ -92,7 +92,7 @@ export default function Highlights() {
         ))}
       </div>
 
-      <div className="relative overflow-hidden border border-[#ebebeb] bg-[#f8f8f8]">
+      <div className="relative overflow-hidden border border-[#d4d4d8] bg-[#f8f8f8]">
         <AnimatePresence mode="wait">
           <motion.div
             key={active.id}

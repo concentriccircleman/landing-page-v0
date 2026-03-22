@@ -1,6 +1,7 @@
 "use client";
 
 import Image, { type ImageProps } from "next/image";
+import UnifiedMemoryAnimation from "./animations/unified-memory";
 import unifiedKnowledgeImage from "@/assets/illustrations/unified-knowledge.svg";
 import alignmentImage from "@/assets/illustrations/alignment.svg";
 import misalignmentRadarImage from "@/assets/illustrations/misalignment-radar.svg";
@@ -19,6 +20,7 @@ interface Feature {
   imageSrc: ImageProps["src"];
   imageAlt: string;
   icon: React.ReactNode;
+  animation?: React.ReactNode;
 }
 
 const FEATURES: Feature[] = [
@@ -30,6 +32,7 @@ const FEATURES: Feature[] = [
       "Sentra understands how the company changes by creating a unified timeline of decisions and commitments. Every meeting, document, and conversation becomes part of a living record that your entire organization can draw from.",
     imageSrc: unifiedKnowledgeImage,
     imageAlt: "Unified knowledge timeline visualization",
+    animation: <UnifiedMemoryAnimation />,
     icon: (
       <svg className="w-4 h-4 text-[#f0f0f0]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 7v10c0 2 1 3 3 3h10c2 0 3-1 3-3V7c0-2-1-3-3-3H7c-2 0-3 1-3 3zm0 5h16" />
@@ -153,12 +156,12 @@ const FEATURES: Feature[] = [
 function FeatureCard({ feature, index }: { feature: Feature; index: number }) {
   return (
     <div
-      className="sticky top-0 w-full"
+      className="sticky top-0 w-full h-screen"
       style={{ zIndex: index + 1 }}
     >
-      <div className="bg-[#f8f8f8] border-b border-[#d4d4d8]">
-        <div className="max-w-screen-2xl mx-auto w-full px-4">
-          <div className="flex flex-col md:flex-row items-stretch gap-8 md:gap-12 py-16 md:py-20 min-h-[70vh] md:min-h-[80vh]">
+      <div className="bg-[#f8f8f8] h-full flex flex-col">
+        <div className="max-w-screen-2xl mx-auto w-full px-4 flex-1 flex items-center">
+          <div className="flex flex-col md:flex-row items-center gap-8 md:gap-12 w-full py-8">
             {/* Text side */}
             <div className="flex flex-col justify-center md:w-[40%] shrink-0">
               <div className="flex items-center gap-2 mb-4">
@@ -177,17 +180,23 @@ function FeatureCard({ feature, index }: { feature: Feature; index: number }) {
               </p>
             </div>
 
-            {/* Image side */}
+            {/* Visual side */}
             <div className="flex-1 flex items-center justify-center">
-              <div className="w-full h-full min-h-[280px] md:min-h-[400px] bg-[#f0f0f2] border border-[#e4e4e7] flex items-center justify-center p-8 md:p-12">
-                <Image
-                  src={feature.imageSrc}
-                  alt={feature.imageAlt}
-                  width={600}
-                  height={400}
-                  className="w-full h-auto max-h-[360px] object-contain"
-                />
-              </div>
+              {feature.animation ? (
+                <div className="w-full aspect-square max-h-[520px] bg-[#f0f0f2] border border-[#e4e4e7] overflow-hidden">
+                  {feature.animation}
+                </div>
+              ) : (
+                <div className="w-full aspect-[4/3] max-h-[480px] bg-[#f0f0f2] border border-[#e4e4e7] flex items-center justify-center p-8 md:p-12">
+                  <Image
+                    src={feature.imageSrc}
+                    alt={feature.imageAlt}
+                    width={600}
+                    height={400}
+                    className="w-full h-auto max-h-[360px] object-contain"
+                  />
+                </div>
+              )}
             </div>
           </div>
         </div>
