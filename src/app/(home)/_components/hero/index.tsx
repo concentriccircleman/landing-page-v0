@@ -8,7 +8,7 @@ export default function Hero() {
   return (
     <section className="relative w-full flex flex-col bg-[#f8f8f8] min-h-screen overflow-hidden">
       {/* Demo UI — positioned relative to viewport, bleeds off right edge */}
-      <div className="hidden md:block absolute top-24 bottom-[280px] left-[56%] -right-[15%] z-0">
+      <div className="hidden md:block absolute top-[18%] bottom-[18%] left-[56%] -right-[15%] z-0">
         <HeroDemo />
       </div>
       <div className="relative z-10 flex-1 flex flex-col pt-32 2xs:pt-44 pb-16 sm:pt-32 sm:pb-16">
