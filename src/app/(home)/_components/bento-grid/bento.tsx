@@ -17,6 +17,7 @@ interface BentoProps {
   layout?: "image-above" | "side-by-side";
   size?: "compact" | "normal";
   textSize?: "normal" | "large";
+  icon?: React.ReactNode;
   image?: {
     src: ImageProps["src"];
     alt: string;
@@ -26,29 +27,22 @@ interface BentoProps {
 }
 
 export function BentoContainer({ children, className }: BentoContainerProps) {
-  // Normalize to valid React elements only
   const elements = React.Children.toArray(children).filter(
     React.isValidElement
   ) as React.ReactElement<{ className?: string }>[];
 
-  // Helper: compute border classes for an item within a group
   const borderClassesFor = (
     idxInGroup: number,
     colCount: number,
     isLastGroup: boolean
   ) =>
     cn(
-      // base borders
-      "border-0 border-l border-t border-border",
-      // always show right border on small to keep outer edge continuous
+      "border-0 border-l border-t border-[#ebebeb]",
       "border-r md:border-r-0",
-      // on md+, only the last column gets the right border
       idxInGroup % colCount === colCount - 1 && "md:border-r",
-      // bottom edge only on the last group to avoid double seams
       isLastGroup && "border-b"
     );
 
-  // Prepare groups: [0..2), [2..5), [5..end)
   type Group = {
     items: React.ReactElement<{ className?: string }>[];
     colCount: number;
@@ -62,7 +56,6 @@ export function BentoContainer({ children, className }: BentoContainerProps) {
   const renderedGroups = groups.map((group, gi) => {
     const isLastGroup = gi === groups.length - 1;
     const withBorders = group.items.map((child, i) =>
-      // clone element and inject className safely
       React.cloneElement(child, {
         className: cn(
           child.props.className,
@@ -85,7 +78,7 @@ export function BentoContainer({ children, className }: BentoContainerProps) {
     );
   });
 
-  return <div className={cn("", className)}>{renderedGroups}</div>;
+  return <div className={cn("overflow-hidden border border-[#ebebeb]", className)}>{renderedGroups}</div>;
 }
 
 export function Bento({
@@ -95,6 +88,7 @@ export function Bento({
   subtitle,
   layout = "image-above",
   textSize = "normal",
+  icon,
   image,
 }: BentoProps) {
   const imageContent = image ? (
@@ -108,33 +102,37 @@ export function Bento({
   ) : (
     children
   );
-  // Consistent internal padding and gaps
   const pad = "p-6";
-  const gapRow = "gap-3"; // vertical gap inside column layout
-  const gapCol = "gap-4"; // horizontal gap inside row layout
+  const gapRow = "gap-3";
+  const gapCol = "gap-4";
 
   if (layout === "side-by-side") {
     return (
       <div
         className={cn(
-          "bg-background overflow-hidden relative flex w-full",
+          "bg-[#f8f8f8] overflow-hidden relative flex w-full",
           className
         )}
       >
         <div className={cn("flex w-full items-center", gapCol, pad)}>
           <div className="flex-1 text-left relative z-10 flex flex-col justify-center">
+            {icon && (
+              <div className="w-6 h-6 bg-brand flex items-center justify-center mb-2">
+                {icon}
+              </div>
+            )}
             <h3
               className={cn(
-                "text-foreground mb-2",
-                textSize === "large" ? "text-2xl" : "text-xl"
+                "text-[#1a1a1f] font-semibold tracking-tighter mb-2",
+                textSize === "large" ? "text-2xl" : "text-lg"
               )}
             >
               {title}
             </h3>
             <p
               className={cn(
-                "text-secondary leading-relaxed",
-                textSize === "large" ? "text-lg" : "text-base"
+                "text-[#71717a] leading-relaxed",
+                textSize === "large" ? "text-[15px]" : "text-[14px]"
               )}
             >
               {subtitle}
@@ -151,7 +149,7 @@ export function Bento({
   return (
     <div
       className={cn(
-        "bg-background overflow-hidden relative flex flex-col w-full",
+        "bg-[#f8f8f8] overflow-hidden relative flex flex-col w-full",
         className
       )}
     >
@@ -160,18 +158,23 @@ export function Bento({
           {imageContent}
         </div>
         <div className="text-left relative z-10">
+          {icon && (
+            <div className="w-6 h-6 bg-brand flex items-center justify-center mb-2">
+              {icon}
+            </div>
+          )}
           <h3
             className={cn(
-              "text-foreground mb-2",
-              textSize === "large" ? "text-2xl" : "text-xl"
+              "text-[#1a1a1f] font-semibold tracking-tighter mb-2",
+              textSize === "large" ? "text-2xl" : "text-lg"
             )}
           >
             {title}
           </h3>
           <p
             className={cn(
-              "text-secondary leading-relaxed",
-              textSize === "large" ? "text-lg" : "text-base"
+              "text-[#71717a] leading-relaxed",
+              textSize === "large" ? "text-[15px]" : "text-[14px]"
             )}
           >
             {subtitle}

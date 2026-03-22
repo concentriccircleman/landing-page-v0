@@ -2,7 +2,7 @@ import "@/app/globals.css";
 import type { Metadata } from "next";
 import Script from "next/script";
 import Layout from "@/components/layout";
-import { manrope } from "@/utils/fonts";
+import { geist, geistMono } from "@/utils/fonts";
 import { createMetadata } from "@/utils/metadata";
 import JsonLd from "@/components/seo/json-ld";
 import { siteUrl } from "@/utils/site-url";
@@ -101,7 +101,7 @@ const RootLayout = ({
           }}
         />
       </head>
-      <body className={`${manrope.className} antialiased`}>
+      <body className={`${geist.className} ${geistMono.variable} antialiased`}>
         <Layout>{children}</Layout>
       </body>
     </html>

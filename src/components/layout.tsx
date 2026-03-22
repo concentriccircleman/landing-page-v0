@@ -2,7 +2,8 @@
 
 import Footer from "@/components/footer";
 import Header from "@/components/header";
-import AnnouncementBanner from "@/components/announcement-banner";
+import CursorTrail from "@/components/cursor-trail";
+
 import { Providers } from "@/app/providers";
 import { usePathname } from "next/navigation";
 import { cn } from "@/utils/cn";
@@ -34,17 +35,17 @@ export default function Layout({
 
   return (
     <Providers>
+      <CursorTrail />
       <div
         className={cn(
           "relative min-h-screen flex flex-col",
           isContact && "contact-gradient",
         )}
       >
-        <AnnouncementBanner message="Announcing Our $5M Seed Round" />
         {isLanding ? (
           <>
             <Header />
-            <main className="flex-1 flex flex-col gap-40 pb-40">
+            <main className="flex-1 flex flex-col pb-0">
               {children}
             </main>
           </>
