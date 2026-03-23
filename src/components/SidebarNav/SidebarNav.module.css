@@ -1,0 +1,279 @@
+/* SidebarNav — Figma node 1143:6432
+   Semantic tokens: --fg-base, --fg-subtle, --fg-muted, --bg-base, --bg-subtle,
+   --bg-base-pressed, --border-subtle, --border-base
+   Font: Inter Medium 13px/16px | Radii: --radius-sm (4px), --radius-md (6px) */
+
+.sidebar {
+  width: 220px;
+  flex-shrink: 0;
+  font-family: var(--font-family);
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  user-select: none;
+  background: var(--bg-shell);
+}
+
+/* ── Workspace header ── */
+.header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: var(--space-3) var(--space-3) var(--space-1) var(--space-3);
+}
+
+.workspaceButton {
+  display: flex;
+  flex: 1 0 0;
+  gap: var(--space-2);
+  height: 29px;
+  min-height: 28px;
+  align-items: center;
+  padding: 0 var(--space-2) 0 var(--space-1);
+  border-radius: var(--radius-md);
+  border: none;
+  background: none;
+  cursor: pointer;
+  font-family: inherit;
+  transition: background var(--transition-fast);
+}
+
+.workspaceButton:hover {
+  background: var(--bg-hover-overlay);
+}
+
+.workspaceAvatar {
+  width: 18px;
+  height: 18px;
+  flex-shrink: 0;
+  border-radius: var(--radius-sm);
+  overflow: hidden;
+  background: var(--bg-base);
+  padding: 1px;
+  box-shadow: var(--shadow-border-base);
+}
+
+.workspaceAvatarInner {
+  width: 100%;
+  height: 100%;
+  border-radius: 3px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+}
+
+.workspaceNameGroup {
+  display: flex;
+  gap: 4px;
+  align-items: center;
+  flex-shrink: 0;
+}
+
+.workspaceName {
+  font-size: var(--font-size-sm);
+  font-weight: var(--font-weight-medium);
+  line-height: var(--leading-sm);
+  color: var(--fg-subtle);
+}
+
+.workspaceChevron {
+  width: 12px;
+  height: 12px;
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.workspaceChevron svg {
+  width: 100%;
+  height: 100%;
+}
+
+/* ── Nav content area ── */
+.navContent {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  padding: 6px 0;
+}
+
+/* ── Menu group (items share px-12 container) ── */
+.menuGroup {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-px);
+  padding: 0 var(--space-3);
+}
+
+/* ── Nav item ── */
+.item {
+  display: flex;
+  gap: 8px;
+  height: 28px;
+  align-items: center;
+  overflow: hidden;
+  padding-left: 6px;
+  border-radius: var(--radius-sm);
+  border: none;
+  background: none;
+  cursor: pointer;
+  font-family: inherit;
+  font-size: var(--font-size-sm);
+  font-weight: var(--font-weight-medium);
+  line-height: var(--leading-sm);
+  color: var(--fg-subtle);
+  width: 100%;
+  text-align: left;
+  white-space: nowrap;
+  transition: background var(--transition-fast);
+}
+
+.item:hover {
+  background: var(--bg-base-hover);
+}
+
+.itemActive {
+  background: var(--bg-base-pressed);
+  color: var(--fg-base);
+}
+
+.itemActive:hover {
+  background: var(--bg-base-pressed);
+}
+
+/* ── Item icon (stroke icons) ── */
+.itemIcon {
+  width: 16px;
+  height: 16px;
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: inherit;
+}
+
+.itemIcon svg {
+  width: 100%;
+  height: 100%;
+}
+
+/* ── Resource avatar icon (colored square with embedded icon) ── */
+.resourceAvatar {
+  width: 16px;
+  height: 16px;
+  flex-shrink: 0;
+  border-radius: 2px;
+  overflow: hidden;
+  background: var(--bg-base);
+  padding: 0.5px;
+  box-shadow: var(--shadow-border-base);
+}
+
+.resourceAvatarInner {
+  width: 100%;
+  height: 100%;
+  border-radius: 1.5px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.resourceAvatarInner svg {
+  width: 5px;
+  height: 5px;
+}
+
+/* ── Section header ── */
+.sectionHeader {
+  display: flex;
+  gap: 4px;
+  height: 28px;
+  align-items: center;
+  padding: 4px;
+  border-radius: var(--radius-md);
+  border: none;
+  background: none;
+  cursor: pointer;
+  font-family: inherit;
+  font-size: var(--font-size-sm);
+  font-weight: var(--font-weight-medium);
+  line-height: var(--leading-sm);
+  color: var(--fg-muted);
+  width: 100%;
+  text-align: left;
+  transition: color var(--transition-fast);
+}
+
+.sectionHeader:hover {
+  color: var(--fg-subtle);
+}
+
+/* ── Triangle indicators ── */
+.triangle {
+  width: 12px;
+  height: 12px;
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.triangle svg {
+  width: 6px;
+  height: 6px;
+}
+
+/* ── Footer ── */
+.footer {
+  display: flex;
+  flex-direction: column;
+  flex: 1 0 0;
+  gap: var(--space-px);
+  justify-content: flex-end;
+  padding: var(--space-3);
+}
+
+/* ── Badge ── */
+.badge {
+  margin-left: auto;
+  font-size: 12px;
+  font-weight: 500;
+  line-height: 18px;
+  color: var(--tag-neutral-text);
+  background: var(--tag-neutral-bg);
+  border: 1px solid var(--tag-neutral-border);
+  padding: 0.5px 6.5px;
+  border-radius: 4px;
+  flex-shrink: 0;
+}
+
+/* ── Experiment toggle rows ── */
+.experimentRow {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: var(--space-2);
+  padding: var(--space-1) var(--space-3);
+}
+
+.experimentInfo {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  min-width: 0;
+}
+
+.experimentLabel {
+  font-size: var(--font-size-sm);
+  font-weight: 500;
+  line-height: var(--line-height-snug);
+  color: var(--fg-default);
+}
+
+.experimentDesc {
+  font-size: 11px;
+  line-height: var(--line-height-normal);
+  color: var(--fg-muted);
+}

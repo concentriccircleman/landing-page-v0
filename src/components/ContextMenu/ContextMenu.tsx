@@ -1,5 +1,19 @@
-import { type IconName, getIcon } from "./icons";
+import { Pencil, Clipboard, Trash } from "../../icons/outline";
+import type { IconProps } from "../../icons/types";
+import type { ComponentType } from "react";
 import styles from "./ContextMenu.module.css";
+
+export type IconName = "edit" | "copy" | "trash";
+
+const iconMap: Record<IconName, ComponentType<IconProps>> = {
+  edit: Pencil,
+  copy: Clipboard,
+  trash: Trash,
+};
+
+function getIcon(name: IconName) {
+  return iconMap[name];
+}
 
 /* ─── Types ─── */
 

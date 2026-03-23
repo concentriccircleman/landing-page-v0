@@ -1,0 +1,266 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Sidebar navigation</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap" rel="stylesheet" />
+  <style>
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      font-family: 'Inter', -apple-system, sans-serif;
+      background: #f5f5f5;
+      min-height: 100vh;
+      display: flex;
+    }
+    .sidebar {
+      width: 260px;
+      background: #fff;
+      border-right: 1px solid #e5e5e5;
+      display: flex;
+      flex-direction: column;
+      min-height: 100vh;
+    }
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      padding: 20px 16px;
+      border-bottom: 1px solid #eee;
+      cursor: pointer;
+    }
+    .brand-logo {
+      width: 36px;
+      height: 36px;
+      border: 2px solid #7c3aed;
+      border-radius: 8px;
+      background: #fff;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #7c3aed;
+    }
+    .brand-logo svg { width: 20px; height: 20px; }
+    .brand-text {
+      font-size: 15px;
+      font-weight: 600;
+      color: #171717;
+    }
+    .brand-chevron {
+      margin-left: auto;
+      color: #737373;
+    }
+    .brand-chevron svg { width: 16px; height: 16px; }
+    .nav-main {
+      padding: 12px 0;
+      border-bottom: 1px solid #eee;
+    }
+    .nav-link {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      padding: 10px 16px;
+      font-size: 14px;
+      font-weight: 500;
+      color: #404040;
+      text-decoration: none;
+      transition: background 0.15s;
+    }
+    .nav-link:hover {
+      background: #fafafa;
+      color: #171717;
+    }
+    .nav-link .icon {
+      width: 20px;
+      height: 20px;
+      flex-shrink: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #737373;
+    }
+    .nav-link .icon svg { width: 100%; height: 100%; }
+    .nav-link .badge {
+      margin-left: auto;
+      background: #e5e5e5;
+      color: #525252;
+      font-size: 12px;
+      font-weight: 500;
+      padding: 2px 8px;
+      border-radius: 10px;
+    }
+    .nav-sections {
+      flex: 1;
+      overflow-y: auto;
+      padding: 12px 0;
+    }
+    .section {
+      margin-bottom: 4px;
+    }
+    .section-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 8px 16px;
+      font-size: 12px;
+      font-weight: 600;
+      color: #737373;
+      text-transform: uppercase;
+      letter-spacing: 0.04em;
+      cursor: pointer;
+      user-select: none;
+    }
+    .section-header:hover { color: #525252; }
+    .section-header .chevron {
+      width: 16px;
+      height: 16px;
+      color: #a3a3a3;
+      transition: transform 0.2s;
+    }
+    .section.open .section-header .chevron { transform: rotate(180deg); }
+    .section-items { padding: 2px 0; }
+    .section.collapsed .section-items { display: none; }
+    .section-link {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      padding: 10px 16px;
+      font-size: 14px;
+      font-weight: 500;
+      color: #404040;
+      text-decoration: none;
+      transition: background 0.15s;
+      cursor: pointer;
+      border: none;
+      width: 100%;
+      text-align: left;
+      background: none;
+    }
+    .section-link:hover {
+      background: #fafafa;
+      color: #171717;
+    }
+    .section-link.active {
+      background: #f0f0f0;
+      color: #171717;
+    }
+    .section-link .icon {
+      width: 20px;
+      height: 20px;
+      flex-shrink: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #737373;
+    }
+    .section-link.active .icon { color: #525252; }
+    .section-link .icon svg { width: 100%; height: 100%; }
+    .section-link .icon.icon-green { color: #16a34a; }
+    .section-link .icon.icon-purple { color: #7c3aed; }
+    .section-link .icon.icon-blue { color: #2563eb; }
+    .section-link .icon.icon-orange { color: #ea580c; }
+    .nav-footer {
+      padding: 12px 0;
+      border-top: 1px solid #eee;
+    }
+  </style>
+</head>
+<body>
+  <aside class="sidebar" role="navigation">
+    <div class="brand">
+      <div class="brand-logo">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><path d="M14 2v6h6M16 13H8m8 4H8"/></svg>
+      </div>
+      <span class="brand-text">Acme</span>
+      <span class="brand-chevron">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg>
+      </span>
+    </div>
+
+    <nav class="nav-main">
+      <a href="#" class="nav-link">
+        <span class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><path d="M9 22V12h6v10"/></svg></span>
+        Home
+      </a>
+      <a href="#" class="nav-link">
+        <span class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 12h-6l-2 3h-3l-2-3H2"/></svg></span>
+        Inbox
+        <span class="badge">2</span>
+      </a>
+    </nav>
+
+    <div class="nav-sections">
+      <div class="section open">
+        <button type="button" class="section-header" data-section="quality">Quality <span class="chevron"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg></span></button>
+        <div class="section-items">
+          <a href="#" class="section-link active">
+            <span class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg></span>
+            Evaluations
+          </a>
+          <a href="#" class="section-link"><span class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M8 2v4M16 2v4M3 10h18M5 4h14a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2z"/><path d="M9 14l2 2 4-4"/></svg></span> Calibrations</a>
+          <a href="#" class="section-link"><span class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/></svg></span> Workflows</a>
+          <a href="#" class="section-link"><span class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><circle cx="11" cy="11" r="2"/><path d="m21 21-4.35-4.35"/></svg></span> Reviews</a>
+          <a href="#" class="section-link"><span class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9"/><path d="M13.73 21a2 2 0 0 1-3.46 0"/></svg></span> Alerts</a>
+          <a href="#" class="section-link"><span class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 20V10M12 20V4M6 20v-6"/></svg></span> Reports</a>
+        </div>
+      </div>
+
+      <div class="section open">
+        <button type="button" class="section-header" data-section="training">Training <span class="chevron"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg></span></button>
+        <div class="section-items">
+          <a href="#" class="section-link"><span class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><path d="M14 2v6h6M9 15l2 2 4-4"/></svg></span> Assignments</a>
+          <a href="#" class="section-link"><span class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 20V10M12 20V4M6 20v-6"/></svg></span> Reports</a>
+          <a href="#" class="section-link"><span class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg></span> Learners</a>
+        </div>
+      </div>
+
+      <div class="section open">
+        <button type="button" class="section-header" data-section="hiring">Hiring <span class="chevron"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg></span></button>
+        <div class="section-items">
+          <a href="#" class="section-link"><span class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><circle cx="11" cy="11" r="2"/><path d="m21 21-4.35-4.35"/></svg></span> Assessments</a>
+          <a href="#" class="section-link"><span class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 20V10M12 20V4M6 20v-6"/></svg></span> Reports</a>
+        </div>
+      </div>
+
+      <div class="section open">
+        <button type="button" class="section-header" data-section="resources">Resources <span class="chevron"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg></span></button>
+        <div class="section-items">
+          <a href="#" class="section-link"><span class="icon icon-green"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 18v-6a9 9 0 0 1 18 0v6"/><path d="M21 19a2 2 0 0 1-2 2h-1a2 2 0 0 1-2-2v-3a2 2 0 0 1 2-2h3zM3 19a2 2 0 0 0 2 2h1a2 2 0 0 0 2-2v-3a2 2 0 0 0-2-2H3z"/></svg></span> Simulations</a>
+          <a href="#" class="section-link"><span class="icon icon-purple"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 3h7v7H3zM14 3h7v7h-7zM14 14h7v7h-7zM3 14h7v7H3z"/></svg></span> Scorecards</a>
+          <a href="#" class="section-link"><span class="icon icon-blue"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg></span> Personas</a>
+          <a href="#" class="section-link"><span class="icon icon-orange"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"/></svg></span> Backend Tools</a>
+        </div>
+      </div>
+    </div>
+
+    <nav class="nav-footer">
+      <a href="#" class="nav-link">
+        <span class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="3"/><path d="M12 1v2m0 18v2M4.22 4.22l1.42 1.42m12.72 12.72l1.42 1.42M1 12h2m18 0h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42"/></svg></span>
+        Help
+      </a>
+      <a href="#" class="nav-link">
+        <span class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="3"/><path d="M12 1v2m0 18v2M4.22 4.22l1.42 1.42m12.72 12.72l1.42 1.42M1 12h2m18 0h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42"/></svg></span>
+        Settings
+      </a>
+    </nav>
+  </aside>
+</body>
+<script>
+  document.querySelectorAll('.section-header').forEach(btn => {
+    btn.addEventListener('click', () => {
+      btn.closest('.section').classList.toggle('open');
+      btn.closest('.section').classList.toggle('collapsed');
+    });
+  });
+  document.querySelectorAll('.section-link').forEach(link => {
+    link.addEventListener('click', (e) => {
+      e.preventDefault();
+      document.querySelectorAll('.section-link').forEach(l => l.classList.remove('active'));
+      link.classList.add('active');
+    });
+  });
+</script>
+</html>

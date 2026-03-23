@@ -1,0 +1,112 @@
+/* InputGroup — Sentra Design System
+   Unified input with addons, buttons, and text. Tokens: fg-*, bg-field, border-*, radius-sm, shadow-focus-ring */
+
+.group {
+  display: flex;
+  align-items: stretch;
+  border-radius: var(--radius-sm);
+  border: 1px solid var(--border-subtle);
+  background: var(--bg-field);
+  overflow: hidden;
+  transition: border-color var(--transition-fast), box-shadow var(--transition-fast);
+  box-sizing: border-box;
+}
+
+.group:focus-within {
+  border-color: transparent;
+  box-shadow: var(--shadow-focus-ring);
+}
+
+.group.groupError {
+  border-color: var(--border-error);
+}
+
+.group.groupError:focus-within {
+  border-color: transparent;
+  box-shadow:
+    0 0 0 4px var(--focus-ring-error),
+    0 0 0 2px var(--bg-base),
+    0 0 0 1px var(--fg-error);
+}
+
+.group.groupBrand:focus-within {
+  box-shadow:
+    0 0 0 4px var(--focus-ring-brand),
+    0 0 0 2px var(--bg-base),
+    0 0 0 1px var(--button-brand);
+}
+
+.addon {
+  display: flex;
+  align-items: center;
+  padding: 0 var(--space-2);
+  color: var(--fg-muted);
+  font-size: var(--font-size-sm);
+  flex-shrink: 0;
+}
+
+.addonStart {
+  border-right: 1px solid var(--border-subtle);
+}
+
+.addonEnd {
+  border-left: 1px solid var(--border-subtle);
+}
+
+.input {
+  flex: 1;
+  min-width: 0;
+  border: none;
+  background: transparent;
+  outline: none;
+  font-family: var(--font-family);
+  font-size: var(--font-size-sm);
+  color: var(--fg-base);
+  padding: 0 var(--space-3);
+  height: 36px;
+  box-sizing: border-box;
+}
+
+.input::placeholder {
+  color: var(--fg-disabled);
+}
+
+.input:disabled {
+  cursor: not-allowed;
+  opacity: 0.5;
+}
+
+.button {
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  padding: 0 var(--space-2);
+  color: var(--fg-muted);
+  font-family: var(--font-family);
+  font-size: var(--font-size-sm);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 36px;
+  transition: color var(--transition-fast);
+}
+
+.button:hover:not(:disabled) {
+  color: var(--fg-base);
+}
+
+.button:focus-visible {
+  outline: none;
+  box-shadow: inset 0 0 0 2px var(--button-brand);
+}
+
+.button:disabled {
+  cursor: not-allowed;
+  opacity: 0.5;
+}
+
+.text {
+  font-size: var(--font-size-sm);
+  color: var(--fg-muted);
+  white-space: nowrap;
+}

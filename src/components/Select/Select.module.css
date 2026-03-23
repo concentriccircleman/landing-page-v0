@@ -1,0 +1,147 @@
+/* Select — Sentra Design System */
+
+.trigger {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  height: 36px;
+  padding: var(--space-1-5) var(--space-3);
+  font-family: var(--font-family);
+  font-size: var(--font-size-sm);
+  color: var(--fg-base);
+  background: var(--bg-field);
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-sm);
+  cursor: pointer;
+  outline: none;
+  transition: var(--transition-fast);
+  gap: var(--space-2);
+  box-sizing: border-box;
+}
+
+.trigger:hover:not(.triggerDisabled) {
+  border-color: var(--border-strong);
+}
+
+.trigger:focus-visible {
+  box-shadow: var(--shadow-focus-ring);
+}
+
+.triggerPlaceholder {
+  color: var(--fg-disabled);
+}
+
+.chevron {
+  width: 14px;
+  height: 14px;
+  color: var(--fg-muted);
+  flex-shrink: 0;
+  transition: transform 120ms ease;
+}
+
+.triggerDisabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.triggerError {
+  border-color: var(--fg-error);
+}
+
+/* Sizes */
+.sizeSm {
+  height: 28px;
+  padding: 0 var(--space-2);
+}
+
+.sizeDefault {
+  height: 36px;
+  padding: 0 var(--space-3);
+}
+
+.sizeLg {
+  height: 40px;
+  padding: 0 var(--space-3);
+}
+
+/* Content (dropdown) */
+.content {
+  position: absolute;
+  z-index: 50;
+  min-width: 100%;
+  margin-top: var(--space-1);
+  background: var(--bg-component);
+  border: none;
+  border-radius: var(--radius-md);
+  box-shadow: var(--shadow-flyout);
+  padding: var(--space-1);
+  max-height: 240px;
+  overflow-y: auto;
+  animation: fadeIn 120ms ease-out;
+}
+
+.item {
+  display: flex;
+  align-items: center;
+  gap: var(--space-2);
+  padding: var(--space-1-5) var(--space-2);
+  border-radius: var(--radius-sm);
+  font-family: var(--font-family);
+  font-size: var(--font-size-sm);
+  color: var(--fg-base);
+  cursor: pointer;
+  outline: none;
+  transition: var(--transition-fast);
+}
+
+.item:hover {
+  background: var(--bg-component-hover);
+}
+
+.itemSelected {
+  background: var(--bg-component-hover);
+}
+
+.itemDisabled {
+  opacity: 0.5;
+  pointer-events: none;
+}
+
+.checkIcon {
+  width: 14px;
+  height: 14px;
+  color: var(--fg-base);
+}
+
+.checkIconSlot {
+  width: 14px;
+  height: 14px;
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.separator {
+  height: 1px;
+  background: var(--border-subtle);
+  margin: var(--space-1) 0;
+}
+
+.wrapper {
+  position: relative;
+  display: inline-block;
+  width: 100%;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(-4px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}

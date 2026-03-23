@@ -1,0 +1,187 @@
+/* Toast component */
+
+.toast {
+  display: flex;
+  align-items: flex-start;
+  gap: 8px;
+  padding: 12px;
+  background: var(--bg-component);
+  border-radius: var(--radius-md);
+  box-shadow: var(--shadow-flyout);
+  width: 360px;
+  overflow: hidden;
+  font-family: var(--font-family);
+}
+
+.toastKeyboard {
+  composes: toast;
+  width: 376px;
+}
+
+/* ── Icon container ── */
+.iconContainer {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 20px;
+  height: 20px;
+  flex-shrink: 0;
+}
+
+.iconContainer svg {
+  width: 15px;
+  height: 15px;
+}
+
+/* ── Content ── */
+.content {
+  flex: 1 0 0;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.contentKeyboard {
+  flex: 1 0 0;
+  min-width: 0;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 6px;
+}
+
+/* ── Text block ── */
+.textBlock {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  font-size: var(--font-size-sm);
+  line-height: 20px;
+}
+
+.title {
+  font-weight: var(--font-weight-medium);
+  color: var(--fg-base);
+}
+
+.description {
+  font-weight: 400;
+  color: var(--fg-subtle);
+}
+
+/* ── Actions ── */
+.actions {
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+  width: 100%;
+}
+
+.actionPrimary {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 24px;
+  padding: 0 10px;
+  border-radius: var(--radius-sm);
+  border: none;
+  background: var(--button-neutral);
+  font-family: inherit;
+  font-size: var(--font-size-sm);
+  font-weight: var(--font-weight-medium);
+  line-height: 16px;
+  color: var(--fg-base);
+  cursor: pointer;
+  box-shadow: var(--shadow-border-base);
+  flex-shrink: 0;
+}
+
+.actionPrimary:hover {
+  background: var(--bg-subtle);
+}
+
+.actionSecondary {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 24px;
+  padding: 0 10px;
+  border-radius: var(--radius-sm);
+  border: none;
+  background: transparent;
+  font-family: inherit;
+  font-size: var(--font-size-sm);
+  font-weight: var(--font-weight-medium);
+  line-height: 16px;
+  color: var(--fg-base);
+  cursor: pointer;
+  flex-shrink: 0;
+}
+
+.actionSecondary:hover {
+  background: var(--bg-component-hover);
+}
+
+/* ── Close button ── */
+.closeButton {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 20px;
+  height: 20px;
+  border-radius: 2px;
+  border: none;
+  background: transparent;
+  cursor: pointer;
+  padding: 0;
+  color: var(--fg-muted);
+  flex-shrink: 0;
+}
+
+.closeButton:hover {
+  background: var(--bg-component-hover);
+}
+
+.closeButton svg {
+  width: 15px;
+  height: 15px;
+}
+
+/* ── Keyboard badge (Kbd) ── */
+.kbd {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 16px;
+  height: 16px;
+  border-radius: var(--radius-sm);
+  border: 0.5px solid var(--border-strong);
+  background: var(--bg-base);
+  font-size: 11px;
+  font-weight: var(--font-weight-medium);
+  line-height: 20px;
+  color: var(--fg-subtle);
+  text-align: center;
+  flex-shrink: 0;
+  overflow: hidden;
+}
+
+.kbdText {
+  font-size: var(--font-size-sm);
+  font-weight: var(--font-weight-medium);
+  line-height: 20px;
+  color: var(--fg-base);
+  flex-shrink: 0;
+}
+
+/* ── Loading spinner ── */
+@keyframes spin {
+  to { transform: rotate(360deg); }
+}
+
+.spinner {
+  width: 15px;
+  height: 15px;
+  animation: spin 1s linear infinite;
+}

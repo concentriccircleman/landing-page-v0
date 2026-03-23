@@ -1,0 +1,92 @@
+.root {
+  display: inline-flex;
+  flex-direction: column;
+  padding: var(--space-3);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-card);
+  background: var(--bg-base);
+}
+
+.header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: var(--space-1) 0;
+  margin-bottom: var(--space-2);
+  border-bottom: 1px solid var(--border-subtle);
+}
+
+.monthLabel {
+  font-size: var(--font-size-sm);
+  font-weight: var(--font-weight-semibold);
+  color: var(--fg-base);
+}
+
+.navButton {
+  width: 28px;
+  height: 28px;
+  border-radius: var(--radius-sm);
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  color: var(--fg-muted);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.navButton:hover {
+  background: var(--bg-base-pressed);
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  gap: 0;
+}
+
+.dayName {
+  text-align: center;
+  font-size: 11px;
+  font-weight: var(--font-weight-medium);
+  color: var(--fg-disabled);
+  padding: var(--space-1);
+}
+
+.day {
+  width: 32px;
+  height: 32px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: var(--radius-full);
+  font-size: var(--font-size-sm);
+  cursor: pointer;
+  transition: background var(--transition-fast);
+}
+
+.day:hover {
+  background: var(--bg-base-pressed);
+}
+
+.daySelected {
+  background: var(--button-brand);
+  color: var(--fg-on-color);
+}
+
+.dayToday {
+  font-weight: var(--font-weight-semibold);
+}
+
+.dayToday:not(.daySelected) {
+  box-shadow: 0 0 0 1px var(--border-base);
+}
+
+.dayOutside {
+  color: var(--fg-disabled);
+}
+
+.dayDisabled {
+  opacity: 0.3;
+  pointer-events: none;
+}

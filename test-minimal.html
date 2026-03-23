@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Test Page</title>
+    <style>
+      body {
+        margin: 0;
+        padding: 20px;
+        font-family: system-ui, sans-serif;
+      }
+      .test {
+        background: lightblue;
+        padding: 20px;
+        margin: 10px 0;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>Test HTML Page</h1>
+    <div class="test">If you see this blue box, HTML and CSS are working.</div>
+    <div id="root" style="background: yellow; padding: 20px; margin: 10px 0;">
+      This is the root div. If the page is white, React is not mounting or there's a JavaScript error preventing rendering.
+    </div>
+    
+    <script type="module">
+      console.log('[TEST] Starting JavaScript...');
+      
+      try {
+        const root = document.getElementById('root');
+        console.log('[TEST] Root element found:', root);
+        
+        root.innerHTML = '<p style="color: green; font-weight: bold;">✓ JavaScript is working! React should be able to mount.</p>';
+        console.log('[TEST] Successfully updated root innerHTML');
+      } catch (error) {
+        console.error('[TEST] Error:', error);
+      }
+    </script>
+  </body>
+</html>

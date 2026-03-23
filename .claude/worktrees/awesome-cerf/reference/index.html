@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Figma component comparison</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --bg: #0d0d0d;
+      --surface: #1a1a1a;
+      --border: #2a2a2a;
+      --text: #ededed;
+      --text-muted: #888;
+      --accent: #6366f1;
+    }
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      font-family: 'Inter', -apple-system, sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      min-height: 100vh;
+    }
+    header {
+      border-bottom: 1px solid var(--border);
+      padding: 1rem 1.5rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 0.75rem;
+    }
+    h1 {
+      font-size: 1.125rem;
+      font-weight: 600;
+      margin: 0;
+    }
+    a.source {
+      color: var(--accent);
+      font-size: 0.875rem;
+      text-decoration: none;
+    }
+    a.source:hover { text-decoration: underline; }
+    .layout {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 0;
+      min-height: calc(100vh - 53px);
+    }
+    @media (max-width: 900px) {
+      .layout { grid-template-columns: 1fr; }
+    }
+    .panel {
+      display: flex;
+      flex-direction: column;
+      border-right: 1px solid var(--border);
+    }
+    .panel:last-child { border-right: none; }
+    .panel-header {
+      padding: 0.75rem 1rem;
+      font-size: 0.75rem;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      color: var(--text-muted);
+      background: var(--surface);
+      border-bottom: 1px solid var(--border);
+    }
+    .panel-content {
+      flex: 1;
+      overflow: auto;
+      padding: 1rem;
+    }
+    .panel.figma .panel-content {
+      padding: 0;
+      display: flex;
+      align-items: flex-start;
+      justify-content: center;
+      min-height: 400px;
+    }
+    .panel.figma iframe {
+      width: 100%;
+      min-height: 600px;
+      border: none;
+      flex: 1;
+    }
+    .panel.recreation .panel-content {
+      background: var(--bg);
+    }
+    .recreation-note {
+      font-size: 0.8125rem;
+      color: var(--text-muted);
+      margin-bottom: 1.5rem;
+      padding: 0.75rem;
+      background: var(--surface);
+      border-radius: 8px;
+      border: 1px solid var(--border);
+    }
+    .component-slot {
+      border: 1px dashed var(--border);
+      border-radius: 12px;
+      padding: 1.5rem;
+      margin-bottom: 1rem;
+      min-height: 120px;
+    }
+    .component-slot h3 {
+      font-size: 0.6875rem;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      color: var(--text-muted);
+      margin: 0 0 0.75rem 0;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>Figma component comparison</h1>
+    <a class="source" href="https://www.figma.com/design/Lf0nMg4NNE6RMKqo49BS1Q/Untitled?node-id=1-3493&m=dev" target="_blank" rel="noopener">Open in Figma (node 1-3493) →</a>
+  </header>
+  <div class="layout">
+    <section class="panel figma">
+      <div class="panel-header">Figma design (reference)</div>
+      <div class="panel-content">
+        <iframe
+          title="Figma design"
+          src="https://embed.figma.com/design/Lf0nMg4NNE6RMKqo49BS1Q/Untitled?node-id=1-3493"
+          allowfullscreen
+        ></iframe>
+      </div>
+    </section>
+    <section class="panel recreation">
+      <div class="panel-header">Recreated components (compare here)</div>
+      <div class="panel-content">
+        <p class="recreation-note">
+          Replace the placeholders below with your recreated components. Compare side-by-side with the Figma panel to check alignment, spacing, and styling.
+        </p>
+        <div class="component-slot">
+          <h3>Component 1</h3>
+          <p style="margin:0; color: var(--text-muted); font-size: 0.875rem;">Paste or build your first component here.</p>
+        </div>
+        <div class="component-slot">
+          <h3>Component 2</h3>
+          <p style="margin:0; color: var(--text-muted); font-size: 0.875rem;">Paste or build your second component here.</p>
+        </div>
+        <div class="component-slot">
+          <h3>Component 3</h3>
+          <p style="margin:0; color: var(--text-muted); font-size: 0.875rem;">Add more slots as needed.</p>
+        </div>
+      </div>
+    </section>
+  </div>
+</body>
+</html>

@@ -1,0 +1,121 @@
+/* EmptyState — Sentra Design System
+   Uses semantic tokens throughout — auto-adapts to dark mode. */
+
+.container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: var(--space-4);
+  padding: var(--space-8);
+  text-align: center;
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-lg);
+  background: var(--bg-subtle);
+  box-shadow: var(--shadow-sm);
+}
+
+/* ── Icon ── */
+.iconWrapper {
+  width: 40px;
+  height: 40px;
+  border-radius: 999px;
+  padding: 1px;
+  flex-shrink: 0;
+  background: var(--bg-base);
+  box-shadow: var(--shadow-border-base);
+}
+
+.iconInner {
+  width: 100%;
+  height: 100%;
+  border-radius: 999px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--bg-component-hover);
+}
+
+.iconInner svg {
+  width: 16px;
+  height: 16px;
+  color: var(--fg-subtle);
+}
+
+/* ── Text ── */
+.textGroup {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--space-3);
+  max-width: 260px;
+}
+
+.title {
+  font-family: var(--font-family-display);
+  font-size: 15px;
+  font-weight: 600;
+  line-height: 18px;
+  color: var(--fg-base);
+}
+
+.description {
+  font-size: 13px;
+  font-weight: 400;
+  line-height: 20px;
+  max-width: 220px;
+  color: var(--fg-subtle);
+}
+
+/* ── Actions ── */
+.actions {
+  display: flex;
+  align-items: center;
+  gap: var(--space-2);
+}
+
+/* Primary button */
+.buttonPrimary {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 28px;
+  padding: 0 var(--space-3);
+  border-radius: var(--radius-sm);
+  border: none;
+  background: var(--button-brand);
+  color: var(--fg-on-color);
+  font-family: inherit;
+  font-size: var(--font-size-sm);
+  font-weight: var(--font-weight-medium);
+  line-height: 16px;
+  cursor: pointer;
+  box-shadow: var(--shadow-button-primary-inset), var(--shadow-button-primary);
+}
+
+.buttonPrimary:hover {
+  filter: brightness(1.1);
+}
+
+/* Secondary button */
+.buttonSecondary {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 28px;
+  padding: 0 var(--space-3);
+  border-radius: var(--radius-sm);
+  border: none;
+  font-family: inherit;
+  font-size: var(--font-size-sm);
+  font-weight: var(--font-weight-medium);
+  line-height: 16px;
+  cursor: pointer;
+  background: var(--button-neutral);
+  color: var(--fg-base);
+  box-shadow: var(--shadow-button-neutral);
+}
+
+.buttonSecondary:hover {
+  background: var(--bg-base-hover);
+}

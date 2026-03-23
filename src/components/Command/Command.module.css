@@ -1,0 +1,118 @@
+/* Command — command palette / combobox */
+
+.root {
+  display: flex;
+  flex-direction: column;
+  background: var(--bg-base);
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-lg);
+  overflow: hidden;
+  width: 100%;
+}
+
+.inputWrapper {
+  display: flex;
+  align-items: center;
+  gap: var(--space-2);
+  padding: 0 var(--space-3);
+  border-bottom: 1px solid var(--border-subtle);
+}
+
+.searchIcon {
+  width: 16px;
+  height: 16px;
+  color: var(--fg-muted);
+  flex-shrink: 0;
+}
+
+.input {
+  flex: 1;
+  height: 40px;
+  border: none;
+  background: transparent;
+  font-size: var(--font-size-sm);
+  color: var(--fg-base);
+  outline: none;
+  font-family: var(--font-family);
+}
+
+.input::placeholder {
+  color: var(--fg-muted);
+}
+
+.list {
+  max-height: 300px;
+  overflow-y: auto;
+  padding: var(--space-1);
+}
+
+.empty {
+  padding: var(--space-6);
+  text-align: center;
+  font-size: var(--font-size-sm);
+  color: var(--fg-muted);
+}
+
+.group {
+  padding: var(--space-1);
+}
+
+.groupHeading {
+  padding: var(--space-1) var(--space-2);
+  font-size: 10px;
+  font-weight: var(--font-weight-semibold);
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: var(--fg-disabled);
+}
+
+.item {
+  display: flex;
+  align-items: center;
+  gap: var(--space-2);
+  padding: var(--space-1-5) var(--space-2);
+  border-radius: var(--radius-sm);
+  cursor: pointer;
+  font-size: var(--font-size-sm);
+  color: var(--fg-base);
+  user-select: none;
+  font-family: var(--font-family);
+  border: none;
+  width: 100%;
+  text-align: left;
+  background: none;
+  transition: background var(--transition-fast);
+}
+
+.item:hover,
+.itemActive {
+  background: var(--bg-base-pressed);
+}
+
+.itemDisabled {
+  opacity: 0.5;
+  pointer-events: none;
+}
+
+.separator {
+  height: 1px;
+  background: var(--border-subtle);
+  margin: var(--space-1) 0;
+}
+
+.shortcut {
+  margin-left: auto;
+  font-size: var(--font-size-xs);
+  color: var(--fg-muted);
+  font-family: var(--font-family-mono);
+}
+
+.item:focus-visible {
+  outline: none;
+  box-shadow: var(--shadow-focus-ring);
+}
+
+.input:focus-visible {
+  outline: none;
+}

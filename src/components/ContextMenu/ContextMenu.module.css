@@ -10,6 +10,8 @@
   font-size: var(--font-size-sm);
   line-height: var(--line-height-tight);
   font-weight: var(--font-weight-medium);
+  border: 1px solid var(--border-subtle);
+  box-shadow: var(--shadow-flyout);
 }
 
 /* ── Dark variant ── */
@@ -20,7 +22,7 @@
 }
 
 .dark .item:hover {
-  background: rgba(255, 255, 255, 0.06);
+  background: var(--bg-hover-overlay);
 }
 
 .dark .destructive {
@@ -35,11 +37,11 @@
 }
 
 .light .item:hover {
-  background: var(--color-gray-100);
+  background: var(--bg-component-hover);
 }
 
 .light .icon {
-  color: var(--color-gray-600);
+  color: var(--fg-subtle);
 }
 
 .light .destructive {
@@ -89,7 +91,7 @@
 }
 
 .dark .separator {
-  background: rgba(255, 255, 255, 0.06);
+  background: var(--bg-hover-overlay);
 }
 
 .light .separator {

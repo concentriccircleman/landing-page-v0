@@ -1,0 +1,79 @@
+.badge {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--space-1);
+  font-family: var(--font-family);
+  font-size: var(--font-size-xs);
+  font-weight: var(--font-weight-medium);
+  line-height: 18px;
+  height: 18px;
+  white-space: nowrap;
+  border-radius: var(--radius-sm);
+  border: 0.5px solid transparent;
+  transition: var(--transition-fast);
+  padding: 0.5px 6.5px;
+}
+
+/* Variants */
+.default {
+  background: var(--fg-base);
+  color: var(--fg-on-color);
+  border-color: transparent;
+}
+
+.secondary {
+  background: var(--tag-neutral-bg);
+  color: var(--tag-neutral-text);
+  border-color: var(--tag-neutral-border);
+}
+
+.destructive {
+  background: var(--bg-error-subtle);
+  color: var(--fg-error);
+  border-color: var(--border-error);
+}
+
+.success {
+  background: var(--bg-success-subtle);
+  color: var(--fg-success);
+  border-color: var(--border-success);
+}
+
+.warning {
+  background: var(--bg-warning-subtle);
+  color: var(--fg-warning);
+  border-color: var(--border-warning);
+}
+
+.info {
+  background: var(--bg-info-subtle);
+  color: var(--fg-info);
+  border-color: var(--border-info);
+}
+
+.outline {
+  background: transparent;
+  color: var(--fg-subtle);
+  border-color: var(--border-base);
+}
+
+/* Size */
+.sizeSm {
+  font-size: 10px;
+  padding: 1px var(--space-1-5);
+}
+
+.dismissButton {
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 0;
+  margin-left: var(--space-0-5);
+  color: currentColor;
+  opacity: 0.6;
+}
+
+.dismissButton:hover {
+  opacity: 1;
+}

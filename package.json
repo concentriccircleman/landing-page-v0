@@ -1,17 +1,17 @@
 {
-  "name": "@solidroad/design-system",
+  "name": "@sentra/design-system",
   "private": true,
   "version": "0.1.0",
   "type": "module",
-  "description": "Solidroad design system – React component library mapped to Figma via Code Connect",
+  "description": "Sentra design system – built and designed by Shaurya Narang. React component library mapped to Figma via Code Connect",
   "main": "./dist/index.cjs.js",
   "module": "./dist/index.es.js",
   "types": "./dist/index.d.ts",
   "exports": {
     ".": {
+      "types": "./dist/index.d.ts",
       "import": "./dist/index.es.js",
-      "require": "./dist/index.cjs.js",
-      "types": "./dist/index.d.ts"
+      "require": "./dist/index.cjs.js"
     },
     "./styles": "./dist/style.css"
   },
@@ -19,7 +19,8 @@
     "dist"
   ],
   "scripts": {
-    "dev": "vite",
+    "dev": "vite --open",
+    "dev:agent": "bash scripts/dev.sh",
     "build": "tsc -b && vite build",
     "preview": "vite preview",
     "lint": "eslint .",
@@ -38,6 +39,7 @@
     "eslint-plugin-react-hooks": "^5.0.0",
     "eslint-plugin-react-refresh": "^0.4.16",
     "globals": "^15.14.0",
+    "playwright": "^1.58.2",
     "react": "^19.0.0",
     "react-dom": "^19.0.0",
     "typescript": "~5.7.0",

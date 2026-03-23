@@ -1,0 +1,326 @@
+/* EvaluationsPage — Figma node 1143:6434
+   Tokens:
+     bg-base: var(--bg-base)    bg-subtle: var(--bg-subtle)
+     fg-base: var(--fg-base)    fg-subtle: var(--fg-subtle)    fg-muted: var(--fg-muted)    fg-on-color: var(--bg-base)
+     border-subtle: var(--border-subtle)
+     rounded-lg: 8px     badge-radius: 4px     button-sm-radius: 4px
+     font: Inter Medium, text-sm: 13px/16px, text-xs: 12px/12px
+     tag/success: bg #ecfdf5, border var(--border-success), text #065f46, icon #10b981
+     tag/warning: bg #fff7ed, border var(--border-warning), text #9a3412
+     tag/neutral: bg #f4f4f5, border var(--tag-neutral-border), text var(--fg-subtle)
+     tag/blue: icon #3b82f6
+     Buttons/neutral shadow: 0 0 0 1px rgba(0,0,0,0.08), 0 1px 2px rgba(0,0,0,0.12) */
+
+.container {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  height: 100%;
+  background: var(--bg-base);
+  font-family: var(--font-family);
+  overflow: hidden;
+}
+
+/* ── Top bar ── */
+.topBar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 48px;
+  padding: 0 24px;
+  background: var(--bg-base);
+  flex-shrink: 0;
+  border-bottom: 1px solid var(--border-subtle);
+}
+
+.breadcrumb {
+  font-size: 13px;
+  font-weight: 500;
+  line-height: 16px;
+  color: var(--fg-subtle);
+}
+
+.createButton {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 4px;
+  height: 24px;
+  padding: 0 12px;
+  border-radius: 4px;
+  border: none;
+  background: var(--button-brand);
+  color: var(--fg-on-color);
+  font-family: inherit;
+  font-size: 13px;
+  font-weight: 500;
+  line-height: 16px;
+  cursor: pointer;
+  box-shadow: var(--shadow-button-primary-inset), var(--shadow-button-primary);
+}
+
+.createButton:hover {
+  filter: brightness(1.1);
+}
+
+/* ── Table header ── */
+.tableHeader {
+  display: flex;
+  align-items: center;
+  height: 32px;
+  padding: 0 24px;
+  gap: 24px;
+  background: var(--bg-subtle);
+  border-bottom: 1px solid var(--border-subtle);
+}
+
+.headerCell {
+  display: flex;
+  align-items: center;
+  height: 100%;
+  overflow: hidden;
+  font-size: 12px;
+  font-weight: 500;
+  line-height: 12px;
+  color: var(--fg-muted);
+}
+
+.headerCellName {
+  composes: headerCell;
+  flex: 1 0 0;
+  min-width: 240px;
+  color: var(--fg-subtle);
+}
+
+.headerCellAccuracy {
+  composes: headerCell;
+  width: 99px;
+}
+
+.headerCellConversations {
+  composes: headerCell;
+  width: 113px;
+}
+
+.headerCellStatus {
+  composes: headerCell;
+  width: 115px;
+}
+
+.headerCellScorecard {
+  composes: headerCell;
+  width: 233px;
+}
+
+.headerCellAction {
+  width: 24px;
+  height: 100%;
+  flex-shrink: 0;
+}
+
+/* ── Table row ── */
+.tableRow {
+  display: flex;
+  align-items: center;
+  height: 48px;
+  padding: 0 24px;
+  gap: 24px;
+  background: var(--bg-base);
+  border-bottom: 1px solid var(--border-base);
+}
+
+.tableRow:last-child {
+  border-bottom: none;
+}
+
+/* ── Row cells ── */
+.cellName {
+  flex: 1 0 0;
+  min-width: 240px;
+  display: flex;
+  align-items: center;
+  height: 100%;
+  font-size: 13px;
+  font-weight: 500;
+  line-height: 16px;
+  color: var(--fg-base);
+}
+
+.cellAccuracy {
+  width: 99px;
+  display: flex;
+  align-items: center;
+  height: 100%;
+  flex-shrink: 0;
+}
+
+.cellConversations {
+  width: 113px;
+  display: flex;
+  align-items: center;
+  height: 100%;
+  flex-shrink: 0;
+  font-size: 13px;
+  font-weight: 500;
+  line-height: 16px;
+  color: var(--fg-subtle);
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.cellStatus {
+  width: 115px;
+  display: flex;
+  align-items: center;
+  height: 100%;
+  flex-shrink: 0;
+}
+
+.cellScorecard {
+  width: 233px;
+  display: flex;
+  align-items: center;
+  height: 100%;
+  flex-shrink: 0;
+  font-size: 13px;
+  font-weight: 500;
+  line-height: 16px;
+  color: var(--fg-subtle);
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.cellAction {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  height: 100%;
+  flex-shrink: 0;
+}
+
+/* ── Badge (accuracy %) ── */
+.badge {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 4px;
+  height: 18px;
+  padding: 0.5px 6.5px;
+  border-radius: 4px;
+  border: 1px solid;
+  font-size: 12px;
+  font-weight: 500;
+  line-height: 18px;
+  text-align: center;
+  flex-shrink: 0;
+}
+
+.badgeSuccess {
+  composes: badge;
+  background: var(--badge-success-bg);
+  border-color: var(--border-success);
+  color: var(--badge-success-text);
+}
+
+.badgeWarning {
+  composes: badge;
+  background: var(--badge-warning-bg);
+  border-color: var(--border-warning);
+  color: var(--badge-warning-text);
+}
+
+.badgeNeutral {
+  composes: badge;
+  background: var(--tag-neutral-bg);
+  border-color: var(--tag-neutral-border);
+  color: var(--tag-neutral-text);
+}
+
+/* ── Status badge (dot + label) ── */
+.statusBadge {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 1px;
+  height: 18px;
+  padding: 0.5px 6.5px 0.5px 4.5px;
+  border-radius: 4px;
+  border: 1px solid var(--tag-neutral-border);
+  background: var(--tag-neutral-bg);
+  font-size: 12px;
+  font-weight: 500;
+  line-height: 18px;
+  color: var(--tag-neutral-text);
+  text-align: center;
+  flex-shrink: 0;
+  overflow: hidden;
+}
+
+.statusDot {
+  width: 8px;
+  height: 8px;
+  border-radius: 2px;
+  flex-shrink: 0;
+  border: 1px solid var(--border-strong);
+}
+
+.dotGreen {
+  background: var(--status-green);
+}
+
+.dotBlue {
+  background: var(--status-blue);
+}
+
+/* ── Icon button (⋯) ── */
+.iconButton {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 24px;
+  height: 24px;
+  border-radius: 4px;
+  border: none;
+  background: var(--bg-base);
+  cursor: pointer;
+  box-shadow: var(--shadow-button-neutral);
+  color: var(--fg-base);
+  font-size: 14px;
+  line-height: 1;
+  padding: 0;
+}
+
+.iconButton:hover {
+  background: var(--bg-subtle);
+}
+
+/* ── Stat card ── */
+.statCard {
+  box-shadow: var(--shadow-card);
+  border-radius: var(--radius-lg);
+  background: var(--bg-base);
+  padding: 16px;
+}
+
+/* ── Table wrapper ── */
+.tableWrap {
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-card);
+  overflow: hidden;
+}
+
+.iconButtonDots {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 13px;
+  height: 13px;
+  color: var(--fg-muted);
+}
+
+.iconButtonDots svg {
+  width: 100%;
+  height: 100%;
+}

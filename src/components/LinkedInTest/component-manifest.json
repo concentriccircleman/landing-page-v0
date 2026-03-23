@@ -1,0 +1,94 @@
+{
+  "project": "LinkedIn Notifications — Sentra Design System Test Migration",
+  "source": "Screenshot analysis (no codebase)",
+  "components": [
+    {
+      "old": "OLD-0001", "new": "NEW-0001",
+      "name": "Avatar",
+      "layer": "atom",
+      "variants": ["circle-sm", "circle-lg", "square-sm"],
+      "usedBy": ["NEW-0006", "NEW-0007", "NEW-0008", "NEW-0010"],
+      "reason": "Unified avatar component replacing LinkedIn's mixed avatar styles"
+    },
+    {
+      "old": "OLD-0002", "new": "NEW-0002",
+      "name": "ActionButton",
+      "layer": "atom",
+      "variants": ["default", "hover", "active"],
+      "usedBy": ["NEW-0006"],
+      "reason": "Sentra neutral outline button replacing LinkedIn's colored outline buttons"
+    },
+    {
+      "old": "OLD-0003", "new": "NEW-0003",
+      "name": "TabItem",
+      "layer": "atom",
+      "variants": ["default", "active", "hover"],
+      "usedBy": ["NEW-0007"],
+      "reason": "Tab navigation item with Sentra underline indicator"
+    },
+    {
+      "old": "OLD-0004", "new": "NEW-0004",
+      "name": "OverflowButton",
+      "layer": "atom",
+      "variants": ["default", "hover"],
+      "usedBy": ["NEW-0006"],
+      "reason": "Three-dot overflow menu trigger"
+    },
+    {
+      "old": "OLD-0005", "new": "NEW-0005",
+      "name": "NewNotificationsBanner",
+      "layer": "atom",
+      "variants": ["default", "hover"],
+      "usedBy": ["NEW-0008"],
+      "reason": "Branded banner button for new notifications, replacing LinkedIn blue pill"
+    },
+    {
+      "old": "OLD-0006", "new": "NEW-0006",
+      "name": "NotificationItem",
+      "layer": "molecule",
+      "variants": ["congratulations", "jobAlert", "birthday", "news", "popularPost", "profileView", "event", "unread"],
+      "depends": ["NEW-0001", "NEW-0002", "NEW-0004"],
+      "usedBy": ["NEW-0008"],
+      "reason": "Core notification list item — multiple variants based on notification type"
+    },
+    {
+      "old": "OLD-0007", "new": "NEW-0007",
+      "name": "TabBar",
+      "layer": "molecule",
+      "depends": ["NEW-0003"],
+      "usedBy": ["NEW-0008"],
+      "reason": "Horizontal tab navigation bar"
+    },
+    {
+      "old": "OLD-0008", "new": "NEW-0008",
+      "name": "NotificationFeed",
+      "layer": "organism",
+      "depends": ["NEW-0005", "NEW-0006", "NEW-0007"],
+      "usedBy": ["NEW-0011"],
+      "reason": "Complete notification feed: tabs + banner + scrollable list"
+    },
+    {
+      "old": "OLD-0009", "new": "NEW-0009",
+      "name": "ProfileSidebar",
+      "layer": "organism",
+      "depends": ["NEW-0001"],
+      "usedBy": ["NEW-0011"],
+      "reason": "Left sidebar profile card with avatar, name, settings link"
+    },
+    {
+      "old": "OLD-0010", "new": "NEW-0010",
+      "name": "PromotedCard",
+      "layer": "organism",
+      "depends": ["NEW-0001"],
+      "usedBy": ["NEW-0011"],
+      "reason": "Right rail promoted/ad card"
+    },
+    {
+      "old": "OLD-0011", "new": "NEW-0011",
+      "name": "NotificationsPage",
+      "layer": "page",
+      "depends": ["NEW-0008", "NEW-0009", "NEW-0010"],
+      "reason": "Full page: left sidebar + center feed + right rail"
+    }
+  ]
+}

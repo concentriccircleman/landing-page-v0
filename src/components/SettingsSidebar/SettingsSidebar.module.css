@@ -1,0 +1,181 @@
+/* SettingsSidebar — Figma node 1:3571 (type=settings)
+   Tokens from get_variable_defs:
+     bg-subtle: #fafafa
+     bg-base-pressed: #efeff0
+     fg-base: #18181b
+     fg-subtle: #52525b
+     fg-muted: #71717a
+     font: Inter, 13px/16px, weight 500
+     rounded-md: 6px */
+
+.sidebar {
+  width: 220px;
+  flex-shrink: 0;
+  background: var(--bg-subtle);
+  font-family: var(--font-family);
+  display: flex;
+  flex-direction: column;
+  min-height: 100%;
+  user-select: none;
+}
+
+/* ── Header ── */
+.header {
+  display: flex;
+  align-items: center;
+  gap: var(--space-2);
+  padding: var(--space-3);
+}
+
+.backButton {
+  width: 24px;
+  height: 24px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--fg-muted);
+  cursor: pointer;
+  border: none;
+  background: none;
+  border-radius: var(--radius-md);
+  padding: 0;
+  transition: background var(--transition-fast), color var(--transition-fast);
+}
+
+.backButton:hover {
+  background: var(--bg-base-pressed);
+  color: var(--fg-base);
+}
+
+.backButton svg {
+  width: 16px;
+  height: 16px;
+}
+
+.headerTitle {
+  font-size: var(--font-size-sm);
+  font-weight: var(--font-weight-medium);
+  color: var(--fg-base);
+  line-height: var(--leading-sm);
+}
+
+/* ── Section ── */
+.section {
+  display: flex;
+  flex-direction: column;
+}
+
+/* ── Section header (collapsible) ── */
+.sectionHeader {
+  display: flex;
+  align-items: center;
+  gap: var(--space-1);
+  padding: var(--space-1) var(--space-3);
+  font-size: var(--font-size-sm);
+  font-weight: var(--font-weight-medium);
+  color: var(--fg-muted);
+  cursor: pointer;
+  border: none;
+  background: none;
+  text-align: left;
+  font-family: inherit;
+  height: 28px;
+  border-radius: var(--radius-md);
+  transition: color var(--transition-fast);
+}
+
+.sectionHeader:hover {
+  color: var(--fg-subtle);
+}
+
+.chevron {
+  width: 12px;
+  height: 12px;
+  color: var(--fg-muted);
+  transition: transform var(--transition-normal);
+  flex-shrink: 0;
+}
+
+.chevronCollapsed {
+  transform: rotate(-90deg);
+}
+
+/* ── Section items ── */
+.sectionItems {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-px);
+  padding: 0 var(--space-3);
+}
+
+.sectionItemsCollapsed {
+  display: none;
+}
+
+/* ── Nav item ── */
+.item {
+  display: flex;
+  align-items: center;
+  gap: var(--space-2);
+  height: 28px;
+  padding-left: var(--space-1-5);
+  font-size: var(--font-size-sm);
+  line-height: var(--leading-sm);
+  font-weight: var(--font-weight-medium);
+  color: var(--fg-subtle);
+  cursor: pointer;
+  border: none;
+  background: none;
+  border-radius: var(--radius-sm);
+  width: 100%;
+  text-align: left;
+  font-family: inherit;
+  text-decoration: none;
+  overflow: hidden;
+  white-space: nowrap;
+  transition: background var(--transition-fast), color var(--transition-fast);
+}
+
+.item:hover {
+  background: var(--bg-base-hover);
+}
+
+.itemActive {
+  background: var(--bg-base-pressed);
+  color: var(--fg-base);
+}
+
+.itemActive:hover {
+  background: var(--bg-base-pressed);
+}
+
+/* ── Item icon ── */
+.itemIcon {
+  width: 16px;
+  height: 16px;
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: inherit;
+}
+
+.itemIcon svg {
+  width: 100%;
+  height: 100%;
+}
+
+/* ── Badge ── */
+.badge {
+  margin-left: auto;
+  font-size: var(--font-size-xs);
+  font-weight: var(--font-weight-medium);
+  line-height: 18px;
+  height: 18px;
+  color: var(--tag-neutral-text);
+  background: var(--tag-neutral-bg);
+  border: 0.5px solid var(--tag-neutral-border);
+  padding: 0.5px 6.5px;
+  border-radius: var(--radius-sm);
+  flex-shrink: 0;
+}

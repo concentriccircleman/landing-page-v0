@@ -1,42 +1,107 @@
-import { ContextMenu } from "../components/ContextMenu";
+import { useState, useCallback, lazy, Suspense } from "react";
+
+const DesignSystemTab = lazy(() => import("./DesignSystemTab").then(m => ({ default: m.DesignSystemTab })));
+const ExperimentsTab = lazy(() => import("./ExperimentsTab").then(m => ({ default: m.ExperimentsTab })));
+const MigrationAtomsTab = lazy(() => import("./MigrationAtomsTab").then(m => ({ default: m.MigrationAtomsTab })));
+const ReviewTool = lazy(() => import("./ReviewTool").then(m => ({ default: m.ReviewTool })));
+const ProductTab = lazy(() => import("./ProductTab").then(m => ({ default: m.ProductTab })));
+const MeetingRecorderPage = lazy(() => import("./MeetingRecorderPage").then(m => ({ default: m.MeetingRecorderPage })));
+const ProjectSageTab = lazy(() => import("./ProjectSageTab").then(m => ({ default: m.ProjectSageTab })));
+const ProductTabV2 = lazy(() => import("./ProductTabV2").then(m => ({ default: m.ProductTabV2 })));
+
+/* ── Tab navigation styles ── */
+const tabNavStyle: React.CSSProperties = {
+  position: "sticky",
+  top: 0,
+  zIndex: 100,
+  display: "flex",
+  alignItems: "center",
+  gap: 0,
+  borderBottom: "1px solid var(--border-subtle)",
+  background: "var(--bg-base)",
+  padding: "0 2rem",
+  fontFamily: "var(--font-family)",
+};
+
+const tabBtnBase: React.CSSProperties = {
+  display: "flex",
+  alignItems: "center",
+  justifyContent: "center",
+  height: 44,
+  padding: "0 20px",
+  background: "none",
+  border: "none",
+  cursor: "pointer",
+  fontSize: 14,
+  fontWeight: 500,
+  fontFamily: "inherit",
+  color: "var(--fg-muted)",
+  position: "relative",
+  transition: "color 150ms ease",
+};
+
+const tabBtnActive: React.CSSProperties = {
+  ...tabBtnBase,
+  color: "var(--fg-base)",
+};
+
+const tabs = [
+  { id: "design-system", label: "Design System" },
+  { id: "experiments", label: "Experiments" },
+  { id: "migration-atoms", label: "Migration" },
+  { id: "review", label: "Review" },
+  { id: "product", label: "Product" },
+  { id: "product-v2", label: "Product V2 (Baseline)" },
+  { id: "meeting-recorder", label: "Meeting Recorder" },
+  { id: "project-sage", label: "Project Sage" },
+] as const;
+
+type TabId = (typeof tabs)[number]["id"];
 
 export function Playground() {
-  return (
-    <div style={{ padding: "2rem", fontFamily: "Inter, system-ui, sans-serif" }}>
-      <h1>Solidroad Design System</h1>
-      <p style={{ color: "var(--color-text-secondary)", marginBottom: "2rem" }}>
-        Component playground — preview every component from the design system here.
-      </p>
+  const urlTab = new URLSearchParams(window.location.search).get("tab") as TabId | null;
+  const [activeTab, setActiveTab] = useState<TabId>(urlTab ?? "product");
+  const [sageMeetingCompleted, setSageMeetingCompleted] = useState(false);
+  const [productInitialPage, setProductInitialPage] = useState<string | undefined>();
 
-      <section style={{ marginBottom: "3rem" }}>
-        <h2 style={{ fontSize: "0.875rem", textTransform: "uppercase", letterSpacing: "0.05em", color: "var(--color-text-secondary)" }}>
-          Context Menu
-        </h2>
-        <div style={{ display: "flex", gap: "2rem", marginTop: "1rem" }}>
-          <div style={{ background: "var(--color-surface-dark)", padding: "1.5rem", borderRadius: 8 }}>
-            <ContextMenu
-              variant="dark"
-              items={[
-                { label: "Edit", icon: "edit" },
-                { label: "Duplicate", icon: "copy" },
-                { type: "separator" },
-                { label: "Delete", icon: "trash", destructive: true },
-              ]}
-            />
-          </div>
-          <div style={{ background: "var(--color-surface)", padding: "1.5rem", borderRadius: 8, border: "1px solid var(--color-border)" }}>
-            <ContextMenu
-              variant="light"
-              items={[
-                { label: "Edit", icon: "edit" },
-                { label: "Duplicate", icon: "copy" },
-                { type: "separator" },
-                { label: "Delete", icon: "trash", destructive: true },
-              ]}
-            />
-          </div>
-        </div>
-      </section>
+  const handleNavigateToProduct = useCallback(() => {
+    setSageMeetingCompleted(true);
+    setProductInitialPage("meeting-notes");
+    setActiveTab("product");
+  }, []);
+
+  const handleNavigateToSage = useCallback(() => {
+    setActiveTab("project-sage");
+  }, []);
+
+  return (
+    <div style={{ fontFamily: "var(--font-family)", minHeight: "100vh", background: "var(--bg-subtle)" }}>
+      <nav style={tabNavStyle}>
+        {tabs.map((tab) => (
+          <button
+            key={tab.id}
+            type="button"
+            style={activeTab === tab.id ? tabBtnActive : tabBtnBase}
+            onClick={() => setActiveTab(tab.id)}
+          >
+            {tab.label}
+            {activeTab === tab.id && (
+              <span style={{ position: "absolute", bottom: 0, left: 20, right: 20, height: 2, background: "var(--fg-base)", borderRadius: 1 }} />
+            )}
+          </button>
+        ))}
+      </nav>
+
+      <Suspense fallback={<div style={{ padding: "2rem", color: "var(--fg-muted)" }}>Loading…</div>}>
+        {activeTab === "design-system" && <DesignSystemTab />}
+        {activeTab === "experiments" && <ExperimentsTab />}
+        {activeTab === "migration-atoms" && <MigrationAtomsTab />}
+        {activeTab === "review" && <ReviewTool />}
+        {activeTab === "product" && <ProductTab sageMeetingCompleted={sageMeetingCompleted} initialPage={productInitialPage} onNavigateToSage={handleNavigateToSage} />}
+        {activeTab === "meeting-recorder" && <MeetingRecorderPage />}
+        {activeTab === "product-v2" && <ProductTabV2 />}
+        {activeTab === "project-sage" && <ProjectSageTab onNavigateToProduct={handleNavigateToProduct} />}
+      </Suspense>
     </div>
   );
 }

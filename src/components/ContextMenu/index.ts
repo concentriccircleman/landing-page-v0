@@ -5,4 +5,4 @@ export type {
   ContextMenuItemDef,
   ContextMenuSeparatorDef,
 } from "./ContextMenu";
-export type { IconName } from "./icons";
+export type { IconName } from "./ContextMenu";

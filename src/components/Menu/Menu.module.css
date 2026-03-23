@@ -1,0 +1,192 @@
+/* Menu — Figma Menu component (standard + user variants)
+   Tokens:
+     bg-component: white
+     fg-base: #18181b   fg-subtle: #52525b   fg-muted: #71717a
+     fg-error: #e11d48
+     border-menu-top: #e4e4e7
+     rounded-md: 6px    rounded-sm: 4px
+     flyout shadow: 0 0 0 1px rgba(0,0,0,0.08), 0 4px 8px rgba(0,0,0,0.08), 0 8px 16px rgba(0,0,0,0.08) */
+
+.menu {
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  min-width: 180px;
+  width: 224px;
+  padding: var(--space-1);
+  background: var(--bg-component);
+  border-radius: var(--radius-md);
+  border: none;
+  box-shadow: var(--shadow-flyout);
+  overflow: hidden;
+  font-family: var(--font-family);
+}
+
+/* ── Regular menu item ── */
+.item {
+  display: flex;
+  align-items: center;
+  gap: var(--space-2);
+  min-height: 28px;
+  height: 28px;
+  padding: var(--space-1-5) var(--space-2);
+  border-radius: var(--radius-sm);
+  border: none;
+  background: transparent;
+  cursor: pointer;
+  width: 100%;
+  text-align: left;
+  font-family: inherit;
+}
+
+.item:hover {
+  background: var(--bg-component-hover);
+}
+
+/* ── Destructive item ── */
+.itemDestructive {
+  composes: item;
+}
+
+.itemDestructive .label {
+  color: var(--fg-error);
+}
+
+.itemDestructive .icon {
+  color: var(--fg-error);
+}
+
+/* ── Icon ── */
+.icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 16px;
+  height: 16px;
+  flex-shrink: 0;
+  color: var(--fg-subtle);
+}
+
+.icon svg {
+  width: 16px;
+  height: 16px;
+}
+
+/* ── Label ── */
+.label {
+  flex: 1 0 0;
+  font-size: var(--font-size-sm);
+  font-weight: var(--font-weight-medium);
+  line-height: var(--leading-sm);
+  color: var(--fg-subtle);
+  min-width: 0;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+/* ── Suffix (right-aligned text like count) ── */
+.suffix {
+  font-size: var(--font-size-sm);
+  font-weight: 400;
+  line-height: var(--leading-sm);
+  color: var(--fg-subtle);
+  flex-shrink: 0;
+  text-align: right;
+}
+
+/* ── Divider ── */
+.divider {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 8px;
+  flex-shrink: 0;
+}
+
+.dividerLine {
+  width: 100%;
+  height: 1px;
+  background: var(--border-base);
+}
+
+/* ── User header ── */
+.userHeader {
+  display: flex;
+  align-items: center;
+  gap: var(--space-3);
+  padding: var(--space-1-5) var(--space-2);
+  border-radius: var(--radius-sm);
+  width: 100%;
+}
+
+.avatar {
+  width: 28px;
+  height: 28px;
+  border-radius: 999px;
+  flex-shrink: 0;
+  overflow: hidden;
+  background: var(--bg-component-hover);
+  box-shadow: var(--shadow-border-base);
+}
+
+.avatar img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 999px;
+}
+
+.avatarLetters {
+  composes: avatar;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 11px;
+  font-weight: 500;
+  color: var(--fg-subtle);
+}
+
+.userInfo {
+  flex: 1 0 0;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+}
+
+.userName {
+  font-size: var(--font-size-sm);
+  font-weight: var(--font-weight-medium);
+  line-height: 16px;
+  color: var(--fg-base);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.userEmail {
+  font-size: var(--font-size-xs);
+  font-weight: 400;
+  line-height: 18px;
+  color: var(--fg-subtle);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+/* ── Caption (footer text) ── */
+.caption {
+  display: flex;
+  align-items: center;
+  height: 28px;
+  padding: var(--space-1-5) var(--space-2);
+  border-radius: var(--radius-sm);
+  width: 100%;
+}
+
+.captionText {
+  font-size: var(--font-size-xs);
+  font-weight: 400;
+  line-height: 12px;
+  color: var(--fg-muted);
+}

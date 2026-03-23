@@ -1,0 +1,113 @@
+/* SystemMessage — full-width notification banner */
+
+.root {
+  display: flex;
+  align-items: flex-start;
+  gap: var(--space-3);
+  padding: var(--space-3) var(--space-4);
+  border-radius: var(--radius-md);
+  background: var(--bg-subtle);
+  border: 1px solid var(--border-subtle);
+  border-left: 3px solid;
+}
+
+.info {
+  border-color: var(--fg-info, var(--button-brand));
+  background: var(--system-info-bg);
+}
+
+.success {
+  border-color: var(--fg-success);
+  background: var(--system-success-bg);
+}
+
+.warning {
+  border-color: var(--fg-warning);
+  background: var(--system-warning-bg);
+}
+
+.error {
+  border-color: var(--fg-error);
+  background: var(--system-error-bg);
+}
+
+.icon {
+  width: 20px;
+  height: 20px;
+  flex-shrink: 0;
+  margin-top: 1px;
+}
+
+.iconInfo {
+  color: var(--fg-info, var(--button-brand));
+}
+
+.iconSuccess {
+  color: var(--fg-success);
+}
+
+.iconWarning {
+  color: var(--fg-warning);
+}
+
+.iconError {
+  color: var(--fg-error);
+}
+
+.content {
+  flex: 1;
+  min-width: 0;
+}
+
+.title {
+  font-size: var(--font-size-sm);
+  font-weight: var(--font-weight-medium);
+  color: var(--fg-base);
+}
+
+.description {
+  font-size: var(--font-size-xs);
+  color: var(--fg-muted);
+  margin-top: 2px;
+}
+
+.action {
+  margin-left: auto;
+  flex-shrink: 0;
+}
+
+.actionButton {
+  font-size: var(--font-size-xs);
+  font-weight: var(--font-weight-medium);
+  padding: var(--space-1) var(--space-2);
+  border-radius: var(--radius-sm);
+  border: 1px solid var(--border-subtle);
+  background: var(--bg-base);
+  color: var(--fg-base);
+  cursor: pointer;
+  transition: background var(--transition-fast), border-color var(--transition-fast);
+}
+
+.actionButton:hover {
+  background: var(--bg-base-pressed);
+  border-color: var(--border-base);
+}
+
+.dismiss {
+  width: 24px;
+  height: 24px;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  color: var(--fg-muted);
+  border-radius: var(--radius-sm);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0;
+  transition: background var(--transition-fast), color var(--transition-fast);
+}
+
+.dismiss:hover {
+  background: var(--bg-base-pressed);
+}

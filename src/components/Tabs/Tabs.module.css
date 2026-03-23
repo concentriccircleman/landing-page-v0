@@ -1,0 +1,119 @@
+.tabs {
+  display: flex;
+  flex-direction: column;
+  font-family: var(--font-family);
+}
+
+.list {
+  display: inline-flex;
+  align-items: center;
+  flex-shrink: 0;
+}
+
+.listDefault {
+  gap: var(--space-1);
+  height: 36px;
+}
+
+.listPills {
+  gap: 0;
+  height: 36px;
+  background: var(--bg-base-pressed);
+  border-radius: var(--radius-lg);
+  padding: 3px;
+}
+
+.listUnderline {
+  gap: var(--space-1);
+  height: 36px;
+  border-bottom: 1px solid var(--border-subtle);
+}
+
+.trigger {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--space-1-5);
+  white-space: nowrap;
+  font-family: var(--font-family);
+  font-size: var(--font-size-sm);
+  font-weight: var(--font-weight-medium);
+  line-height: var(--leading-sm);
+  cursor: pointer;
+  outline: none;
+  border: none;
+  background: transparent;
+  transition: color var(--transition-fast), background var(--transition-fast);
+}
+
+.trigger:focus-visible {
+  box-shadow: var(--shadow-focus-ring);
+}
+
+.triggerDefault {
+  padding: var(--space-1-5) var(--space-3);
+  border-radius: var(--radius-sm);
+  color: var(--fg-muted);
+}
+
+.triggerDefault.triggerActive {
+  color: var(--fg-base);
+  font-weight: var(--font-weight-semibold);
+}
+
+.triggerDefault:hover:not(:disabled):not(.triggerActive) {
+  color: var(--fg-subtle);
+}
+
+.triggerPills {
+  padding: var(--space-1) var(--space-2);
+  border-radius: var(--radius-md);
+  color: var(--fg-muted);
+  height: 100%;
+  flex: 1;
+}
+
+.triggerPills.triggerActive {
+  background: var(--bg-base);
+  color: var(--fg-base);
+  box-shadow: var(--shadow-card);
+}
+
+.triggerUnderline {
+  padding: var(--space-1-5) var(--space-3);
+  border-radius: var(--radius-sm);
+  color: var(--fg-muted);
+  position: relative;
+}
+
+.triggerUnderline.triggerActive {
+  color: var(--fg-info);
+}
+
+.triggerUnderline::after {
+  content: "";
+  position: absolute;
+  bottom: -1px;
+  left: 0;
+  right: 0;
+  height: 2px;
+  background: var(--fg-info);
+  border-radius: 1px;
+  transform: scaleX(0);
+  transition: transform 200ms ease;
+}
+
+.triggerUnderline.triggerActive::after {
+  transform: scaleX(1);
+}
+
+.triggerDisabled {
+  opacity: 0.5;
+  pointer-events: none;
+  cursor: not-allowed;
+}
+
+.content {
+  flex: 1;
+  outline: none;
+}
