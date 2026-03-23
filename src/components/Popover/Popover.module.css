@@ -1,0 +1,46 @@
+.wrapper {
+  position: relative;
+  display: inline-block;
+}
+
+.trigger {
+  cursor: pointer;
+  display: inline-flex;
+}
+
+.content {
+  position: absolute;
+  z-index: 50;
+  width: 288px;
+  background: var(--bg-component);
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-flyout);
+  padding: var(--space-4);
+  font-family: var(--font-family);
+  animation: fadeIn 150ms ease;
+}
+
+.alignStart {
+  left: 0;
+}
+
+.alignCenter {
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+.alignEnd {
+  right: 0;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(-4px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}

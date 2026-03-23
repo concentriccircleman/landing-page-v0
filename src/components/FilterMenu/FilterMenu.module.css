@@ -1,0 +1,450 @@
+/* FilterMenu — Sentra Design System
+   Flyout dropdown for filter operations.
+
+   Container: bg-component · p 4px · rounded-lg (8px) · shadow-flyout
+   Width: 280px (default, adjustable via prop)
+
+   Atomic items:
+     check/radio — 28px rows, px 8px, gap 8px, rounded 4px
+     title       — 28px, 12px medium text, fg-subtle
+     search      — 32px, 13px regular text
+     divider     — 8px tall, two 1px lines
+     skeleton    — 12px bars in column
+     textInput   — 28px input inside 8px wrapper
+     dateInput   — 28px calendar + input inside 8px wrapper */
+
+/* ─── Menu container ─── */
+
+.menu {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  overflow: hidden;
+  padding: var(--space-1);
+  background: var(--bg-component);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-flyout);
+  width: 280px;
+  position: relative;
+}
+
+/* ─── Scrollbar indicator (decorative) ─── */
+
+.scrollbar {
+  position: absolute;
+  right: 4px;
+  top: 8px;
+  width: 4px;
+  background: var(--border-base);
+  border-radius: var(--radius-md);
+  pointer-events: none;
+}
+
+/* ═══════════════════════════════════════════
+   FILTER ITEM — check / radio selectable row
+   ═══════════════════════════════════════════ */
+
+.item {
+  display: flex;
+  align-items: center;
+  gap: var(--space-2);
+  padding: var(--space-1) var(--space-2);
+  border-radius: var(--radius-sm);
+  width: 100%;
+  background: var(--bg-component);
+  border: none;
+  cursor: pointer;
+  font-family: var(--font-family);
+  text-align: left;
+  outline: none;
+  transition: background var(--transition-fast);
+}
+
+.item:hover {
+  background: var(--bg-component-hover);
+}
+
+.item:focus-visible {
+  box-shadow: var(--shadow-focus-ring);
+}
+
+.itemDisabled {
+  cursor: default;
+  pointer-events: none;
+}
+
+.itemDisabled:hover {
+  background: var(--bg-component);
+}
+
+/* Unselected items: indent left to reserve icon space */
+.itemUnselected {
+  padding-left: var(--space-8);
+}
+
+/* ─── Item icon (check/radio indicator) ─── */
+
+.itemIcon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 15px;
+  height: 15px;
+  flex-shrink: 0;
+  color: var(--fg-base);
+  overflow: hidden;
+}
+
+/* ─── Item label ─── */
+
+.itemLabel {
+  flex: 1 0 0;
+  min-width: 0;
+  font-size: var(--font-size-sm);
+  font-weight: var(--font-weight-normal);
+  line-height: 16px;
+  color: var(--fg-base);
+  white-space: pre-wrap;
+}
+
+.itemDisabled .itemLabel {
+  color: var(--fg-disabled);
+}
+
+/* ─── Item sub-text (count, annotation) ─── */
+
+.itemSubText {
+  flex-shrink: 0;
+  font-size: var(--font-size-sm);
+  font-weight: var(--font-weight-normal);
+  line-height: 20px;
+  color: var(--fg-subtle);
+  text-align: right;
+}
+
+.itemDisabled .itemSubText {
+  color: var(--fg-disabled);
+}
+
+/* ─── Item badge ─── */
+
+.badge {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--space-1);
+  height: 18px;
+  padding: 0.5px 6.5px;
+  border-radius: var(--radius-sm);
+  background: var(--tag-neutral-bg);
+  border: 1px solid var(--tag-neutral-border);
+  flex-shrink: 0;
+}
+
+.badgeLabel {
+  font-size: var(--font-size-xs);
+  font-weight: var(--font-weight-medium);
+  line-height: 18px;
+  color: var(--tag-neutral-text);
+  text-align: center;
+}
+
+/* ═══════════════════════════════════
+   TITLE — section heading inside menu
+   ═══════════════════════════════════ */
+
+.title {
+  display: flex;
+  align-items: center;
+  gap: 0;
+  height: 28px;
+  padding: var(--space-1) var(--space-2);
+  border-radius: var(--radius-sm);
+  width: 100%;
+  background: var(--bg-component);
+}
+
+.titleText {
+  font-size: var(--font-size-xs);
+  font-weight: var(--font-weight-medium);
+  line-height: 12px;
+  color: var(--fg-subtle);
+}
+
+/* ═══════════════════
+   DIVIDER — separator
+   ═══════════════════ */
+
+.divider {
+  position: relative;
+  width: 100%;
+  height: 8px;
+  background: var(--bg-component);
+}
+
+.dividerLineTop {
+  position: absolute;
+  left: -4px;
+  right: -4px;
+  top: calc(50% - 0.5px);
+  height: 1px;
+  background: var(--border-base);
+}
+
+.dividerLineBottom {
+  position: absolute;
+  left: -4px;
+  right: -4px;
+  top: calc(50% + 0.5px);
+  height: 1px;
+  background: var(--bg-component);
+}
+
+/* ═══════════════════
+   SEARCH — inline search
+   ═══════════════════ */
+
+.search {
+  display: flex;
+  align-items: center;
+  gap: var(--space-2);
+  padding: var(--space-1-5) var(--space-2);
+  border-radius: var(--radius-sm);
+  width: 100%;
+  background: var(--bg-component);
+  position: relative;
+}
+
+.searchInput {
+  flex: 1 0 0;
+  min-width: 0;
+  border: none;
+  background: transparent;
+  outline: none;
+  font-family: var(--font-family);
+  font-size: var(--font-size-sm);
+  font-weight: var(--font-weight-normal);
+  line-height: 20px;
+  color: var(--fg-base);
+  padding: 0;
+}
+
+.searchInput::placeholder {
+  color: var(--fg-muted);
+}
+
+/* ─── Search controls (drag handle + clear button) ─── */
+
+.searchControls {
+  display: flex;
+  align-items: center;
+  gap: 0;
+  flex-shrink: 0;
+}
+
+.clearButton {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 28px;
+  height: 28px;
+  border: none;
+  background: transparent;
+  border-radius: var(--radius-sm);
+  cursor: pointer;
+  color: var(--fg-muted);
+  padding: 0;
+  flex-shrink: 0;
+}
+
+.clearButton:hover {
+  background: var(--bg-component-hover);
+}
+
+.dragHandle {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 15px;
+  height: 15px;
+  flex-shrink: 0;
+  color: var(--fg-muted);
+}
+
+/* ═══════════════════
+   SKELETON — loading state
+   ═══════════════════ */
+
+.skeleton {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: var(--space-2);
+  padding: var(--space-1-5) var(--space-2);
+  border-radius: var(--radius-sm);
+  width: 100%;
+  background: var(--bg-component);
+}
+
+.skeletonBar {
+  width: 100%;
+  height: 12px;
+  border-radius: 4px;
+  background: var(--border-base);
+}
+
+.skeletonRow {
+  display: flex;
+  gap: 8px;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+}
+
+.skeletonHalf {
+  flex: 1 0 0;
+  height: 12px;
+  border-radius: 4px;
+  background: var(--border-base);
+}
+
+.skeletonEmpty {
+  flex: 1 0 0;
+  height: 12px;
+  border-radius: 4px;
+  background: var(--bg-component);
+}
+
+/* ════════════════════════
+   TEXT INPUT — inline input
+   ════════════════════════ */
+
+.inputWrapper {
+  display: flex;
+  align-items: center;
+  gap: 0;
+  padding: 0 var(--space-2) var(--space-2);
+  border-radius: var(--radius-sm);
+  width: 100%;
+  background: var(--bg-component);
+}
+
+.textInput {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex: 1 0 0;
+  height: 28px;
+  padding: 0 var(--space-2);
+  gap: 6px;
+  overflow: hidden;
+  background: var(--bg-field);
+  border-radius: var(--radius-sm);
+  border: none;
+  box-shadow: var(--border-input);
+  font-family: var(--font-family);
+  font-size: var(--font-size-sm);
+  font-weight: var(--font-weight-medium);
+  line-height: 16px;
+  color: var(--fg-base);
+  outline: none;
+}
+
+.textInput::placeholder {
+  color: var(--fg-disabled);
+  font-weight: var(--font-weight-medium);
+}
+
+.textInput:focus {
+  box-shadow: var(--shadow-focus-ring);
+}
+
+/* ═══════════════════════════
+   DATE INPUT — calendar + input
+   ═══════════════════════════ */
+
+.dateInput {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex: 1 0 0;
+  overflow: hidden;
+  background: var(--bg-field);
+  border-radius: var(--radius-sm);
+  box-shadow: var(--border-input);
+}
+
+.dateInputButton {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 28px;
+  height: 28px;
+  flex-shrink: 0;
+  border: none;
+  background: transparent;
+  cursor: pointer;
+  color: var(--fg-base);
+  padding: 0;
+}
+
+.dateInputButton:hover {
+  background: var(--bg-component-hover);
+}
+
+.dateInputDivider {
+  width: 1px;
+  align-self: stretch;
+  background: var(--border-base);
+}
+
+.dateInputField {
+  flex: 1 0 0;
+  height: 28px;
+  min-width: 0;
+  border: none;
+  background: transparent;
+  padding: 0 var(--space-2);
+  outline: none;
+  font-family: var(--font-family);
+  font-size: var(--font-size-sm);
+  font-weight: var(--font-weight-normal);
+  line-height: 20px;
+  color: var(--fg-base);
+}
+
+.dateInputField::placeholder {
+  color: var(--fg-muted);
+}
+
+/* ═══════════════════════════════
+   EMPTY STATE — no results found
+   ═══════════════════════════════ */
+
+.emptyState {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: var(--space-6) var(--space-4);
+  width: 100%;
+  text-align: center;
+}
+
+.emptyTitle {
+  font-size: var(--font-size-base);
+  font-weight: var(--font-weight-semibold);
+  line-height: 14px;
+  color: var(--fg-base);
+  font-family: var(--font-family-display);
+  margin-bottom: var(--space-2);
+}
+
+.emptyDescription {
+  font-size: var(--font-size-sm);
+  font-weight: var(--font-weight-normal);
+  line-height: 20px;
+  color: var(--fg-subtle);
+  margin: 0;
+}

@@ -1,0 +1,35 @@
+/* Kbd — Keyboard key display
+   Styled as a physical keyboard key with 3D effect */
+
+.kbd {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 20px;
+  height: 20px;
+  padding: var(--space-0-5) var(--space-1-5);
+  background: var(--bg-base-pressed);
+  border: 1px solid var(--border-base);
+  border-radius: var(--radius-sm);
+  font-family: var(--font-family-mono);
+  font-size: 11px;
+  font-weight: var(--font-weight-medium);
+  color: var(--fg-muted);
+  box-shadow:
+    var(--shadow-sm),
+    inset 0 -1px 0 var(--border-subtle);
+}
+
+/* ── KbdGroup ── */
+
+.group {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-1);
+}
+
+.separator {
+  color: var(--fg-disabled);
+  font-size: 11px;
+  font-weight: var(--font-weight-normal);
+}

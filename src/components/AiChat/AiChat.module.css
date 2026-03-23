@@ -1,0 +1,640 @@
+/* AiChat — Sentra Design System
+   AI Assistant modal and atomic sub-components.
+   Modal shell: 560×480, shadow-card, 8px radius.
+   All values from Figma source. */
+
+/* ═══════════════════════════════
+   Modal shell
+   ═══════════════════════════════ */
+
+.modal {
+  display: flex;
+  flex-direction: column;
+  width: 560px;
+  height: 480px;
+  background: var(--bg-base);
+  border-radius: 8px;
+  box-shadow: var(--shadow-card);
+  overflow: hidden;
+  font-family: var(--font-family);
+  position: relative;
+}
+
+.modalSearch {
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  background: var(--bg-base);
+  flex-shrink: 0;
+  width: 100%;
+  overflow: hidden;
+}
+
+.modalBody {
+  flex: 1 0 0;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  position: relative;
+}
+
+.modalBottom {
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  justify-content: flex-end;
+  flex-shrink: 0;
+  width: 100%;
+  position: relative;
+}
+
+.fadeGradient {
+  position: relative;
+  width: 100%;
+  height: 96px;
+  background: linear-gradient(to bottom, transparent, var(--bg-base));
+  pointer-events: none;
+  flex-shrink: 0;
+  margin-top: -96px;
+}
+
+/* ═══════════════════════════════
+   Custom scrollbar indicator
+   ═══════════════════════════════ */
+
+.scrollbar {
+  position: absolute;
+  right: 4px;
+  width: 4px;
+  border-radius: 8px;
+  background: var(--border-base);
+}
+
+/* ═══════════════════════════════
+   Header
+   ═══════════════════════════════ */
+
+.header {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 12px 16px;
+  flex-shrink: 0;
+  overflow: hidden;
+  width: 100%;
+}
+
+.headerTitle {
+  flex: 1 0 0;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  min-width: 0;
+  min-height: 1px;
+}
+
+.headerTitleText {
+  font-family: var(--font-family-display);
+  font-size: 16px;
+  font-weight: 500;
+  line-height: 1.6;
+  color: var(--fg-base);
+  margin: 0;
+  flex-shrink: 0;
+}
+
+.headerIcon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 15px;
+  height: 15px;
+  flex-shrink: 0;
+  color: var(--fg-muted);
+  overflow: hidden;
+}
+
+.headerIcon svg {
+  width: 15px;
+  height: 15px;
+}
+
+.iconBtn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 28px;
+  height: 28px;
+  border-radius: 4px;
+  border: none;
+  background: transparent;
+  cursor: pointer;
+  padding: 0;
+  color: var(--fg-muted);
+  flex-shrink: 0;
+  overflow: hidden;
+  transition: background var(--transition-fast), color var(--transition-fast);
+}
+
+.iconBtn:hover {
+  background: var(--bg-component-hover);
+  color: var(--fg-subtle);
+}
+
+.iconBtn svg {
+  width: 15px;
+  height: 15px;
+}
+
+.headerDivider {
+  height: 1px;
+  background: var(--border-base);
+  flex-shrink: 0;
+  width: 100%;
+}
+
+/* ═══════════════════════════════
+   Suggestion list container
+   ═══════════════════════════════ */
+
+.suggestionList {
+  display: flex;
+  flex-direction: column;
+  padding: 4px 8px;
+  overflow-y: auto;
+  flex: 1 0 0;
+  position: relative;
+}
+
+/* hide native scrollbar so custom indicator shows */
+.suggestionList::-webkit-scrollbar {
+  display: none;
+}
+
+.suggestionList {
+  scrollbar-width: none;
+}
+
+/* ═══════════════════════════════
+   Suggestion title (section label)
+   ═══════════════════════════════ */
+
+.suggestionTitle {
+  font-size: 12px;
+  font-weight: 500;
+  line-height: 20px;
+  color: var(--fg-muted);
+  padding: 12px 8px 4px;
+  margin: 0;
+}
+
+/* ═══════════════════════════════
+   Suggestion (link row)
+   ═══════════════════════════════ */
+
+.suggestion {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 8px;
+  border-radius: 6px;
+  border: none;
+  background: var(--bg-base);
+  cursor: pointer;
+  width: 100%;
+  max-width: 960px;
+  text-align: left;
+  font-family: inherit;
+  overflow: hidden;
+  transition: background var(--transition-fast);
+}
+
+.suggestion:hover,
+.suggestionActive {
+  background: var(--bg-base-hover);
+}
+
+.suggestionLabel {
+  flex: 1 0 0;
+  min-width: 0;
+  min-height: 1px;
+  font-size: 13px;
+  font-weight: 400;
+  line-height: 20px;
+  color: var(--fg-base);
+  white-space: pre-wrap;
+}
+
+.suggestionMuted .suggestionLabel {
+  color: var(--fg-muted);
+}
+
+.suggestionMuted {
+  composes: suggestion;
+}
+
+.suggestionSubText {
+  font-size: 13px;
+  font-weight: 400;
+  line-height: 20px;
+  color: var(--fg-muted);
+  flex-shrink: 0;
+}
+
+.suggestionAvatar {
+  flex-shrink: 0;
+}
+
+.suggestionImage {
+  width: 16px;
+  height: 20px;
+  border-radius: 4px;
+  flex-shrink: 0;
+  overflow: hidden;
+  position: relative;
+}
+
+.suggestionImage img {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 4px;
+}
+
+.suggestionIconWrap {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 15px;
+  height: 15px;
+  flex-shrink: 0;
+  overflow: hidden;
+  color: var(--fg-muted);
+}
+
+.suggestionIconWrap svg {
+  width: 15px;
+  height: 15px;
+}
+
+.suggestionBadge {
+  display: inline-flex;
+  align-items: center;
+  height: 18px;
+  padding: 0.5px 6.5px;
+  border-radius: 4px;
+  border: 1px solid var(--tag-neutral-border);
+  background: var(--tag-neutral-bg);
+  font-size: 12px;
+  font-weight: 500;
+  line-height: 18px;
+  color: var(--tag-neutral-text);
+  white-space: nowrap;
+  flex-shrink: 0;
+}
+
+.suggestionShortcuts {
+  display: flex;
+  gap: 5px;
+  align-items: flex-start;
+  flex-shrink: 0;
+}
+
+/* ═══════════════════════════════
+   User chat bubble
+   ═══════════════════════════════ */
+
+.bubbleWrap {
+  display: flex;
+  align-items: flex-start;
+  justify-content: flex-end;
+  padding: 8px 8px;
+  max-width: 960px;
+  overflow: hidden;
+  border-radius: 6px;
+}
+
+.bubble {
+  max-width: 400px;
+  padding: 8px 12px;
+  border-radius: 16px;
+  background: var(--tag-neutral-bg);
+  font-size: 13px;
+  font-weight: 400;
+  line-height: 1.6;
+  color: var(--fg-base);
+  flex-shrink: 0;
+}
+
+/* ═══════════════════════════════
+   AI response
+   ═══════════════════════════════ */
+
+.response {
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+  padding: 8px 20px 8px 8px;
+  border-radius: 6px;
+  background: var(--bg-base);
+  max-width: 960px;
+  overflow: hidden;
+}
+
+.responseIcon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 20px;
+  height: 20px;
+  flex-shrink: 0;
+}
+
+.responseIcon svg {
+  width: 15px;
+  height: 15px;
+}
+
+.responseContent {
+  flex: 1 0 0;
+  min-width: 0;
+  min-height: 1px;
+  display: flex;
+  flex-direction: column;
+}
+
+.responseContentWithActions {
+  composes: responseContent;
+  gap: 12px;
+}
+
+.responseText {
+  font-size: 13px;
+  font-weight: 400;
+  line-height: 20px;
+  color: var(--fg-base);
+  margin: 0;
+  width: 100%;
+  white-space: pre-wrap;
+}
+
+.responseActions {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  width: 100%;
+}
+
+.responseBadges {
+  flex: 1 0 0;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  padding-top: 2px;
+  min-width: 0;
+  min-height: 1px;
+}
+
+.responseBadge {
+  display: inline-flex;
+  align-items: center;
+  height: 18px;
+  padding: 0.5px 6.5px;
+  border-radius: 4px;
+  border: 1px solid var(--tag-neutral-border);
+  background: var(--tag-neutral-bg);
+  font-size: 12px;
+  font-weight: 500;
+  line-height: 18px;
+  color: var(--tag-neutral-text);
+  white-space: nowrap;
+  flex-shrink: 0;
+}
+
+.responseToolbar {
+  display: flex;
+  gap: 4px;
+  flex-shrink: 0;
+  align-items: flex-start;
+}
+
+.toolbarBtn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 24px;
+  height: 24px;
+  border-radius: 4px;
+  border: none;
+  background: transparent;
+  cursor: pointer;
+  padding: 0;
+  color: var(--fg-muted);
+  flex-shrink: 0;
+  overflow: hidden;
+  transition: background var(--transition-fast);
+}
+
+.toolbarBtn:hover {
+  background: var(--bg-component-hover);
+}
+
+.toolbarBtn svg {
+  width: 15px;
+  height: 15px;
+}
+
+/* ═══════════════════════════════
+   Loading indicator ("…")
+   ═══════════════════════════════ */
+
+.loading {
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+  padding: 8px 20px 8px 8px;
+}
+
+.loadingDots {
+  font-size: 13px;
+  font-weight: 400;
+  line-height: 20px;
+  color: var(--fg-muted);
+}
+
+/* ═══════════════════════════════
+   Input
+   ═══════════════════════════════ */
+
+.inputWrap {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  background: var(--bg-base);
+  flex-shrink: 0;
+  overflow: hidden;
+}
+
+.inputDivider {
+  height: 1px;
+  background: var(--border-subtle);
+  width: 100%;
+  flex-shrink: 0;
+}
+
+.inputInner {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  padding: 12px 16px;
+  max-width: 960px;
+  width: 100%;
+}
+
+.inputField {
+  width: 100%;
+  border: none;
+  background: transparent;
+  font-family: inherit;
+  font-size: 13px;
+  font-weight: 400;
+  line-height: 1.6;
+  color: var(--fg-base);
+  outline: none;
+  resize: none;
+  padding: 0;
+  min-height: 20px;
+  max-height: 250px;
+  overflow-y: auto;
+}
+
+.inputField::placeholder {
+  color: var(--fg-muted);
+}
+
+.inputSend {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  height: 28px;
+  width: 100%;
+}
+
+.sendBtn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: none;
+  background: transparent;
+  cursor: pointer;
+  padding: 0;
+  border-radius: 4px;
+  color: var(--fg-base);
+}
+
+.sendBtn svg {
+  width: 15px;
+  height: 15px;
+}
+
+.sendBtn svg path {
+  stroke: var(--bg-base);
+}
+
+/* ═══════════════════════════════
+   Footer
+   ═══════════════════════════════ */
+
+.footer {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  background: var(--bg-component);
+  flex-shrink: 0;
+}
+
+.footerDivider {
+  height: 1px;
+  background: var(--border-subtle);
+  width: 100%;
+  flex-shrink: 0;
+}
+
+.footerContent {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 12px;
+  padding: 12px 16px;
+  max-width: 960px;
+  overflow: hidden;
+}
+
+.footerNote {
+  font-size: 12px;
+  font-weight: 400;
+  line-height: 20px;
+  color: var(--fg-muted);
+  flex-shrink: 0;
+}
+
+.footerSep {
+  width: 1px;
+  height: 12px;
+  background: var(--border-subtle);
+  flex-shrink: 0;
+}
+
+.footerShortcut {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  flex-shrink: 0;
+}
+
+.footerShortcutLabel {
+  font-size: 12px;
+  font-weight: 400;
+  line-height: 20px;
+  color: var(--fg-subtle);
+  flex-shrink: 0;
+}
+
+.kbd {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  width: 16px;
+  height: 16px;
+  border-radius: 4px;
+  border: 1px solid var(--border-strong);
+  background: var(--bg-field-component);
+  font-size: 11px;
+  font-weight: 500;
+  line-height: 20px;
+  color: var(--fg-subtle);
+  text-align: center;
+  overflow: hidden;
+  flex-shrink: 0;
+}
+
+.kbdGroup {
+  display: flex;
+  gap: 5px;
+  align-items: center;
+}
+
+/* ═══════════════════════════════
+   Messages container (scrollable)
+   ═══════════════════════════════ */
+
+.messages {
+  flex: 1 0 0;
+  display: flex;
+  flex-direction: column;
+  overflow-y: auto;
+  padding: 0 8px;
+}

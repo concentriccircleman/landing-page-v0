@@ -1,0 +1,566 @@
+/* LinkedIn Notifications — Sentra Design System Test Migration
+   All values from Sentra design tokens. Zero hardcoded colors/spacing.
+   Components organized bottom-up: atoms → molecules → organisms → page. */
+
+/* ═══════════════════════════════
+   Layer 0 — Atoms
+   ═══════════════════════════════ */
+
+/* ── NEW-0001: Avatar ── */
+
+.avatar {
+  flex-shrink: 0;
+  overflow: hidden;
+  background: var(--bg-component-hover);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.avatarCircleSm {
+  composes: avatar;
+  width: 40px;
+  height: 40px;
+  border-radius: var(--radius-full);
+  box-shadow: var(--shadow-border-base);
+}
+
+.avatarCircleLg {
+  composes: avatar;
+  width: 64px;
+  height: 64px;
+  border-radius: var(--radius-full);
+  box-shadow: var(--shadow-border-base);
+}
+
+.avatarSquareSm {
+  composes: avatar;
+  width: 40px;
+  height: 40px;
+  border-radius: var(--radius-md);
+  box-shadow: var(--shadow-border-base);
+}
+
+.avatarSquareMd {
+  composes: avatar;
+  width: 48px;
+  height: 48px;
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-border-base);
+}
+
+.avatarImg {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.avatarCircleXs {
+  composes: avatar;
+  width: 20px;
+  height: 20px;
+  border-radius: var(--radius-full);
+  box-shadow: var(--shadow-border-base);
+}
+
+.avatarCircleXs .avatarInitials {
+  font-size: 9px;
+}
+
+.avatarInitials {
+  font-family: var(--font-family);
+  font-size: var(--font-size-sm);
+  font-weight: var(--font-weight-semibold);
+  color: var(--fg-subtle);
+  text-transform: uppercase;
+  user-select: none;
+}
+
+/* ── NEW-0002: ActionButton ── */
+
+.actionBtn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  height: 28px;
+  padding: 0 var(--space-3);
+  border-radius: var(--radius-sm);
+  background: var(--button-neutral);
+  color: var(--fg-base);
+  font-family: var(--font-family);
+  font-size: var(--font-size-sm);
+  font-weight: var(--font-weight-medium);
+  line-height: var(--leading-sm);
+  border: none;
+  cursor: pointer;
+  box-shadow: var(--shadow-button-neutral);
+  white-space: nowrap;
+  transition: background var(--transition-fast);
+  align-self: flex-start;
+}
+
+.actionBtn:hover {
+  background: var(--bg-base-hover);
+}
+
+.actionBtn:active {
+  background: var(--bg-base-pressed);
+}
+
+/* ── NEW-0003: TabItem ── */
+
+.tabItem {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 48px;
+  padding: 0 var(--space-5);
+  font-family: var(--font-family);
+  font-size: var(--font-size-base);
+  font-weight: var(--font-weight-medium);
+  color: var(--fg-muted);
+  background: none;
+  border: none;
+  cursor: pointer;
+  position: relative;
+  transition: color var(--transition-fast);
+}
+
+.tabItem:hover {
+  color: var(--fg-subtle);
+}
+
+.tabItemActive {
+  composes: tabItem;
+  color: var(--fg-base);
+}
+
+.tabItemActive::after {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: var(--space-5);
+  right: var(--space-5);
+  height: 2px;
+  background: var(--fg-base);
+  border-radius: 1px;
+}
+
+/* ── NEW-0004: OverflowButton ── */
+
+.overflowBtn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 28px;
+  height: 28px;
+  border-radius: var(--radius-sm);
+  background: none;
+  border: none;
+  cursor: pointer;
+  color: var(--fg-muted);
+  flex-shrink: 0;
+  transition: background var(--transition-fast), color var(--transition-fast);
+}
+
+.overflowBtn:hover {
+  background: var(--bg-base-hover);
+  color: var(--fg-subtle);
+}
+
+/* ── NEW-0005: NewNotificationsBanner ── */
+
+.newNotifBannerWrap {
+  position: absolute;
+  top: var(--space-2);
+  left: 0;
+  right: 0;
+  z-index: 10;
+  display: flex;
+  justify-content: center;
+  pointer-events: none;
+}
+
+.newNotifBanner {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-1-5);
+  padding: var(--space-1-5) var(--space-4);
+  background: var(--button-brand);
+  color: var(--fg-on-color);
+  font-family: var(--font-family);
+  font-size: var(--font-size-xs);
+  font-weight: var(--font-weight-semibold);
+  line-height: 1;
+  border: none;
+  border-radius: var(--radius-full);
+  cursor: pointer;
+  pointer-events: auto;
+  box-shadow:
+    0 2px 8px var(--focus-ring-brand),
+    0 0 0 1px var(--focus-ring-brand);
+  transition: transform var(--transition-fast), box-shadow var(--transition-fast);
+}
+
+.newNotifBanner:hover {
+  transform: translateY(-1px);
+  box-shadow:
+    0 4px 12px var(--focus-ring-brand),
+    0 0 0 1px var(--focus-ring-brand);
+}
+
+/* ── Timestamp (inline atom, no SKU — used inside NotificationItem) ── */
+
+.timestamp {
+  font-family: var(--font-family);
+  font-size: var(--font-size-xs);
+  font-weight: var(--font-weight-normal);
+  color: var(--fg-muted);
+  white-space: nowrap;
+  flex-shrink: 0;
+}
+
+/* ═══════════════════════════════
+   Layer 1 — Molecules
+   ═══════════════════════════════ */
+
+/* ── NEW-0006: NotificationItem ── */
+
+.notifItem {
+  display: flex;
+  align-items: flex-start;
+  gap: var(--space-4);
+  padding: var(--space-4);
+  background: var(--bg-base);
+  border-bottom: 1px solid var(--border-subtle);
+  transition: background var(--transition-fast);
+  cursor: pointer;
+}
+
+.notifItem:hover {
+  background: var(--bg-base-hover);
+}
+
+.notifItemUnread {
+  composes: notifItem;
+  background: var(--system-info-bg);
+}
+
+.notifItemUnread:hover {
+  background: var(--bg-base-hover);
+}
+
+.notifBody {
+  flex: 1;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-2);
+}
+
+.notifText {
+  font-family: var(--font-family);
+  font-size: var(--font-size-sm);
+  font-weight: var(--font-weight-normal);
+  line-height: 1.5;
+  color: var(--fg-subtle);
+  margin: 0;
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+.notifTextBold {
+  font-weight: var(--font-weight-semibold);
+  color: var(--fg-base);
+}
+
+.notifMeta {
+  display: flex;
+  align-items: center;
+  gap: var(--space-1);
+}
+
+.notifMetaDetail {
+  font-family: var(--font-family);
+  font-size: var(--font-size-xs);
+  font-weight: var(--font-weight-normal);
+  color: var(--fg-muted);
+}
+
+.notifRight {
+  display: flex;
+  align-items: flex-start;
+  gap: var(--space-1);
+  flex-shrink: 0;
+  padding-top: var(--space-0-5);
+}
+
+/* ── NEW-0007: TabBar ── */
+
+.tabBar {
+  display: flex;
+  align-items: stretch;
+  border-bottom: 1px solid var(--border-subtle);
+  background: var(--bg-base);
+  padding: 0 var(--space-3);
+}
+
+/* ═══════════════════════════════
+   Layer 2 — Organisms
+   ═══════════════════════════════ */
+
+/* ── NEW-0008: NotificationFeed ── */
+
+.notifFeed {
+  display: flex;
+  flex-direction: column;
+  background: var(--bg-base);
+  border: 1px solid var(--border-base);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-card);
+  overflow: hidden;
+  min-width: 0;
+  flex: 1;
+  position: relative;
+}
+
+.notifFeedBody {
+  position: relative;
+  overflow: hidden;
+}
+
+.notifFeedList {
+  display: flex;
+  flex-direction: column;
+}
+
+.notifFeedList > :last-child {
+  border-bottom: none;
+}
+
+/* ── NEW-0009: ProfileSidebar ── */
+
+.profileSidebar {
+  width: 224px;
+  flex-shrink: 0;
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-3);
+  background: var(--bg-base);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-card);
+  padding: var(--space-6) var(--space-5);
+  align-items: center;
+  text-align: center;
+  position: sticky;
+  top: var(--space-6);
+  align-self: flex-start;
+}
+
+.profileName {
+  font-family: var(--font-family-display);
+  font-size: var(--font-size-md);
+  font-weight: var(--font-weight-semibold);
+  line-height: 1.3;
+  color: var(--fg-base);
+  margin: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--space-1);
+}
+
+.verifiedBadge {
+  display: inline-flex;
+  color: var(--button-brand);
+}
+
+.profileHeadline {
+  font-family: var(--font-family);
+  font-size: var(--font-size-xs);
+  font-weight: var(--font-weight-normal);
+  color: var(--fg-muted);
+  margin: var(--space-1) 0 0;
+  line-height: 1.5;
+}
+
+.profileLocation {
+  font-family: var(--font-family);
+  font-size: var(--font-size-xs);
+  font-weight: var(--font-weight-normal);
+  color: var(--fg-disabled);
+  margin: var(--space-0-5) 0 0;
+}
+
+.profileDivider {
+  width: 100%;
+  height: 1px;
+  background: var(--border-subtle);
+}
+
+.profileLink {
+  font-family: var(--font-family);
+  font-size: var(--font-size-sm);
+  font-weight: var(--font-weight-medium);
+  color: var(--fg-subtle);
+  text-decoration: none;
+  cursor: pointer;
+  transition: color var(--transition-fast);
+}
+
+.profileLink:hover {
+  color: var(--fg-base);
+}
+
+/* ── NEW-0010: PromotedCard ── */
+
+.promotedCard {
+  width: 300px;
+  flex-shrink: 0;
+  display: flex;
+  flex-direction: column;
+  background: var(--bg-base);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-card);
+  overflow: hidden;
+  position: sticky;
+  top: var(--space-6);
+  align-self: flex-start;
+}
+
+.promotedLabel {
+  font-family: var(--font-family);
+  font-size: var(--font-size-xs);
+  font-weight: var(--font-weight-normal);
+  color: var(--fg-disabled);
+  padding: var(--space-2) var(--space-5) 0;
+  text-align: right;
+}
+
+.promotedBody {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--space-4);
+  padding: var(--space-2) var(--space-5) var(--space-5);
+  text-align: center;
+}
+
+.promotedName {
+  font-family: var(--font-family-display);
+  font-size: var(--font-size-base);
+  font-weight: var(--font-weight-semibold);
+  color: var(--fg-base);
+  margin: 0;
+}
+
+.promotedDesc {
+  font-family: var(--font-family);
+  font-size: var(--font-size-sm);
+  font-weight: var(--font-weight-normal);
+  color: var(--fg-muted);
+  margin: 0;
+  line-height: 1.5;
+}
+
+.promotedFollowers {
+  display: flex;
+  align-items: center;
+  gap: var(--space-2);
+  font-family: var(--font-family);
+  font-size: var(--font-size-xs);
+  font-weight: var(--font-weight-normal);
+  color: var(--fg-muted);
+}
+
+.followBtn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  height: 36px;
+  padding: 0 var(--space-8);
+  border-radius: var(--radius-full);
+  background: var(--button-neutral);
+  color: var(--fg-base);
+  font-family: var(--font-family);
+  font-size: var(--font-size-sm);
+  font-weight: var(--font-weight-semibold);
+  border: none;
+  cursor: pointer;
+  box-shadow: var(--shadow-button-neutral);
+  white-space: nowrap;
+  transition: background var(--transition-fast);
+}
+
+.followBtn:hover {
+  background: var(--bg-base-hover);
+}
+
+.promotedFooter {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-1) var(--space-3);
+  justify-content: center;
+  padding: var(--space-4) var(--space-5);
+  border-top: 1px solid var(--border-subtle);
+}
+
+.promotedFooterLink {
+  font-family: var(--font-family);
+  font-size: var(--font-size-xs);
+  font-weight: var(--font-weight-normal);
+  color: var(--fg-muted);
+  text-decoration: none;
+  cursor: pointer;
+  transition: color var(--transition-fast);
+}
+
+.promotedFooterLink:hover {
+  color: var(--fg-subtle);
+}
+
+/* ═══════════════════════════════
+   Layer 3 — Page
+   ═══════════════════════════════ */
+
+/* ── NEW-0011: NotificationsPage ── */
+
+.page {
+  display: flex;
+  gap: var(--space-6);
+  max-width: 1128px;
+  margin: 0 auto;
+  padding: var(--space-6);
+  min-height: 100%;
+  font-family: var(--font-family);
+  background: var(--bg-subtle);
+  align-items: flex-start;
+}
+
+.pageCenter {
+  flex: 1;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+}
+
+/* ── Scrollbar styling for feed ── */
+
+.notifFeedList::-webkit-scrollbar {
+  width: 6px;
+}
+
+.notifFeedList::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.notifFeedList::-webkit-scrollbar-thumb {
+  background: var(--border-base);
+  border-radius: 3px;
+}
+
+.notifFeedList::-webkit-scrollbar-thumb:hover {
+  background: var(--fg-muted);
+}

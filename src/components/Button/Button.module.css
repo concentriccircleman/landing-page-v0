@@ -1,0 +1,249 @@
+/* Button — Sentra Design System
+   Variants: primary (brand), secondary (neutral/outline), destructive, ghost, text, link
+   Sizes: sm (24px), default, lg, icon (24px square), icon-sm, icon-lg
+   DL-0008: Brand is --button-brand (#2563eb)
+   DL-0012: sm = 24px height, default = auto with 6px/10px padding */
+
+.button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--space-1-5);
+  white-space: nowrap;
+  font-family: var(--font-family);
+  font-size: var(--font-size-sm);
+  font-weight: var(--font-weight-medium);
+  line-height: var(--leading-sm);
+  border: none;
+  cursor: pointer;
+  outline: none;
+  text-decoration: none;
+  user-select: none;
+  transition: background var(--transition-fast),
+    color var(--transition-fast),
+    box-shadow 150ms ease,
+    opacity var(--transition-fast),
+    filter var(--transition-fast),
+    transform 80ms ease;
+}
+
+.button:active:not(:disabled) {
+  transform: scale(0.97);
+}
+
+.button:disabled,
+.button[aria-disabled="true"] {
+  opacity: 0.5;
+  pointer-events: none;
+  cursor: not-allowed;
+}
+
+.button:focus-visible {
+  box-shadow: 0 0 0 3px var(--focus-ring-brand);
+}
+
+.button svg {
+  pointer-events: none;
+  flex-shrink: 0;
+}
+
+/* ── Variants ── */
+
+.primary {
+  background: var(--button-brand);
+  color: var(--fg-on-color);
+  border-radius: var(--radius-sm);
+  box-shadow: var(--shadow-button-primary), var(--shadow-button-primary-inset);
+}
+
+.primary:hover:not(:disabled) {
+  filter: brightness(1.1);
+  box-shadow: var(--shadow-button-primary), var(--shadow-button-primary-inset), 0 0 0 3px var(--focus-ring-brand);
+}
+
+.primary:active:not(:disabled) {
+  filter: brightness(0.95);
+}
+
+.secondary {
+  background: var(--button-neutral);
+  color: var(--fg-base);
+  border-radius: var(--radius-sm);
+  box-shadow: var(--shadow-button-neutral);
+}
+
+.secondary:hover:not(:disabled) {
+  background: var(--bg-base-hover);
+}
+
+.secondary:active:not(:disabled) {
+  background: var(--bg-base-pressed);
+}
+
+.destructive {
+  background: var(--fg-error);
+  color: var(--fg-on-color);
+  border-radius: var(--radius-sm);
+  box-shadow: 0 0 0 1px var(--fg-error), var(--shadow-sm);
+}
+
+.destructive:hover:not(:disabled) {
+  filter: brightness(1.1);
+}
+
+.ghost {
+  background: transparent;
+  color: var(--fg-subtle);
+  border-radius: var(--radius-sm);
+}
+
+.ghost:hover:not(:disabled) {
+  background: var(--bg-base-pressed);
+  color: var(--fg-base);
+}
+
+.ghost:active:not(:disabled) {
+  background: var(--bg-base-pressed);
+}
+
+.text {
+  background: transparent;
+  color: var(--fg-subtle);
+  border-radius: var(--radius-sm);
+  padding: 0;
+}
+
+.text:hover:not(:disabled) {
+  color: var(--fg-base);
+}
+
+.link {
+  background: transparent;
+  color: var(--fg-info);
+  border-radius: var(--radius-sm);
+  padding: 0;
+  text-decoration: underline;
+  text-underline-offset: 2px;
+}
+
+.link:hover:not(:disabled) {
+  filter: brightness(1.15);
+}
+
+.linkDestructive {
+  background: transparent;
+  color: var(--fg-error);
+  border-radius: var(--radius-sm);
+  padding: 0;
+  text-decoration: underline;
+  text-underline-offset: 2px;
+}
+
+.linkDestructive:hover:not(:disabled) {
+  filter: brightness(1.15);
+}
+
+/* ── Sizes ── */
+
+.sizeSm {
+  height: 24px;
+  padding: 0 var(--space-2-5);
+}
+
+.sizeSm svg {
+  width: 14px;
+  height: 14px;
+}
+
+.sizeDefault {
+  padding: var(--space-1-5) var(--space-3);
+}
+
+.sizeDefault svg {
+  width: 16px;
+  height: 16px;
+}
+
+.sizeLg {
+  height: 36px;
+  padding: 0 var(--space-4);
+  font-size: var(--font-size-base);
+}
+
+.sizeLg svg {
+  width: 16px;
+  height: 16px;
+}
+
+.sizeIcon {
+  width: 24px;
+  height: 24px;
+  padding: 0;
+}
+
+.sizeIcon svg {
+  width: 16px;
+  height: 16px;
+}
+
+.sizeIconSm {
+  width: 20px;
+  height: 20px;
+  padding: 0;
+}
+
+.sizeIconSm svg {
+  width: 14px;
+  height: 14px;
+}
+
+.sizeIconLg {
+  width: 32px;
+  height: 32px;
+  padding: 0;
+}
+
+.sizeIconLg svg {
+  width: 18px;
+  height: 18px;
+}
+
+.sizeText {
+  padding: 0;
+  height: auto;
+}
+
+/* ── Loading ── */
+
+.loading {
+  position: relative;
+}
+
+.loading > *:not(.spinner) {
+  visibility: hidden;
+}
+
+.spinner {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.spinnerIcon {
+  width: 14px;
+  height: 14px;
+  animation: spin 600ms linear infinite;
+  color: currentColor;
+}
+
+@keyframes spin {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+
+/* Dark mode: invert brightness direction for active states */
+:global([data-theme="dark"]) .primary:active:not(:disabled) {
+  filter: brightness(1.15);
+}

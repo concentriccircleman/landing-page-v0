@@ -1,0 +1,186 @@
+/* ══════════════════════════════════════════════════════════
+   Project Sage — Tab shell styles
+   ══════════════════════════════════════════════════════════ */
+
+.root {
+  display: flex;
+  height: calc(100vh - 45px);
+  min-height: 500px;
+  overflow: hidden;
+  font-family: var(--font-family);
+}
+
+/* ── Sidebar ── */
+
+.sidebar {
+  width: 250px;
+  flex-shrink: 0;
+  display: flex;
+  flex-direction: column;
+  background: var(--bg-subtle);
+  border-right: 1px solid var(--border-subtle);
+  overflow-y: auto;
+}
+
+.sidebarHeader {
+  padding: var(--space-4);
+}
+
+.startBtn {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--space-2);
+  height: 36px;
+  border-radius: var(--radius-sm);
+  border: none;
+  background: var(--button-brand);
+  color: var(--fg-on-color);
+  font-size: var(--font-size-sm);
+  font-weight: var(--font-weight-semibold);
+  font-family: var(--font-family);
+  cursor: pointer;
+  box-shadow: var(--shadow-button-primary);
+  transition: background var(--transition-fast);
+}
+
+.startBtn:hover {
+  background: var(--brand-800);
+}
+
+.sidebarNav {
+  padding: 0 var(--space-2) var(--space-4);
+  flex: 1;
+}
+
+.sectionLabel {
+  font-size: 10px;
+  font-weight: var(--font-weight-semibold);
+  color: var(--fg-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  padding: var(--space-3) var(--space-2) var(--space-1);
+}
+
+.stateItem {
+  display: flex;
+  align-items: center;
+  gap: var(--space-2);
+  width: 100%;
+  padding: var(--space-1-5) var(--space-2);
+  border-radius: var(--radius-sm);
+  border: none;
+  background: none;
+  color: var(--fg-base);
+  font-size: var(--font-size-sm);
+  font-family: var(--font-family);
+  cursor: pointer;
+  text-align: left;
+  transition: background var(--transition-fast), color var(--transition-fast);
+}
+
+.stateItem:hover {
+  background: var(--bg-component-hover);
+}
+
+.stateItemActive {
+  composes: stateItem;
+  background: var(--bg-info-subtle);
+  color: var(--fg-info);
+  font-weight: var(--font-weight-medium);
+}
+
+.stateItemDot {
+  width: 6px;
+  height: 6px;
+  border-radius: var(--radius-full);
+  background: currentColor;
+  opacity: 0.5;
+  flex-shrink: 0;
+}
+
+/* ── Toggle ── */
+
+.toggleSection {
+  padding-bottom: var(--space-2);
+  margin-bottom: var(--space-1);
+  border-bottom: 1px solid var(--border-subtle);
+}
+
+.toggleRow {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: var(--space-1-5) var(--space-2);
+  border-radius: var(--radius-sm);
+  cursor: pointer;
+  transition: background var(--transition-fast);
+}
+
+.toggleRow:hover {
+  background: var(--bg-component-hover);
+}
+
+.toggleRowDisabled {
+  opacity: 0.45;
+  cursor: default;
+  pointer-events: none;
+}
+
+.toggleLabel {
+  font-size: var(--font-size-sm);
+  color: var(--fg-base);
+  font-family: var(--font-family);
+}
+
+.toggleSwitch {
+  position: relative;
+  width: 34px;
+  height: 20px;
+  border-radius: 10px;
+  border: none;
+  background: var(--bg-base-pressed);
+  cursor: pointer;
+  padding: 0;
+  transition: background 200ms ease;
+  flex-shrink: 0;
+}
+
+.toggleSwitchOn {
+  background: var(--button-brand);
+}
+
+.toggleKnob {
+  position: absolute;
+  top: 2px;
+  left: 2px;
+  width: 16px;
+  height: 16px;
+  border-radius: var(--radius-full);
+  background: var(--bg-base);
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.2);
+  transition: transform 200ms ease;
+}
+
+.toggleSwitchOn .toggleKnob {
+  transform: translateX(14px);
+}
+
+/* ── Canvas ── */
+
+.canvas {
+  flex: 1;
+  position: relative;
+  overflow: hidden;
+  background: var(--bg-shell);
+  padding: var(--space-3);
+}
+
+.canvasInner {
+  width: 100%;
+  height: 100%;
+  position: relative;
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+}

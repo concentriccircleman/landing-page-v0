@@ -1,0 +1,142 @@
+/* MediaPlayer — Design System
+   Uses: --fg-base, --fg-muted, --bg-base, --bg-base-pressed, --border-subtle,
+   --button-brand, --radius-sm, --radius-md, --radius-full, --space-*,
+   --font-size-sm, --font-size-xs, --font-weight-medium */
+
+.root {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-2);
+  padding: var(--space-3);
+  background: var(--bg-base);
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-md);
+}
+
+.video {
+  width: 100%;
+  border-radius: var(--radius-sm);
+  background: black;
+}
+
+.video video {
+  width: 100%;
+  display: block;
+  border-radius: var(--radius-sm);
+}
+
+.controls {
+  display: flex;
+  align-items: center;
+  gap: var(--space-2);
+}
+
+.playBtn {
+  width: 32px;
+  height: 32px;
+  border-radius: var(--radius-full);
+  background: var(--button-brand);
+  border: none;
+  color: var(--fg-on-color);
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  transition: opacity var(--transition-fast);
+}
+
+.playBtn:hover {
+  opacity: 0.85;
+}
+
+.playBtn:focus-visible {
+  outline: none;
+  box-shadow: var(--shadow-focus-ring);
+}
+
+.progressTrack {
+  flex: 1;
+  height: 4px;
+  background: var(--bg-base-pressed);
+  border-radius: var(--radius-full);
+  cursor: pointer;
+  position: relative;
+}
+
+.progressFill {
+  height: 100%;
+  background: var(--button-brand);
+  border-radius: var(--radius-full);
+  position: absolute;
+  top: 0;
+  left: 0;
+  transition: width 50ms linear;
+}
+
+.time {
+  font-size: 11px;
+  font-family: var(--font-family-mono);
+  color: var(--fg-muted);
+  white-space: nowrap;
+  min-width: 72px;
+  text-align: center;
+}
+
+.meta {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.title {
+  font-size: var(--font-size-sm);
+  font-weight: var(--font-weight-medium);
+  color: var(--fg-base);
+}
+
+.artist {
+  font-size: var(--font-size-xs);
+  color: var(--fg-muted);
+}
+
+.volumeControl {
+  display: flex;
+  align-items: center;
+  gap: var(--space-1);
+}
+
+.volumeBtn {
+  width: 24px;
+  height: 24px;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  color: var(--fg-muted);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.volumeBtn:hover {
+  color: var(--fg-base);
+}
+
+.volumeTrack {
+  width: 60px;
+  height: 4px;
+  background: var(--bg-base-pressed);
+  border-radius: var(--radius-full);
+  cursor: pointer;
+  position: relative;
+}
+
+.volumeFill {
+  height: 100%;
+  background: var(--button-brand);
+  border-radius: var(--radius-full);
+  position: absolute;
+  top: 0;
+  left: 0;
+}

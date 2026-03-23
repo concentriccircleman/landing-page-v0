@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Sentra</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@100..800&display=swap" rel="stylesheet">
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    height: 100dvh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: #f6f6f6;
+    font-family: "JetBrains Mono", monospace;
+    -webkit-font-smoothing: antialiased;
+    overflow: hidden;
+  }
+
+  .terminal {
+    font-size: clamp(1.25rem, 2.8vw, 2.3rem);
+    font-weight: 200;
+    color: #1a1a1a;
+    letter-spacing: -0.01em;
+    white-space: nowrap;
+    text-transform: uppercase;
+  }
+
+  .cursor {
+    display: inline-block;
+    width: 0.6em;
+    height: 1.2em;
+    background: #1a1a1a;
+    vertical-align: text-bottom;
+    margin-left: 1px;
+    animation: blink 900ms step-end infinite;
+  }
+
+  @keyframes blink {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0; }
+  }
+</style>
+</head>
+<body>
+  <div class="terminal">
+    <span id="text"></span><span id="cursor" class="cursor"></span>
+  </div>
+
+<script>
+(function () {
+  var el = document.getElementById("text");
+
+  var TYPE_SPEED = 70;
+  var DELETE_SPEED = 40;
+  var PAUSE_AFTER_TYPE = 800;
+  var PAUSE_AFTER_DELETE = 300;
+
+  var sequence = [
+    { text: "memory", action: "type-then-delete" },
+    { text: "Sentra collapses workflows.", action: "type-and-stay" },
+  ];
+
+  var current = "";
+
+  function sleep(ms) {
+    return new Promise(function (r) { setTimeout(r, ms); });
+  }
+
+  function humanDelay(base) {
+    var variance = base * 0.6;
+    var delay = base + (Math.random() * variance * 2 - variance);
+    if (Math.random() < 0.12) delay += base * 1.5;
+    if (Math.random() < 0.06) delay += base * 2.5;
+    return Math.max(25, delay);
+  }
+
+  async function typeText(str) {
+    for (var i = 0; i < str.length; i++) {
+      current += str[i];
+      el.textContent = current;
+      var isSpace = str[i] === " ";
+      await sleep(humanDelay(isSpace ? TYPE_SPEED * 1.3 : TYPE_SPEED));
+    }
+  }
+
+  async function deleteText() {
+    while (current.length > 0) {
+      current = current.slice(0, -1);
+      el.textContent = current;
+      await sleep(DELETE_SPEED);
+    }
+  }
+
+  async function run() {
+    await sleep(600);
+    for (var j = 0; j < sequence.length; j++) {
+      var step = sequence[j];
+      await typeText(step.text);
+      if (step.action === "type-then-delete") {
+        await sleep(PAUSE_AFTER_TYPE);
+        await deleteText();
+        await sleep(PAUSE_AFTER_DELETE);
+      }
+    }
+  }
+
+  run();
+})();
+</script>
+</body>
+</html>

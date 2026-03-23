@@ -1,0 +1,186 @@
+.menubar {
+  display: inline-flex;
+  align-items: center;
+  gap: 0;
+  position: relative;
+  padding: var(--space-0-5);
+  background: var(--bg-subtle);
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-md);
+}
+
+.menuWrapper {
+  position: relative;
+}
+
+.trigger {
+  height: 28px;
+  padding: 0 var(--space-2);
+  font-size: var(--font-size-sm);
+  font-weight: var(--font-weight-medium);
+  color: var(--fg-base);
+  background: transparent;
+  border: none;
+  border-radius: var(--radius-sm);
+  cursor: pointer;
+  font-family: var(--font-family);
+  transition: background var(--transition-fast);
+}
+
+.trigger:hover,
+.triggerActive {
+  background: var(--bg-base-pressed);
+}
+
+.trigger:focus-visible {
+  outline: 2px solid var(--fg-base);
+  outline-offset: 2px;
+}
+
+.content {
+  position: absolute;
+  top: calc(100% + 4px);
+  left: 0;
+  min-width: 180px;
+  background: var(--bg-base);
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-md);
+  box-shadow: var(--shadow-flyout);
+  padding: var(--space-1);
+  z-index: 50;
+  animation: fadeIn 150ms ease;
+}
+
+.item {
+  display: flex;
+  align-items: center;
+  gap: var(--space-2);
+  padding: var(--space-1-5) var(--space-2);
+  font-size: var(--font-size-sm);
+  color: var(--fg-base);
+  border-radius: var(--radius-sm);
+  cursor: pointer;
+  user-select: none;
+  font-family: var(--font-family);
+  transition: background var(--transition-fast);
+}
+
+.item:hover:not(.itemDisabled) {
+  background: var(--bg-base-pressed);
+}
+
+.item:focus-visible {
+  outline: 2px solid var(--fg-base);
+  outline-offset: -2px;
+}
+
+.itemDestructive {
+  color: var(--fg-error);
+}
+
+.itemDestructive:hover:not(.itemDisabled) {
+  background: var(--bg-error-subtle);
+}
+
+.itemDisabled {
+  opacity: 0.5;
+  pointer-events: none;
+  cursor: not-allowed;
+}
+
+.separator {
+  height: 1px;
+  background: var(--border-subtle);
+  margin: var(--space-1) 0;
+}
+
+.label {
+  padding: var(--space-1) var(--space-2);
+  font-size: 10px;
+  font-weight: var(--font-weight-semibold);
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: var(--fg-disabled);
+  font-family: var(--font-family);
+}
+
+.shortcut {
+  margin-left: auto;
+  font-size: var(--font-size-xs);
+  color: var(--fg-disabled);
+  font-family: var(--font-family-mono);
+}
+
+.checkIcon,
+.radioIcon,
+.checkSlot {
+  width: 14px;
+  height: 14px;
+  flex-shrink: 0;
+}
+
+.checkSlot {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.subContent {
+  position: absolute;
+  top: 0;
+  left: 100%;
+  margin-left: var(--space-1);
+  min-width: 180px;
+  background: var(--bg-base);
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-md);
+  box-shadow: var(--shadow-flyout);
+  padding: var(--space-1);
+  z-index: 51;
+  animation: fadeIn 150ms ease;
+}
+
+.subTrigger {
+  display: flex;
+  align-items: center;
+  gap: var(--space-2);
+  padding: var(--space-1-5) var(--space-2);
+  font-size: var(--font-size-sm);
+  color: var(--fg-base);
+  border-radius: var(--radius-sm);
+  cursor: pointer;
+  user-select: none;
+  font-family: var(--font-family);
+  width: 100%;
+  border: none;
+  background: transparent;
+  text-align: left;
+  transition: background var(--transition-fast);
+}
+
+.subTrigger:hover:not(.itemDisabled) {
+  background: var(--bg-base-pressed);
+}
+
+.subTrigger:focus-visible {
+  outline: 2px solid var(--fg-base);
+  outline-offset: -2px;
+}
+
+.subTriggerIcon {
+  margin-left: auto;
+  width: 12px;
+  height: 12px;
+  flex-shrink: 0;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(-4px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}

@@ -1,0 +1,22 @@
+.track {
+  position: relative;
+  width: 100%;
+  height: var(--space-2);
+  overflow: hidden;
+  border-radius: var(--radius-full);
+  background: var(--bg-base-pressed);
+}
+
+.indicator {
+  height: 100%;
+  border-radius: var(--radius-full);
+  transition: width var(--transition-normal);
+}
+
+.default {
+  background: var(--fg-base);
+}
+
+.brand {
+  background: var(--button-brand);
+}

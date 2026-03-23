@@ -1,0 +1,62 @@
+/* Card — Sentra Design System
+   DL-0002: Card inner padding is 12px (--space-3)
+   DL-0007: radius-lg (8px) for cards */
+
+.card {
+  background: var(--bg-base);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-card);
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  font-family: var(--font-family);
+  transition: box-shadow var(--transition-fast);
+}
+
+.card:hover {
+  box-shadow: var(--shadow-md);
+}
+
+.header {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-1);
+  padding: var(--space-3) var(--space-4);
+  border-bottom: 1px solid var(--border-subtle);
+}
+
+.title {
+  font-family: var(--font-family);
+  font-size: var(--font-size-sm);
+  font-weight: var(--font-weight-semibold);
+  color: var(--fg-base);
+  line-height: var(--leading-sm);
+  margin: 0;
+}
+
+.description {
+  font-family: var(--font-family);
+  font-size: var(--font-size-sm);
+  font-weight: var(--font-weight-normal);
+  color: var(--fg-muted);
+  line-height: 1.4;
+  margin: 0;
+}
+
+.content {
+  padding: var(--space-4);
+}
+
+.footer {
+  display: flex;
+  align-items: center;
+  padding: var(--space-3) var(--space-4);
+  gap: var(--space-2);
+  background: var(--bg-subtle);
+  border-top: 1px solid var(--border-subtle);
+}
+
+.divider {
+  height: 1px;
+  background: var(--border-subtle);
+}

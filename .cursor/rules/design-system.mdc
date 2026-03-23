@@ -1,0 +1,1637 @@
+---
+description: Design system conventions for the Sentra component library. Built and designed by Shaurya Narang. Follow these rules when creating or modifying components.
+globs: src/**/*.{ts,tsx,css}
+---
+
+# Sentra Design System Rules
+
+> **Sentra** — built and designed by **Shaurya Narang**. Use "Sentra" for all product references,
+> branding, workspace names, and placeholder content.
+
+## Token Definitions
+
+- **CSS custom properties** are the canonical source of truth, defined in `src/tokens/globals.css`.
+- **TypeScript mirrors** live in `src/tokens/index.ts` for programmatic access.
+- Always use token variables (e.g., `var(--fg-base)`) — never raw hex values in component styles.
+- Token names follow these conventions:
+  - **Semantic foregrounds**: `--fg-{base|subtle|muted|disabled|on-color}` — use these for all text/icon colors.
+  - **Semantic backgrounds**: `--bg-{base|subtle|base-pressed}` — use these for surfaces.
+  - **Semantic borders**: `--border-{subtle|base}` — use these for lines and outlines.
+  - **Brand**: `--button-brand`, `--brand-green-800` — primary CTA colors.
+  - **Spacing**: `--space-{0|px|0-5|1|1-5|2|2-5|3|4|5|6|8|10|12}`.
+  - **Radii**: `--radius-{sm|md|lg|xl|full}` — `sm` (4px) for buttons/tabs, `md` (6px) for headers, `lg` (8px) for cards/drawers.
+  - **Elevation**: `--shadow-card`, `--shadow-button-neutral`, `--shadow-button-primary`.
+
+### Figma-to-Token Mapping
+
+| Figma Variable                 | CSS Custom Property     | Value      |
+|-------------------------------|-------------------------|------------|
+| `foregrounds/fg-base`         | `--fg-base`             | `#18181b`  |
+| `foregrounds/fg-subtle`       | `--fg-subtle`           | `#52525b`  |
+| `foregrounds/fg-muted`        | `--fg-muted`            | `#71717a`  |
+| `foregrounds/fg-disabled`     | `--fg-disabled`         | `#a1a1aa`  |
+| `foregrounds/fg-on-color`     | `--fg-on-color`         | `#ffffff`  |
+| `backgrounds/bg-base`         | `--bg-base`             | `#ffffff`  |
+| `backgrounds/bg-subtle`       | `--bg-subtle`           | `#fafafa`  |
+| `backgrounds/bg-base-pressed` | `--bg-base-pressed`     | `#efeff0`  |
+| `borders/border-subtle`       | `--border-subtle`       | `#efeff0`  |
+| `borders/border-base`         | `--border-base`         | `#e4e4e7`  |
+| `buttons/button-brand`        | `--button-brand`        | `#235524`  |
+| `buttons/button-neutral`      | `--button-neutral`      | `#ffffff`  |
+| `brand-green/800`             | `--brand-green-800`     | `#0d330d`  |
+
+### Typography Rules
+
+- **Primary UI text**: `font-family: var(--font-family)` (Inter Medium), `font-size: var(--font-size-sm)` (13px), `font-weight: var(--font-weight-medium)` (500), `line-height: var(--leading-sm)` (16px).
+- **Display/headings**: `font-family: var(--font-family-display)` (Inter Display SemiBold), `font-size: var(--font-size-lg)` (17px).
+- All UI text in the sidebar, top bar, tables, buttons uses the primary UI text style (13px/medium).
+
+## Component Architecture
+
+- **One folder per component** at `src/components/{ComponentName}/`.
+- Each folder contains:
+  - `{ComponentName}.tsx` — the React component
+  - `{ComponentName}.module.css` — CSS Module styles
+  - `icons.tsx` — component-specific icons (if needed)
+  - `index.ts` — barrel export (re-exports the component and its types)
+- Component names are PascalCase and must match the Figma component name.
+- All components are exported from the root `src/index.ts`.
+
+## Styling Approach
+
+- Use **CSS Modules** (`*.module.css`) for component styles.
+- Reference design tokens via `var(--token-name)` — never hardcode colors, spacing, or typography values.
+- Support `dark` and `light` variants via CSS class modifiers (e.g., `.dark`, `.light`) when the Figma design has both modes.
+- Transitions use `var(--transition-fast)` or `var(--transition-normal)`.
+
+---
+
+## Two-Pass Spacing System
+
+Every component goes through **two spacing passes** during creation. Pass 1 handles how the component relates to its surroundings. Pass 2 handles how elements inside the component breathe. Both must pass before a component is considered complete.
+
+### Pass 1: General Spacing (Layout Context)
+
+General spacing governs how a component sits within a page — the whitespace *around* it that gives the layout its rhythm. These rules apply when placing components on pages or in the playground.
+
+#### Vertical Rhythm (Section Flow)
+
+| Context | Token | Value | When to use |
+|---------|-------|-------|-------------|
+| Page top padding | `--space-6` | 24px | Top of any page content area |
+| Page side padding | `--space-6` | 24px | Left/right of page content |
+| Section gap (major) | `--space-10` | 40px | Between top-level content sections on a page |
+| Section gap (within card) | `--space-8` | 32px | Between settings cards, card groups |
+| Section heading → content | `--space-4` | 16px | Below a section heading, before its first child |
+| Section heading → description → content | heading 2px desc, desc 16px content | | When section has both heading and description |
+| Card group gap | `--space-6` | 24px | Between sibling cards in a flex row |
+
+#### Horizontal Rhythm (Sibling Flow)
+
+| Context | Token | Value | When to use |
+|---------|-------|-------|-------------|
+| Tight inline siblings | `--space-2` | 8px | Buttons in a row, badges, small controls |
+| Normal inline siblings | `--space-3` to `--space-4` | 12–16px | Form fields side by side, toggle + label |
+| Spacious inline siblings | `--space-6` | 24px | Cards side by side, variant groups |
+| Column gap (split layout) | `--space-8` | 32px | Inner body ↔ Overview panel |
+
+#### Component Placement Rules
+
+- **Inputs, Selects, Textareas** default to `width: 100%` — they fill their container. The container controls the width.
+- **Cards** have no outer margin by default — use the page/section gap to space them.
+- **Buttons** in a row use `--space-2` (8px) gap.
+- **Form groups** (label + input pairs) stack with `--space-4` (16px) gap between groups.
+- **Label → input** gap within a form group is `--space-1` (4px).
+- **TopBar** provides its own internal padding (`--space-6` horizontal). No additional margin needed.
+- **Dividers** replace margin between zones — when a divider separates two zones, each zone provides its own internal padding rather than relying on margin above/below the divider.
+
+### Pass 2: Internal Spacing (Component Anatomy)
+
+Internal spacing governs how elements *within* a component are padded, gapped, and aligned. This is what makes a component feel tight and intentional vs. loose and sloppy.
+
+#### Container Padding
+
+| Component type | Padding | Token | Notes |
+|----------------|---------|-------|-------|
+| Card | 12px vertical, 16px horizontal | `--space-3` / `--space-4` | Each zone (header, content, footer) gets its own padding |
+| Dialog / Modal | 24px all sides | `--space-6` | Generous breathing room |
+| Dropdown / Menu | 4px | `--space-1` | Tight padding around item list |
+| Menu item | 6px vertical, 8px horizontal | `--space-1-5` / `--space-2` | Per-item hit area |
+| Toast | 12px | `--space-3` | Compact notification |
+| Input | 0 vertical, 8–12px horizontal | `--space-2` / `--space-3` | Height is set by size variant, horizontal padding varies |
+| Badge | 2px vertical, 8px horizontal | 2px / `--space-2` | Pill shape, tight |
+| Button | varies by size | see Button spec | sm=8px, default=6px/10px, lg=16px horizontal |
+
+#### Internal Gaps
+
+| Relationship | Gap | Token | Notes |
+|-------------|-----|-------|-------|
+| Icon ↔ text (inline) | 6px | `--space-1-5` | Button icon+label, menu item icon+label |
+| Title ↔ description | 2–4px | `--space-0-5` to `--space-1` | Card header, dialog header, form section |
+| Label ↔ input | 4px | `--space-1` | Form groups |
+| Toggle ↔ label | 8px | `--space-2` | Switch + label pairs |
+| Avatar ↔ text | 8–12px | `--space-2` to `--space-3` | Profile rows, user mentions |
+| Stacked text lines | 2px | `--space-0-5` | Name + role, title + subtitle |
+| List items (vertical) | 2–4px | `--space-0-5` to `--space-1` | Menu items, nav items, select items |
+| Checkbox/radio ↔ label | 8px | `--space-2` | Inline check + text |
+| Badge ↔ badge (inline) | 4–6px | `--space-1` to `--space-1-5` | Tag rows |
+| Footer buttons | 8px | `--space-2` | Dialog footer, card footer |
+
+#### Zone Separation
+
+Components with distinct visual zones (header, content, footer) use **border separators** instead of margin-based spacing:
+
+| Pattern | Separator | Zone padding |
+|---------|-----------|-------------|
+| Card: header / content / footer | `1px solid --border-subtle` | Each zone: `--space-3` vertical, `--space-4` horizontal |
+| Dialog: header / body / footer | No separator (margin only) | Header→footer: `--space-4` margin-top on footer |
+| Drawer: header / content / footer | `1px solid --border-subtle` | Header/footer: 16px vert, 24px horiz |
+| Settings card: title / body | `1px solid --border-subtle` | Title: 12px top, 16px sides. Body: 12px top, 16px sides |
+
+#### The 4px Grid Rule
+
+All spacing values must land on the **4px grid**. Valid values from the token scale:
+
+```
+0 → 1px → 2px → 4px → 6px → 8px → 10px → 12px → 16px → 20px → 24px → 32px → 40px → 48px
+```
+
+The only exceptions are `1px` (borders, dividers), `2px` (tight text gaps, stepper item gap), and `6px` (icon-text gap, skeleton row gap). Every other spacing value must be a multiple of 4.
+
+#### Spacing Anti-Patterns (Never Do)
+
+| Anti-pattern | Fix |
+|-------------|-----|
+| `margin: 0 0 20px` on a card | Use section gap on the parent container instead |
+| `padding: 5px 7px` on a button | Snap to 4px grid: `4px 8px` or `6px 8px` |
+| Nesting margin + padding for the same gap | Pick one: padding on the parent OR margin on the child |
+| `gap: 0` between form fields | Minimum `--space-1` (4px) between any interactive siblings |
+| Inline `style={{ margin }}` on a reusable component | Component controls its internal spacing; layout controls external spacing |
+
+### Spacing Pass Checklist (per component)
+
+Before marking any component as complete, verify:
+
+**Pass 1 (General):**
+- [ ] Component has no hardcoded outer margin (layout controls placement)
+- [ ] When placed in a page/section, the surrounding gap matches the vertical/horizontal rhythm table
+- [ ] Inputs/selects are `width: 100%` by default
+- [ ] Sibling spacing (buttons, badges, cards) uses the correct gap tier
+
+**Pass 2 (Internal):**
+- [ ] Container padding matches the component type table
+- [ ] All internal gaps use design tokens, not hardcoded px values
+- [ ] Icon-to-text gap is 6px (`--space-1-5`)
+- [ ] Title-to-description gap is 2–4px
+- [ ] Label-to-input gap is 4px (`--space-1`)
+- [ ] Zone separators use `--border-subtle` where applicable
+- [ ] All values land on the 4px grid (with noted exceptions)
+- [ ] No margin/padding nesting conflicts
+
+---
+
+## Component API Conventions
+
+- Props interfaces are always exported and named `{ComponentName}Props`.
+- Use discriminated unions for variant items (e.g., `ContextMenuEntry = ContextMenuItemDef | ContextMenuSeparatorDef`).
+- Accept an optional `className` prop on every component root for composition.
+- Use `role` attributes for accessibility (`menu`, `menuitem`, `separator`, etc.).
+
+---
+
+## Page Layout Architecture
+
+### Main Page Template (App Shell)
+
+Every page accessible from the sidebar follows this exact structure. This is documented in the Figma "Layouts / Main page" spec.
+
+```
+┌──────────────────────────────────────────────────────────┐
+│ AppShell (full viewport, bg: --bg-subtle / #fafafa)      │
+│ ┌────────────┬──────────────────────────────────────────┐│
+│ │ SidebarNav │  mainPageContainer                       ││
+│ │ (220px)    │  padding: --space-2 (8px) on 3 sides     ││
+│ │            │  (top, right, bottom — no left padding)  ││
+│ │ bg-subtle  │  ┌──────────────────────────────────────┐││
+│ │            │  │ Hover Card (white surface)            │││
+│ │ Acme ▾     │  │ bg: --bg-base / #ffffff               │││
+│ │            │  │ border: 1px solid --border-subtle      │││
+│ │ Home       │  │ radius: --radius-lg (8px)              │││
+│ │ Inbox      │  │ ┌──────────────────────────────────┐  │││
+│ │            │  │ │ TopBar (48px)                     │  │││
+│ │ Quality ▾  │  │ │ breadcrumb  [tabs]  [Create btn] │  │││
+│ │  ●Evals    │  │ ├──────────────────────────────────┤  │││
+│ │  Calibs    │  │ │ horizontal divider (1px)          │  │││
+│ │  Workflows │  │ ├──────────────────────────────────┤  │││
+│ │  Reviews   │  │ │                                   │  │││
+│ │  Alerts    │  │ │  Main body (full-width table)     │  │││
+│ │  Reports   │  │ │                                   │  │││
+│ │            │  │ └──────────────────────────────────┘  │││
+│ │ Training ▸ │  └──────────────────────────────────────┘││
+│ │ Hiring ▸   │                                          ││
+│ │            │                                          ││
+│ │ Resources ▾│                                          ││
+│ │  🟢Sims    │                                          ││
+│ │  🟣Scores  │                                          ││
+│ │  🔵Personas│                                          ││
+│ │  🟠Backend │                                          ││
+│ │            │                                          ││
+│ │ Help       │                                          ││
+│ │ Settings   │                                          ││
+│ └────────────┴──────────────────────────────────────────┘│
+└──────────────────────────────────────────────────────────┘
+```
+
+#### Layout Token Spec (from Figma "Tokens" section)
+
+| Layer          | Property          | Token / Value                        |
+|----------------|-------------------|--------------------------------------|
+| Outer body     | fill              | `--bg-subtle` (`#fafafa`)            |
+| Main body card | margin            | `--space-2` (8px) on 3 sides         |
+| Main body card | padding (optional)| `--space-6` (24px) horiz, `--space-4` (16px) vert |
+| Main body card | fill              | `--bg-base` (`#ffffff`)              |
+| Main body card | border            | `1px solid --border-subtle` (`#efeff0`) |
+| Main body card | radius            | `--radius-lg` (8px)                  |
+
+#### Rules
+
+- **Always wrap page content with `<AppShell>`** — never render a page without the sidebar.
+- The `SidebarNav` is fixed at 220px wide on the left. It receives `activeItemId` from the current route.
+- The entire app background is `--bg-subtle` (`#fafafa`). The page content floats as a `--bg-base` card on top.
+- The floating card has `border: 1px solid var(--border-subtle)`, `border-radius: var(--radius-lg)`.
+- The 8px spacing on three sides (top/right/bottom) creates the visual break between card edges and viewport.
+- The shell uses `height: 100%` and `overflow: hidden`. The inner card handles its own scrolling.
+- Page components (e.g., `InboxPage`, `EvaluationsPage`) render ONLY their own content — the sidebar AND the floating card wrapper are provided by `AppShell`.
+- **Main body** usually has a full-width table component.
+
+---
+
+### Sub Page Template
+
+Sub pages are detail views reached by clicking a row in a main page table. They share the same App Shell but have a distinct internal structure: a **split content area** with an optional overview panel.
+
+```
+┌──────────────────────────────────────────────────────────┐
+│ AppShell (same as Main Page)                             │
+│ ┌────────────┬──────────────────────────────────────────┐│
+│ │ SidebarNav │  mainPageContainer (same card shell)      ││
+│ │            │  ┌──────────────────────────────────────┐││
+│ │            │  │ TopBar (48px)                         │││
+│ │            │  │ [←] Parent > Current    [Edit]        │││
+│ │            │  ├──────────────────────────────────────┤│││
+│ │            │  │            │              │           ││
+│ │            │  │ Inner body │ vert divider │ Overview  │││
+│ │            │  │ (bg-base)  │   (1px)      │ panel     │││
+│ │            │  │            │              │ (bg-subtle)│││
+│ │            │  │ [Heading]  │              │ Key: Val  │││
+│ │            │  │ [Table]    │              │ Key: Val  │││
+│ │            │  │            │              │ ·········  │││
+│ │            │  │ [Heading]  │              │ Key: Val  │││
+│ │            │  │ [Table]    │              │           │││
+│ │            │  │            │              │           │││
+│ │            │  └──────────────────────────────────────┘││
+│ └────────────┴──────────────────────────────────────────┘│
+└──────────────────────────────────────────────────────────┘
+```
+
+#### Sub Page Token Spec
+
+| Layer          | Property    | Token / Value                                 |
+|----------------|-------------|-----------------------------------------------|
+| Outer body     | fill        | `--bg-subtle` (`#fafafa`)                     |
+| Main body card | margin      | `--space-2` (8px)                             |
+| Main body card | fill        | `--bg-base` (white)                           |
+| Main body card | border      | `1px solid --border-subtle`                   |
+| Main body card | radius      | `--radius-lg` (8px)                           |
+| Inner body     | margin      | `--space-6` horiz, `--space-4` vert           |
+| Inner body     | gap         | `--space-10` (40px) between content sections  |
+| Inner body     | fill        | `--bg-base` (white)                           |
+| Overview panel | max-width   | 320px                                         |
+| Overview panel | margin      | `--space-6` horiz, `--space-4` vert           |
+| Overview panel | gap         | `--space-3` (12px) between items              |
+| Overview panel | fill        | `--bg-subtle` (#fafafa)                       |
+
+#### Sub Page Rules
+
+- **TopBar** uses a **back button** (icon button, left chevron) + **multi-level breadcrumb** (Parent `>` Current).
+- **Action button** is **Edit** (neutral/secondary), NOT Create (primary). If no edit functionality, remove the button.
+- Content area splits into **Inner body** (left) and **Overview panel** (right), separated by a **vertical divider** (`type=fill`, 1px).
+- **Overview panel is optional**. If hidden, Inner body takes the entire width.
+- Inner body contains multiple content sections stacked vertically with `--space-10` (40px) gap. Each section has a heading and a table.
+- Overview panel displays key-value metadata (e.g., Attempts: 3, Manager: avatar, Conversations: 18). Groups are separated by a **dotted divider** (`type=dots`).
+
+---
+
+### Inner Page Template
+
+Inner pages are **form/creation views** reached via a "Create" or "Edit" action from a Main page or Sub page. They share the same App Shell but introduce a **three-column inner layout** unique to this template. Use this for pages where the user is creating or editing a resource (e.g., creating an evaluation, configuring a scorecard).
+
+```
+┌──────────────────────────────────────────────────────────┐
+│ AppShell (same as Main / Sub Page)                       │
+│ ┌────────────┬──────────────────────────────────────────┐│
+│ │ SidebarNav │  mainPageContainer (same card shell)      ││
+│ │            │  ┌──────────────────────────────────────┐││
+│ │            │  │ TopBar (48px)                         │││
+│ │            │  │ Parent > Current         [Create]     │││
+│ │            │  ├──────────────────────────────────────┤│││
+│ │            │  │          │               │           │││
+│ │            │  │ Page     │ Inner body    │ Preview   │││
+│ │            │  │ Sidebar  │ (bg-base)     │ panel     │││
+│ │            │  │ (stepper)│               │ (bg-subtle)│││
+│ │            │  │          │ [Section]     │ Key: Val  │││
+│ │            │  │ Setup  ● │ [Form group]  │ Key: Val  │││
+│ │            │  │ Filters  │ [Form group]  │ ·········  │││
+│ │            │  │ Workflows│               │ Key: Val  │││
+│ │            │  │ Testing  │ [Section]     │           │││
+│ │            │  │          │ [Form group]  │           │││
+│ │            │  │          │               │           │││
+│ │            │  └──────────────────────────────────────┘││
+│ └────────────┴──────────────────────────────────────────┘│
+└──────────────────────────────────────────────────────────┘
+```
+
+#### Inner Page Token Spec
+
+| Layer          | Property    | Token / Value                                     |
+|----------------|-------------|----------------------------------------------------|
+| Outer body     | fill        | `--bg-subtle` (`#fafafa`)                          |
+| Main body card | margin      | `--space-2` (8px) on 3 sides                       |
+| Main body card | fill        | `--bg-base` (white)                                |
+| Main body card | border      | `1px solid --border-subtle`                        |
+| Main body card | radius      | `--radius-lg` (8px)                                |
+| Page Sidebar   | fill        | `--bg-base` (white, same as main body)             |
+| Page Sidebar   | max-width   | 240px                                              |
+| Page Sidebar   | padding     | `--space-6` (24px)                                 |
+| Page Sidebar   | gap         | vertical `--space-3` (12px)                        |
+| Inner body     | max-width   | 600px                                              |
+| Inner body     | padding     | horiz `--space-8` (32px), vert `--space-6` (24px)  |
+| Inner body     | gap         | vertical `--space-10` (40px) between sections      |
+| Preview panel  | max-width   | 320px                                              |
+| Preview panel  | fill        | `--bg-subtle` (`#fafafa`)                          |
+| Preview panel  | padding     | `--space-6` (24px)                                 |
+| Preview panel  | gap         | `--space-3` (12px)                                 |
+
+#### Inner Page Rules
+
+- **TopBar** uses a **multi-level breadcrumb** (Parent `>` Current) with a **Create / Save / Update button** (primary, `size=sm`) on the right.
+- The content area has a **three-column layout** separated by **vertical dividers** (`type=fill`, 1px):
+  1. **Page Sidebar** (left, 240px max) — in-page navigation using a **stepper** component. Lists form sections (e.g., "Setup", "Filters", "Workflows", "Testing"). Optional.
+  2. **Inner body** (center, 600px max) — the primary editable area containing **form sections**. Not optional.
+  3. **Preview panel** (right, 320px max) — read-only summary of Inner body values. Uses same styling rules as the Sub Page Overview panel. Optional.
+- **Page Sidebar is NOT the global SidebarNav** — it is a secondary in-page nav inside the content card. It uses a stepper pattern (vertical list of section names with active indicator).
+- **Inner body sections** are stacked with `--space-10` (40px) gap between them. Each section has:
+  - A **section heading** (17px Inter Display SemiBold, `--fg-base`, `font-family: var(--font-family-display)`) — e.g., "Setup", "Workflows".
+  - An optional **section description** (13px Inter, `--fg-muted`) below the heading.
+  - One or more **form groups** (`formGroup`) stacked vertically.
+- **Form groups** (`formGroup`) contain a **label** + **input** (usually a Select dropdown). See Form Components section below.
+- The **Preview panel** follows the same rules as the Sub Page Overview panel:
+  - label color: `--fg-muted`, default/empty value color: `--fg-disabled`, filled value color: `--fg-base`.
+  - Items separated by horizontal `--space-1.5` (6px) gap.
+  - Groups separated by `divider type=dots`.
+  - Filled items may have an `Avatar content=icon` before the value text. Do NOT put avatars before labels.
+  - Common preview fields: Source, Scorecard, Filters, Workflows, Conversations.
+
+#### Page Sidebar (Stepper) Spec
+
+The page sidebar uses a **stepper** component for in-page navigation:
+
+| Property    | Value                                     |
+|-------------|-------------------------------------------|
+| width       | 240px max (contains stepper at 144px)     |
+| item height | 26px per stepper item                     |
+| padding     | `--space-6` (24px) all sides              |
+| gap         | 2px between stepper items                 |
+| active item | bold text + dot indicator on the left     |
+| text        | 13px Inter Medium, `--fg-subtle`          |
+| active text | 13px Inter Medium, `--fg-base`            |
+
+#### Form Section Spec
+
+| Property        | Value                                         |
+|-----------------|-----------------------------------------------|
+| heading font    | 13px Inter Medium, `--fg-base`                |
+| description     | 13px Inter, `--fg-muted`, max-width 600px     |
+| heading-to-desc | 2px gap                                       |
+| desc-to-fields  | 16px gap (below description to first field)   |
+| field gap       | 16px between formGroup items                  |
+
+#### Form Group (formGroup) Spec
+
+| Property      | Value                                      |
+|---------------|--------------------------------------------|
+| height        | 48–52px (label + input)                    |
+| label font    | 13px Inter Medium, `--fg-base`             |
+| label-to-input| 4px gap                                    |
+| input height  | 36px                                       |
+| input border  | 1px solid `--border-base` (#e4e4e7)        |
+| input radius  | `--radius-sm` (4px)                        |
+| input padding | horiz `--space-3` (12px)                   |
+| input font    | 13px Inter, `--fg-muted` (placeholder)     |
+| input bg      | `--bg-base` (white)                        |
+
+---
+
+### Settings Page Template
+
+Settings pages are **configuration views** accessed from the global Settings item in the sidebar. They replace the standard layout with a **Settings Sidebar** on the left and a card-based content area on the right. This is the fourth and final layout template.
+
+```
+┌──────────────────────────────────────────────────────────┐
+│ AppShell (same outer shell, but NO global SidebarNav)    │
+│ ┌──────────────────────────────────────────────────────┐│
+│ │                                                       ││
+│ │ ┌─────────────┬─────────────────────────────────────┐ ││
+│ │ │ Settings    │ TopBar (48px)                        │ ││
+│ │ │ Sidebar     │ "Settings title"                     │ ││
+│ │ │ (220px)     ├─────────────────────────────────────┤ ││
+│ │ │             │                                     │ ││
+│ │ │ ← Settings  │  ┌──────────────────────────────┐   │ ││
+│ │ │             │  │ Card: "Workspace settings"    │   │ ││
+│ │ │ General ▼   │  │ ┌────────────────────────────┐│   │ ││
+│ │ │ ●Workspace  │  │ │ Workspace name             ││   │ ││
+│ │ │  Users      │  │ │ [ Sentra              ]    ││   │ ││
+│ │ │  Groups     │  │ │ Website URL                ││   │ ││
+│ │ │  Audit logs │  │ │ [https://| www.sentra.ai ] ││   │ ││
+│ │ │  Voice guide│  │ └────────────────────────────┘│   │ ││
+│ │ │             │  └──────────────────────────────┘   │ ││
+│ │ │ Quality ▼   │  ┌──────────────────────────────┐   │ ││
+│ │ │  Conv flags │  │ Card: "Preferences"           │   │ ││
+│ │ │  Calibs     │  │ ┌────────────────────────────┐│   │ ││
+│ │ │  Processes  │  │ │ ○ Hide simulation library  ││   │ ││
+│ │ │             │  │ │ ● Hide feedback from ...   ││   │ ││
+│ │ │ Training ▼  │  │ └────────────────────────────┘│   │ ││
+│ │ │  Teams      │  └──────────────────────────────┘   │ ││
+│ │ │  Learner    │                                     │ ││
+│ │ │  roles      │                                     │ ││
+│ │ └─────────────┴─────────────────────────────────────┘ ││
+│ └──────────────────────────────────────────────────────┘│
+└──────────────────────────────────────────────────────────┘
+```
+
+#### Settings Page Token Spec
+
+| Layer          | Property    | Token / Value                                     |
+|----------------|-------------|----------------------------------------------------|
+| Outer body     | fill        | `--bg-subtle` (`#fafafa`)                          |
+| Main body card | margin      | `--space-2` (8px) on 3 sides                       |
+| Main body card | fill        | `--bg-base` (white)                                |
+| Main body card | border      | `1px solid --border-subtle`                        |
+| Main body card | radius      | `--radius-lg` (8px)                                |
+| Inner body     | max-width   | 600px                                              |
+| Inner body     | padding     | horiz `--space-6` (24px), vert `--space-4` (16px)  |
+| Inner body     | gap         | `--space-8` (32px) between cards                   |
+
+#### Settings Page Rules
+
+- **No global SidebarNav** — the Settings page replaces the normal sidebar with a **Settings Sidebar** (`sidebar type=settings`). The outer shell background and card pattern remain the same.
+- **TopBar** shows the current settings page title (e.g., "Workspace", "Users"). Single-level breadcrumb like Main pages. No action button in the TopBar.
+- The **Settings Sidebar** is embedded INSIDE the main content card, to the LEFT of the content area, separated by a **vertical divider** (`type=fill`, 1px).
+- **Main body is empty** — it only serves as the container for the Inner body.
+- **Inner body** contains a vertical stack of **Settings Cards**, each with max-width 600px, centered horizontally.
+- Cards are separated by `--space-8` (32px) gap.
+- **Stack all setting groups vertically on the page** — never place cards side by side.
+
+#### Settings Sidebar Spec
+
+The Settings Sidebar is a specialized navigation component for configuration pages.
+
+| Property        | Value                                      |
+|-----------------|---------------------------------------------|
+| width           | 220px                                       |
+| bg              | `--bg-base` (white, inside the card)        |
+| back link       | "← Settings" — navigates back to main app   |
+| section headers | collapsible, with caret icon (General ▼)    |
+| section font    | 13px Inter Medium, `--fg-muted`             |
+| item font       | 13px Inter Medium, `--fg-subtle`            |
+| item icon       | 16×16px, left-aligned, `--fg-subtle`        |
+| item height     | ~28px (icon + text row)                     |
+| item padding    | `--space-2` (8px) vertical, 16px left       |
+| active item bg  | `--bg-base-pressed` (`#efeff0`)             |
+| active item text| `--fg-base`                                 |
+| section gap     | `--space-6` (24px) between section groups   |
+
+**Settings navigation structure (Sentra):**
+
+| Section   | Pages                                                   |
+|-----------|---------------------------------------------------------|
+| General   | Workspace, Users, Groups, Audit logs, Agent voice guide |
+| Quality   | Conversation flags, Calibrations, Processes             |
+| Training  | Teams, Learner roles                                    |
+
+#### Settings Card Component Spec
+
+Settings cards group related configuration options. Two variants exist:
+
+**Variant 1: Form Card** (contains form groups)
+
+| Property           | Value                                        |
+|--------------------|----------------------------------------------|
+| width              | 600px (constrained by inner body max-width)  |
+| bg                 | `--bg-base` (white)                          |
+| border             | `1px solid --border-subtle`                  |
+| radius             | `--radius-lg` (8px)                          |
+| title section      | 40px height (title only) or 60px (title + description) |
+| title font         | 13px Inter SemiBold, `--fg-base`             |
+| description font   | 13px Inter, `--fg-muted`                     |
+| title padding      | 12px top, 16px left/right                    |
+| divider            | `horizontal divider` below title section     |
+| body padding       | 12px top, 16px left/right                    |
+| body gap           | 16px between form groups                     |
+
+**Variant 2: Table Card** (contains a data table)
+
+| Property           | Value                                        |
+|--------------------|----------------------------------------------|
+| Same card shell as Form Card                                |
+| body               | Contains `table type=contained` (no padding, table fills card width) |
+
+#### Form Components (Settings-specific)
+
+These augment the existing formGroup spec:
+
+**Switch Label:**
+
+| Property      | Value                                      |
+|---------------|--------------------------------------------|
+| height        | 20px                                       |
+| toggle width  | 36px                                       |
+| toggle height | 20px                                       |
+| toggle off bg | `--color-gray-200` (#e4e4e7)               |
+| toggle on bg  | `--button-brand` (#235524)                 |
+| toggle radius | `--radius-full` (pill)                     |
+| label font    | 13px Inter, `--fg-base`                    |
+| gap           | `--space-2` (8px) between toggle and label |
+
+**URL Input (with prefix):**
+
+| Property      | Value                                      |
+|---------------|--------------------------------------------|
+| height        | 36px (same as standard input)              |
+| prefix        | "https://" badge, `--bg-subtle` bg, `--fg-muted` text |
+| prefix border | right border `1px solid --border-base`     |
+| input area    | same as standard formGroup input           |
+| copy button   | 16×16px icon button, right-aligned         |
+| border        | 1px solid `--border-base`                  |
+| radius        | `--radius-sm` (4px)                        |
+
+**Textarea:**
+
+| Property      | Value                                      |
+|---------------|--------------------------------------------|
+| min-height    | 74px (≈3 lines)                            |
+| border        | 1px solid `--border-base`                  |
+| radius        | `--radius-sm` (4px)                        |
+| padding       | `--space-3` (12px)                         |
+| font          | 13px Inter, `--fg-base` (filled), `--fg-muted` (placeholder) |
+| resize        | vertical only (resize handle at bottom-right) |
+
+---
+
+### Top Bar Convention
+
+Every page has a **TopBar** (48px tall, white background) as the page header inside the floating card.
+
+```css
+.topBar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 48px;
+  padding: 0 24px;       /* --space-6 */
+  background: var(--bg-base);
+  flex-shrink: 0;
+  border-bottom: 1px solid var(--border-subtle);
+}
+```
+
+#### TopBar Internal Structure
+
+```
+┌─────────────────────────────────────────────────────────┐
+│ [Breadcrumb text] │ [All] [Pending] [Resolved]   [Create] │
+│     fg-subtle        tabs group                  button  │
+└─────────────────────────────────────────────────────────┘
+```
+
+**Left side** (flex, gap 12px):
+1. **Breadcrumb** — page title in `fg-subtle` (#52525b), 13px medium.
+2. **Vertical divider** — 1px wide, 16px tall, `border-subtle` (#efeff0).
+3. **Tabs Group** — horizontal filter tabs (optional, page-dependent).
+
+**Right side** (flex, justify-end):
+1. **Primary action button** — usually "Create" (see Button spec below).
+
+### Breadcrumb
+
+Three variants depending on page type:
+
+**Main page (single-level):**
+- Just the page name as text.
+- Text: `--fg-subtle` (#52525b), 13px medium.
+
+**Sub page (multi-level with back):**
+- Back icon button (24px, neutral, left chevron) + breadcrumb items separated by `>` chevron (12px).
+- Parent item: `--fg-muted` (#71717a) — clickable, navigates back.
+- Current item: `--fg-subtle` (#52525b) — not clickable.
+- Chevron separator: 12×12px, `--fg-muted`.
+- Gap between icon button and breadcrumb: 12px.
+- Gap between breadcrumb items: 4px.
+
+**Inner page (multi-level, no back):**
+- Multi-level breadcrumb (Parent `>` Current) without a back icon button.
+- Parent item: `--fg-muted` (#71717a) — clickable, navigates to parent list.
+- Current item: `--fg-subtle` (#52525b) — not clickable.
+- Same chevron and gap rules as Sub page.
+
+### Tabs Group (within TopBar)
+
+Used for filtering views (e.g., All / Pending / Resolved).
+
+| State    | Background                | Text Color        | Shadow           |
+|----------|---------------------------|-------------------|------------------|
+| Active   | `--bg-base` (white)       | `--fg-base`       | `--shadow-card`  |
+| Inactive | transparent               | `--fg-muted`      | none             |
+| Hover    | transparent               | `--fg-subtle`     | none             |
+
+- Height: 24px, padding: 10px horizontal, border-radius: `--radius-sm` (4px).
+- Gap between tabs: 2px.
+- Font: 13px medium.
+
+### Dividers
+
+Three divider types used throughout the product:
+
+**Horizontal divider (`type=fill`)**:
+- Between TopBar and Main body: use `border-bottom` on `.topBar` — **never** a separate `<div>`.
+- Between content groups: 1px, `--border-subtle` (#efeff0).
+- In overview panel footer sections: `--border-base` (#e4e4e7).
+
+**Horizontal divider (`type=dots`)**:
+- Used within the Overview panel to separate content groups.
+- Rendered as a dotted border: `border-top: 1px dashed var(--border-subtle)`.
+- Groups related metadata fields.
+
+**Vertical divider (`type=fill`)**:
+- Used to separate Inner body from Overview panel in sub pages.
+- 1px wide, `--border-subtle` (#efeff0), full height of the content area.
+- Rendered as a `<div>` with `width: 1px; background: var(--border-subtle)`.
+
+---
+
+## Button Component Spec
+
+### Primary (Brand) Button
+
+Used for the main CTA in each page (e.g., "Create", "Start").
+
+| Property     | Value                                                      |
+|-------------|-------------------------------------------------------------|
+| Background  | `--button-brand` (#235524)                                  |
+| Text        | `--fg-on-color` (white), 13px medium                        |
+| Border      | `--shadow-button-primary` (1px #0d330d ring + drop shadow)  |
+| Radius      | `--radius-sm` (4px)                                         |
+| Inner glow  | `inset 0 0.75px 0 rgba(255,255,255,0.2)`                   |
+
+**Size variants:**
+- `sm`: height 24px, padding 8px horizontal.
+- `default`: height auto, padding 6px vertical / 10px horizontal.
+
+**Best practice** (from Figma spec):
+- **Main pages**: Always use `Button variant=primary, size=sm` in the top right to create new items. If the page has no create functionality, hide this button entirely — do not render a disabled button.
+- **Sub pages**: Always use `Button variant=secondary (neutral), size=sm` in the top right to edit items. If there is no edit functionality, remove this button entirely.
+- **Inner pages**: Always use `Button variant=primary, size=sm` in the top right. Label is contextual: "Create" for new resources, "Save" or "Update" for editing existing ones.
+
+### Neutral (Outline) Button
+
+| Property     | Value                                                       |
+|-------------|--------------------------------------------------------------|
+| Background  | `--button-neutral` (white)                                   |
+| Text        | `--fg-base` (#18181b), 13px medium                           |
+| Border      | `--shadow-button-neutral` (1px ring + drop shadow)           |
+| Radius      | `--radius-sm` (4px)                                          |
+
+### Icon Button
+
+Small action buttons (expand, copy, close in drawers).
+
+| Property     | Value                               |
+|-------------|--------------------------------------|
+| Size        | 24×24px                              |
+| Background  | `--button-neutral` (white)           |
+| Radius      | `--radius-sm` (4px)                  |
+| Shadow      | `--shadow-button-neutral`            |
+
+---
+
+## Drawer Component Spec
+
+Drawers slide in from the right to show detail views. They overlay the main content within the card area.
+
+```
+┌──────────────────────────────────────┐
+│ header                               │
+│  Title (17px semibold)   [⤢] [⎘] [✕]│
+├──────────────────────────────────────┤
+│ content                              │
+│  padding: 24px horiz, 16px top,     │
+│           24px bottom                │
+│  gap: 32px between sections          │
+├──────────────────────────────────────┤
+│ footer (bg-subtle, border-top)       │
+│                     [Primary Button] │
+└──────────────────────────────────────┘
+```
+
+| Property        | Value                                      |
+|----------------|--------------------------------------------|
+| Background     | `--bg-base` (white)                        |
+| Radius         | `--radius-lg` (8px)                        |
+| Shadow         | `--shadow-card`                            |
+| Header padding | 24px horizontal, 16px vertical             |
+| Title font     | `--font-family-display`, 17px, semibold    |
+| Divider        | `--border-subtle`, 1px                     |
+| Footer bg      | `--bg-subtle` (#fafafa)                    |
+| Footer border  | `--border-base` (#e4e4e7), 1px top         |
+| Footer padding | 24px horizontal, 16px vertical             |
+| Icon buttons   | expand (CornersOut), copy (Copy), close (X)|
+
+**When to use drawers vs. sub-pages** (from Figma spec):
+1. **Drawer**: Open details in drawer, allow user to expand if applicable. Use when content is relatively simple.
+2. **Sub page**: Open in sub page if content is too dense (for example, has subitems or nested navigation).
+
+---
+
+## Overview Panel Spec (Sub Page Sidebar)
+
+The overview panel is an optional right-side metadata panel used on sub pages. It shows key-value pairs summarizing the current item.
+
+```
+┌────────────────────────┐
+│ Source       🟩 Intercom│  ← filled value (fg-base + avatar)
+│ Scorecard   Not selected│  ← default value (fg-disabled)
+│ Filters     None applied│  ← default value (fg-disabled)
+│ Workflows   None applied│  ← default value (fg-disabled)
+│·························│  ← dotted divider
+│ Conversations      n/a │  ← default value (fg-disabled)
+└────────────────────────┘
+```
+
+### Token Spec
+
+| Property    | Value                               |
+|-------------|--------------------------------------|
+| max-width   | 320px                               |
+| background  | `--bg-subtle` (#fafafa)             |
+| padding     | `--space-6` (24px) horiz, `--space-4` (16px) vert |
+| item gap    | `--space-3` (12px) between rows     |
+
+### Text Color Rules
+
+| State     | Token           | Example           |
+|-----------|-----------------|-------------------|
+| Label     | `--fg-muted`    | "Source", "Filters" |
+| Default   | `--fg-disabled` | "Not selected", "None applied", "n/a" |
+| Filled    | `--fg-base`     | "Intercom", "18"  |
+
+### Best Practices (from Figma spec)
+- Group related contents and use `divider type=dots` to split sections.
+- Preferably add an illustrative `avatar content=icon` to filled items.
+- Do NOT add avatar before labels — avatars go on the value side only.
+- Label column is fixed-width (120px), value column is flexible.
+- Row gap within a group: horizontal `--space-1-5` (6px).
+
+---
+
+## Sidebar Navigation Spec
+
+### Structure
+
+The sidebar (`SidebarNav`) is 220px wide with `--bg-subtle` background. It spans the full height of the viewport.
+
+**Sections (top to bottom):**
+1. **Workspace header** — avatar (18px) + workspace name + caret down.
+2. **Top items** — Home, Inbox (flat list, no section header).
+3. **Quality section** (collapsible) — Evaluations, Calibrations, Workflows, Reviews, Alerts, Reports.
+4. **Training section** (collapsible) — collapsed by default.
+5. **Hiring section** (collapsible) — collapsed by default.
+6. **Resources section** — Simulations (green), Scorecards (purple), Personas (blue), Backend Tools (orange). Uses colored avatar icons.
+7. **Footer** (pinned to bottom) — Help, Settings.
+
+### Navigation Item States
+
+| State    | Background            | Text Color    |
+|----------|----------------------|---------------|
+| Default  | transparent          | `--fg-subtle` |
+| Hover    | `--bg-base-pressed`  | `--fg-subtle` |
+| Active   | `--bg-base-pressed`  | `--fg-base`   |
+
+- Height: 28px, padding-left: 6px, gap: 8px, border-radius: `--radius-sm` (4px).
+- Icon size: 16×16px.
+- Font: 13px medium.
+
+### Section Headers
+
+- Text: `--fg-muted` (#71717a), 13px medium.
+- Collapsed indicator: caret-right (12×12px).
+- Expanded indicator: caret-down (12×12px).
+
+### Resource Items (colored avatars)
+
+Resource items have a small colored square avatar instead of a stroke icon:
+- Avatar: 16×16px, `--radius-sm` (4px), white border with `box-shadow: 0 0 0 1px rgba(0,0,0,0.08)`.
+- Inner: colored background with a tiny (10×10px) white icon.
+- Colors: green (`--tag-green-bg`), purple (`--tag-purple-bg`), blue (`--tag-blue-bg`), orange (`--tag-orange-bg`).
+
+### Workspace Avatar
+
+- Size: 18×18px (inside 20px padding).
+- Radius: `--radius-sm` (4px), with 1px white padding.
+- Shadow: `0 0 0 1px rgba(0,0,0,0.08)`.
+- Can contain an image or a colored background with an icon.
+
+---
+
+## Data Table Conventions
+
+Main pages typically display a full-width data table in the main body.
+
+### Table Structure
+```
+┌────────────────────────────────────────────────────┐
+│ Header  │ Header  │ Header  │ Header  │ Header  │ ⋯│
+├─────────┼─────────┼─────────┼─────────┼─────────┤
+│ ▾ Group header                                    │
+├─────────┼─────────┼─────────┼─────────┼─────────┤
+│ Label   │ Badge   │ Label   │ Avatar+Name │ ⋯   │
+│ Label   │ Badge   │ Label   │ Avatar+Name │ ⋯   │
+└────────────────────────────────────────────────────┘
+```
+
+### Column Types
+
+Tables support these cell types:
+- **Text** — plain label.
+- **Badge** — small colored badge.
+- **Status dot + label** — colored dot (8px) + text.
+- **Avatar + name** — user avatar (24px) + name text.
+- **Action menu** — "..." overflow button (rightmost column).
+
+### Row Grouping
+
+Tables can have collapsible group headers (triangle icon + group name). Groups are indented under their header.
+
+### Pagination
+
+- Shown below the table with a top border (`--border-subtle`).
+- Contains page navigation and item count.
+
+---
+
+## Icon System
+
+- Icons live alongside the component that uses them in `icons.tsx`.
+- Shared/global icons should be extracted to `src/icons/` if reused across 3+ components.
+- Icons are React components that accept `SVGProps<SVGSVGElement>`.
+- Use `currentColor` for stroke/fill so icons inherit text color.
+
+### Icon Sources (Phosphor Icons used by the product)
+
+The product uses Phosphor icons. Key icons by context:
+- **Navigation**: House, Tray (inbox), Chats, CalendarStar, Lightning, FileMagnifyingGlass, Bell, ChartBar, Lifebuoy, GearSix
+- **Directional**: CaretDown, CaretRight
+- **Actions**: Copy, X, CornersOut (expand), Plus, PencilRuler
+- **Resource avatars**: Headset (simulations), ListChecks (scorecards), IdentificationBadge (personas), PencilRuler (backend tools)
+
+---
+
+## Code Connect (Figma Integration)
+
+- Every component MUST be mapped to its Figma node via Code Connect.
+- Use `add_code_connect_map` with:
+  - `source`: relative path from repo root (e.g., `src/components/ContextMenu/ContextMenu.tsx`)
+  - `componentName`: the export name (e.g., `ContextMenu`)
+  - `label`: `React`
+- After adding a component, always verify the mapping with `get_code_connect_map`.
+
+---
+
+## File Structure
+
+```
+src/
+  tokens/
+    globals.css          ← CSS custom properties (the source of truth)
+    reset.css            ← CSS reset
+    index.ts             ← TypeScript token exports
+  components/
+    AppShell/            ← app shell layout (sidebar + page content)
+    SidebarNav/          ← main app sidebar navigation
+    InboxPage/           ← inbox split-view page
+    EvaluationsPage/     ← evaluations table page
+    DataTable/           ← generic data table
+    EmptyState/          ← empty content placeholder
+    Toast/               ← notification toasts (6 variants)
+    Menu/                ← context/dropdown menus
+    CheckboxLabel/       ← checkbox with label/card variants
+    Avatar/              ← avatar (light/dark, multiple sizes)
+    Accordion/           ← collapsible sections
+  index.ts               ← barrel export for the library
+  playground/            ← dev preview (not part of the library build)
+reference/               ← original HTML prototypes from Figma
+```
+
+---
+
+## Framework & Build
+
+- **React 19** with TypeScript (~5.7)
+- **Vite 6** in library mode — builds to `dist/` as ES + CJS modules
+- `peerDependencies`: `react` and `react-dom` (not bundled)
+- Type declarations generated via `vite-plugin-dts`
+
+---
+
+## Product Information
+
+> **Sentra** — built and designed by **Shaurya Narang**.
+
+When building UI, use **"Sentra"** for workspace names, branding, and placeholder text.
+
+### Product Architecture (from Figma navigation)
+
+| Area       | Pages                                                        |
+|-----------|--------------------------------------------------------------|
+| Home      | Dashboard / overview                                         |
+| Inbox     | Notifications, messages, review requests                     |
+| Quality   | Evaluations, Calibrations, Workflows, Reviews, Alerts, Reports |
+| Training  | (Collapsible section — training-related pages)               |
+| Hiring    | (Collapsible section — hiring-related pages)                 |
+| Resources | Simulations, Scorecards, Personas, Backend Tools             |
+| Settings  | Uses **Settings Page Template** (see below)                  |
+
+**Settings sub-pages (from Settings Sidebar):**
+
+| Section   | Pages                                                   |
+|-----------|---------------------------------------------------------|
+| General   | Workspace, Users, Groups, Audit logs, Agent voice guide |
+| Quality   | Conversation flags, Calibrations, Processes             |
+| Training  | Teams, Learner roles                                    |
+
+### Page Hierarchy
+
+The product has four page types, each with its own layout template:
+
+1. **Main pages** — accessed directly from the sidebar (e.g., Evaluations list). Use the **Main Page Template** with Create button and optional tabs.
+2. **Sub pages** — accessed by clicking a row on a main page (e.g., a specific Evaluation). Use the **Sub Page Template** with back breadcrumb, Edit button, Inner body + Overview panel.
+3. **Inner pages** — accessed via "Create" or "Edit" actions from a Main or Sub page (e.g., creating a new Evaluation, editing a Scorecard). Use the **Inner Page Template** with a three-column layout: Page Sidebar (stepper nav) + Inner body (form sections) + Preview panel (read-only summary).
+4. **Settings pages** — accessed from the global Settings item. Use the **Settings Page Template** with a Settings Sidebar (replacing the global SidebarNav) + card-based form content area. No action buttons in TopBar.
+
+### Sub Page Content Pattern (example: Simulation detail)
+
+The inner body shows multiple named sections stacked vertically:
+- **"Simulations"** section — table with columns: Name, Difficulty, Language
+- **"Flows"** section — table with columns: Name, Steps
+- Gap of `--space-10` (40px) between sections
+
+The overview panel shows metadata:
+- Attempts: 3
+- Manager: (avatar)
+- Conversations: 18
+
+This pattern applies to any resource detail page (Simulations, Scorecards, Personas, etc.).
+
+### Inner Page Content Pattern (example: Evaluation creation)
+
+The page sidebar uses a stepper navigation:
+- **Setup** (active) → **Filters** → **Workflows** → **Testing**
+- Clicking a stepper item scrolls/navigates the Inner body to that section.
+
+The inner body contains form sections:
+- **"Setup"** section — form groups: Source (Select source), Scorecard (Select scorecard), Frequency (Select timeframe)
+- **"Workflows"** section — description text + form group: Select (optional)
+- Gap of `--space-10` (40px) between sections. Each section heading is 17px Inter Display SemiBold (`--font-family-display`).
+
+The preview panel shows a read-only summary of configured values:
+- Source: (avatar icon) Intercom — filled, `--fg-base`
+- Scorecard: (avatar icon) Sales Performance — filled, `--fg-base`
+- Filters: None applied — default, `--fg-disabled`
+- Workflows: None applied — default, `--fg-disabled`
+- --- (dotted divider) ---
+- Conversations: n/a — below-divider group
+
+This pattern applies to any resource creation/edit page (Evaluations, Scorecards, Simulations, etc.).
+
+### Usage Notes
+- Use this information when creating navigation structures, naming placeholder content, and building realistic sample data.
+- Always use "Sentra" for all user-facing text, branding, and placeholder content.
+
+---
+
+## Interaction Best Practices
+
+> These rules are derived from the Figma "Best practices" documentation pages. They define **how** common UI actions should behave across Sentra. Follow them when building any interactive feature.
+
+### Common Actions
+
+#### Add
+
+*Introduce new or existing content into the interface (placing an item in a list, inserting an element into a layout).*
+
+| Rule | Type | Detail |
+|------|------|--------|
+| Primary button for the most important action | Do | Use the primary (brand) button for the main "Create" action on a page |
+| Plus icon for secondary add actions | Do | For outline and ghost button variants, default to the `+` (plus) icon — e.g., `+ Add`, `+ Add filter` |
+| Ghost button for contextual add | Do | Add actions within a section (filter rows, tables) should use a ghost button variant |
+| Add actions below scrollable lists | Do | Position `+ Add tool` below the list of selectable options, outside the scrollable area so it stays visible |
+| No add at page bottom | Don't | Never place add actions at the very bottom of a page — they get lost |
+| No intermediate creation steps | Don't | Don't show configuration dropdowns on the Create button. Navigate directly to the creation page (Inner Page Template) and let the user configure there |
+
+#### Edit
+
+*Modify content or objects that already exist.*
+
+| Rule | Type | Detail |
+|------|------|--------|
+| Outline button or outline icon button | Do | Edit actions use the `outline` button variant by default — choose between text button (`✏ Edit`) or icon-only button (`✏`) depending on available space |
+| PencilSimpleLine icon | Do | Always use the `PencilSimpleLine` icon for edit actions |
+| Consolidate with More Actions | Don't | Don't place too many edit actions together. If there are multiple, use a More Actions (`⋮`) menu instead |
+
+#### Delete
+
+*Permanently erase an item or object from the system.*
+
+| Rule | Type | Detail |
+|------|------|--------|
+| Keep destructive button simple | Do | Use the plain destructive button variant — just "Delete" in red |
+| Hide behind More Actions | Do | Delete should live inside a `⋮` menu (Edit / Duplicate / Delete) — not exposed as a standalone button |
+| Icon button destructive variant | Do | When using an icon button, use the destructive variant |
+| Trash icon in menus | Do | Use the trash icon (`TrashSimple`) for destructive menu items |
+| Delete at end of menu | Don't | Never place Delete in the middle of a menu list — always last |
+| No clashing primary buttons | Don't | Avoid pairing a destructive primary button with other primary buttons (e.g., Cancel + Delete + Save) |
+
+**Deletion severity tiers:**
+
+| Tier | When to use | UX pattern |
+|------|-------------|------------|
+| **Low-impact** | Easily reversible, data can be recreated quickly | Remove immediately on click. No confirmation dialog. |
+| **Moderate-impact** | Irreversible or involves data that can't be easily restored. Also for bulk deletes. | Confirmation via **Alert Dialog** ("Are you sure you want to delete this team? This action is irreversible." → Cancel / Delete) |
+| **High-impact** | Permanently erases critical data (e.g., deleting an account) | User must **type the resource name** to confirm. Delete button disabled until text matches exactly. |
+
+**Confirmation feedback:** Always show a **loading toast** ("Deleting item...") if slow, then a **success toast** ("Item deleted successfully") on completion.
+
+#### Remove
+
+*Disconnect or detach an item (does NOT permanently delete data).*
+
+| Rule | Type | Detail |
+|------|------|--------|
+| X icon with ghost icon button | Do | Use the `X` icon with a ghost icon button for inline removals (filters, tags, chips) |
+| No trash icon | Don't | Never use the trash/delete icon for Remove actions — trash means permanent deletion |
+
+#### More Actions
+
+*Show additional options for a page, element, or item.*
+
+| Rule | Type | Detail |
+|------|------|--------|
+| Vertical ellipsis icon (`⋮`) | Do | Use the vertical ellipsis to indicate more actions are available |
+| Position at end of group | Do | More Actions goes LAST — after all other visible actions (e.g., `Export` | `Create` | `⋮`) |
+
+#### Copy
+
+*Duplicate selected content to the user's clipboard.*
+
+| Rule | Type | Detail |
+|------|------|--------|
+| Ghost icon button + clipboard icon | Do | For text copy actions (copy a value, copy an ID) |
+| Outline icon button + link icon | Do | For copying deep links or URLs |
+| Outline button with dropdown | Do | When copy has multiple options (e.g., "Copy link ▾" → Copy admin link / Copy agent link) |
+| Show on hover in tables | Do | Copy icon appears on row hover — use ghost icon button variant |
+| Confirmation toast | Do | Always show an **info toast** ("Link copied to your clipboard") after copying |
+
+#### Duplicate
+
+*Create a new copy of content within the system, leaving the original unchanged.*
+
+| Rule | Type | Detail |
+|------|------|--------|
+| Ghost icon button + copy icon | Do | For item duplication actions |
+| **Duplicating items** | — | Creates copy directly in the same view. Quick and immediate. |
+| **Duplicating pages** | — | Takes a few seconds. Opens the new copy in a separate tab to avoid disrupting current flow. |
+| Confirmation toast | Do | Loading ("Duplicating...") → Success ("Item duplicated successfully") or Error ("Unable to duplicate. Please try again.") |
+
+---
+
+### Visual Guidelines
+
+#### Button Hierarchy
+
+| Rule | Type | Detail |
+|------|------|--------|
+| Primary + secondary for main view | Do | Use primary (brand) and secondary (outline) button variants to guide users — primary for the most likely action |
+| Ghost icon buttons for list items | Do | Use ghost icon button variant for per-item/per-row actions in tables and lists (e.g., `⋮` at end of each row) |
+| Max 2 filled/shaped buttons | Don't | Never place more than two filled or shaped buttons in a single section — it disrupts visual hierarchy |
+
+---
+
+### Content Guidelines
+
+#### Naming
+
+Names influence how users perceive and understand the product. A well-chosen name should:
+- Put clarity above creativity
+- Help establish a mental model for our audiences
+- Enhance people's perception of our brand
+- Increase adoption of the product or feature
+- Clarify where a product or feature fits into the Sentra brand system
+
+The naming process involves collaboration — include different disciplines and subject matter expertise.
+
+#### Date and Time
+
+| Recency | Format | Example |
+|---------|--------|---------|
+| < 7 days | Relative with minutes (m), hours (h), days (d) | `1h ago`, `3d ago` |
+| ≥ 7 days | Absolute: `MMM DD, YYYY` | `Dec 2, 2025` |
+
+#### Accessibility
+
+| Rule | Type | Detail |
+|------|------|--------|
+| Card descriptions | Do | Use description text for cards **only** when necessary to provide additional context |
+| Truncated text | Do | If text is truncated, show the full text on hover in a **tooltip** |
+
+---
+
+### Layout / Ordering
+
+*Each action should have a clear purpose, illustrated through a text label, an icon, or both.*
+
+| Rule | Type | Detail |
+|------|------|--------|
+| Primary action goes LAST | Do | Place the primary (brand) button as the rightmost action — e.g., `Export` (outline) then `Edit` (primary) |
+| No same-variant side by side | Don't | Never place two buttons of the same variant next to each other (e.g., two primary buttons) |
+| iconButton for secondary/destructive | Do | Use an iconButton (`⋮`) to store secondary actions, especially destructive ones — place it at the very end |
+| Dividers separate button groups | Do | Use a vertical divider component to visually separate groups of related buttons (e.g., `[icon Select ▾]` | `[▽ Filter]`) |
+
+---
+
+## Component Inventory
+
+> The complete list of components defined in the Figma design system (from the docs sidebar). Components marked ✅ are built in the Sentra codebase; others are documented but not yet implemented.
+
+| Component      | Status | Notes |
+|----------------|--------|-------|
+| Accordion       | ✅ Built | Expandable content panels |
+| Alert           | — | System notifications / banners |
+| Alert Dialog    | — | Confirmation modals (delete, destructive actions) |
+| Avatar          | ✅ Built | Light + dark, multiple sizes |
+| Badge           | — | Status indicators, tags |
+| Breadcrumb      | — | Navigation trail in TopBar |
+| Button          | — | Primary, neutral, destructive, ghost, icon variants |
+| Card            | — | Settings card, content grouping |
+| Checkbox        | ✅ Built | CheckboxLabel with all states |
+| Dialog          | — | Modal overlays |
+| Empty State     | ✅ Built | Placeholder for empty views |
+| Menu            | ✅ Built | Context menus, dropdown menus |
+| Toast           | ✅ Built | Info, success, error, warning, loading, keyboard |
+| DataTable       | ✅ Built | Sortable, paginated tables |
+| AppShell        | ✅ Built | Shell layout with SidebarNav |
+| SidebarNav      | ✅ Built | Global sidebar navigation |
+
+---
+
+## Icon Library
+
+> Complete catalog of icons from the Figma design system in **two styles**: Outline (stroke) and Fill (solid). Standard icon frame is **15×15px**. Use the kebab-case name as the icon identifier when referencing in code.
+
+### Icon Framing Spec
+
+| Property | Outline | Fill |
+|----------|---------|------|
+| Style | Stroke-based (transparent fill) | Solid-filled shapes |
+| Frame size | 15×15px | 15×15px |
+| Stroke width | 1.5px (standard), 1px (mini) | N/A (paths are filled) |
+| Color | Inherits `currentColor` | Inherits `currentColor` |
+| Grid | 6 icons per row in Figma | 6 icons per row in Figma |
+| When to use | Default for UI chrome, buttons, nav | Active/selected states, status indicators, emphasis |
+
+**Naming convention:** Fill icons append `-solid` or `-filled` to the outline name (e.g., `star` → `star-solid`, `house` → `house-filled`). Some fill-only icons have no outline counterpart.
+
+### Icon Variants
+
+Some icons have size variants indicated by suffix:
+- **(no suffix)** — Standard 15×15px, 1.5px stroke
+- **`-mini`** — Compact variant, typically used inline with text (12×12px visual area)
+- **`-micro`** — Smallest variant, used for tight UI (10×10px visual area)
+
+### Full Icon Catalog (208 icons)
+
+#### Navigation & Arrows
+| Icon | Name | Use case |
+|------|------|----------|
+| ← | `arrow-left` | Back navigation |
+| → | `arrow-right` | Forward navigation |
+| ↑ | `arrow-up-mini` | Sort ascending indicator |
+| ↓ | `arrow-down-mini` | Sort descending indicator |
+| ↓ | `arrow-down` | Download direction |
+| ↙ | `arrow-down-left` | Diagonal nav |
+| ↙ | `arrow-down-left-mini` | Compact diagonal |
+| ↗ | `arrow-up-right-mini` | External link hint |
+| ↗ | `arrow-up-right-micro` | Tiny external link |
+| ↗ | `arrow-up-right-on-box` | Open in new window |
+| ←m | `arrow-left-mini` | Compact back |
+| →m | `arrow-right-mini` | Compact forward |
+| ↕ | `arrow-up-down` | Sortable column indicator |
+| ↰ | `arrow-uturn-left` | Undo / return |
+| ↓⟨ | `arrow-down-tray` | Download to device |
+| ⟳ | `arrow-path` | Refresh / cycle |
+| ⟳m | `arrow-path-mini` | Compact refresh |
+| ↶ | `arrow-long-up` | Move up |
+| ↷ | `arrow-long-down` | Move down |
+| ← | `arrow-long-left` | Navigate far left |
+| → | `arrow-long-right` | Navigate far right |
+| ↘ | `arrow-right-down` | Step flow direction |
+| ⤢ | `arrows-pointing-out` | Expand / fullscreen |
+| ⤡ | `arrows-reduce-diagonal` | Collapse / exit fullscreen |
+| ↓○ | `arrow-down-circle` | Circled download |
+| ↑○ | `circle-arrow-up` | Circled upload |
+
+#### Chevrons
+| Icon | Name | Use case |
+|------|------|----------|
+| ‹ | `chevron-left` | Previous page, breadcrumb |
+| › | `chevron-right` | Next page, expand |
+| ‹m | `chevron-left-mini` | Compact previous |
+| ›m | `chevron-right-mini` | Compact next |
+| ˄ | `chevron-up-mini` | Collapse, sort asc |
+| ˅ | `chevron-down` | Expand, dropdown |
+| ˅m | `chevron-down-mini` | Compact dropdown |
+| «  | `chevron-double-left` | First page |
+| »  | `chevron-double-right` | Last page |
+
+#### Actions — CRUD
+| Icon | Name | Use case |
+|------|------|----------|
+| + | `plus` | Add (standard) |
+| +m | `plus-mini` | Add inline (ghost button) |
+| ✏ | `pencil` | Edit (PencilSimpleLine) |
+| ✏□ | `pencil-square` | Edit with frame |
+| ✏+ | `pen-plus` | Create/write new |
+| 🗑 | `trash` | Delete (destructive actions) |
+| ✕ | `x-mark` | Close, dismiss |
+| ✕m | `x-mark-mini` | Compact close |
+| ✕○ | `x-circle` | Clear / cancel |
+| − | `minus` | Remove, decrease |
+| −m | `minus-mini` | Compact remove |
+| −○ | `minus-circle` | Circled remove |
+| ✓ | `check` | Confirm, complete |
+| ✓m | `check-mini` | Compact confirm (checkboxes) |
+| ✓○ | `check-circle` | Success indicator |
+| ⎘ | `square-two-stack` | Duplicate / copy |
+| ⎘m | `square-two-stack-mini` | Compact duplicate |
+| ⎘ | `clipboard` | Copy to clipboard |
+| 📄+ | `file-plus` | New file |
+| 📁 | `folder` | Folder closed |
+| 📂 | `folder-open` | Folder open |
+| 📁+ | `folder-plus` | New folder |
+| ✎ | `rename` | Rename action |
+
+#### UI & Layout
+| Icon | Name | Use case |
+|------|------|----------|
+| ☰ | `bars-three` | Hamburger menu |
+| ↕☰ | `bars-arrow-down` | Sort descending |
+| ↓sort | `descending-sorting` | Table sort desc |
+| ⤒ | `bottom-to-top` | Reorder up |
+| ⤓ | `top-to-bottom` | Reorder down |
+| ◧ | `sidebar-left` | Toggle left sidebar |
+| ◨ | `sidebar-right` | Toggle right sidebar |
+| ⊞ | `squares-plus` | Add widget / module |
+| ⊞ | `grid-list` | Grid layout |
+| ⊞ | `grid-layout` | Layout grid |
+| ⊟ | `resize` | Resize handle |
+| ⤢ | `expand` | Expand panel |
+| ⤡ | `reduce` | Collapse panel |
+| ⬜⬛ | `layout-top` | Top panel layout |
+| ⬛⬜ | `layout-bottom` | Bottom panel layout |
+| ≡ | `list-bullet` | List view |
+| 🌳 | `list-tree` | Tree view |
+| ☑ | `list-checkbox` | Checklist view |
+| 📜 | `queue-list` | Queue / ordered list |
+| 🔗 | `link` | Hyperlink |
+| ▶ | `media-play` | Play / start |
+| ⏸ | `pause` | Pause |
+| ⏱ | `stopwatch` | Timer |
+| 🔄 | `history` | History / recent |
+
+#### Status & Feedback
+| Icon | Name | Use case |
+|------|------|----------|
+| ⓘ | `information-circle` | Info tooltip / toast |
+| ⚠ | `exclamation-circle` | Warning indicator |
+| ⏳ | `loader` | Loading spinner |
+| ⏳ | `spinner` | Alternate loading |
+| ⭐ | `star` | Favorite / rating |
+| ✨ | `sparkles` | AI / magic feature |
+| ✨m | `sparkles-mini` | Compact AI indicator |
+| 🔥 | `fire` | Trending / hot |
+| 🎯 | `target` | Goal / objective |
+| 🏆 | `trophy` | Achievement |
+| 🎉 | `party` | Celebration |
+| 💡 | `light-bulb` | Tip / idea |
+| 🐛 | `bug` | Bug report |
+| 🚀 | `rocket-launch` | Launch / deploy |
+| 💔 | `heart-broken` | Error / failed |
+| ❤ | `heart` | Favorite |
+| 😊 | `face-smile` | Positive feedback |
+| 👻 | `ghost-worried` | Empty state / error |
+| 😵 | `face-crossed-out-eyes` | Critical error |
+| 👍 | `thumb-up` | Positive rating |
+| 👎 | `thumb-down` | Negative rating |
+| 🔔 | `snooze` | Snooze notification |
+| 🏠 | `house` | Home |
+| 🏠⭐ | `house-star` | Home featured |
+
+#### Data & Content
+| Icon | Name | Use case |
+|------|------|----------|
+| # | `hashtag` | Tag / channel |
+| 📊 | `chart-pie` | Pie chart |
+| 📊 | `chart-bar` | Bar chart |
+| 💰 | `currency-dollar` | Financial data |
+| 💰 | `cash` | Payment |
+| 💳 | `credit-card` | Card payment |
+| 💳🔄 | `credit-card-refresh` | Recurring payment |
+| 🧾 | `receipt` | Invoice / receipt |
+| 📝 | `document-text` | Document |
+| 📑 | `document-series` | Multiple documents |
+| 📎 | `paper-clip` | Attachment |
+| Aa | `text` | Text content |
+| T̲ | `text-highlight` | Highlighted text |
+| {} | `brackets` | Code block |
+| ¶ | `drop-cap` | Rich text |
+| 📜 | `scroll-text` | Long content |
+| 🗺 | `map` | Map view |
+| 📍 | `map-pin` | Location |
+| 🌐 | `globe-europe` | International / locale |
+| 📰 | `newspaper` | News / blog |
+| 📖 | `book-open` | Documentation |
+| 📕 | `book` | Reference |
+| 🔖 | `bookmarks` | Saved items |
+| 🗓 | `clock` | Time / date |
+| ⏲ | `circle-half-dotted-clock` | Scheduled / pending |
+| 📊 | `levels` | Analytics levels |
+| 🎛 | `circle-sliders` | Fine-tune controls |
+| 🎚 | `sliders` | Settings sliders |
+
+#### People & Organization
+| Icon | Name | Use case |
+|------|------|----------|
+| 👤 | `user` | Single user |
+| 👤m | `user-mini` | Compact user |
+| 👥 | `user-group` | Team / group |
+| 👥 | `users` | Multiple users |
+| 🏢 | `buildings` | Organization |
+| 🏢m | `buildings-mini` | Compact org |
+| 🏪 | `building-storefront` | Store / retail |
+| 🏛 | `building-tax` | Institution |
+| 🎓 | `academic-cap` | Learning / training |
+| 🧪 | `beaker` | Experiment / test |
+| 🍳 | `chef-hat` | Specialist |
+| 👓 | `glasses` | Review / inspect |
+
+#### Communication
+| Icon | Name | Use case |
+|------|------|----------|
+| 💬 | `chat-bubble-left-right` | Conversation |
+| ✉ | `envelope` | Email / message |
+| 📡 | `rss` | Feed / subscription |
+| 📢 | `share` | Share |
+| 📞 | `phone` | Call |
+| 📻 | `channels` | Channels |
+
+#### Technology & Infrastructure
+| Icon | Name | Use case |
+|------|------|----------|
+| ⚙ | `cog-six-tooth` | Settings |
+| 🔧 | `tools` | Tools / config |
+| 🔌 | `plug` | Integration / connection |
+| 🖥 | `computer-desktop` | Desktop app |
+| 📱 | `laptop-mobile` | Responsive / device |
+| 📱 | `tablet` | Tablet device |
+| 🗄 | `server` | Server / backend |
+| 💽 | `circle-stack` | Database |
+| 📦 | `archive-box` | Archive |
+| ☁ | `cloud` | Cloud |
+| ☁↑ | `cloud-arrow-up` | Cloud upload |
+| ☁↓ | `cloud-arrow-down` | Cloud download |
+| 🧩 | `puzzle` | Plugin / extension |
+| 🖱 | `cursor-arrow-rays` | Interactive element |
+| 👆 | `pointer` | Click target |
+| ⚡ | `bolt` | Quick action / automation |
+| ⌨ | `command-line` | CLI / terminal |
+| 🔀 | `code-merge` | Git merge |
+| ↩ | `code-commit` | Git commit |
+| ↪ | `code-pull-request` | Git PR |
+| 🌿 | `code-branch` | Git branch |
+| 🏷 | `component` | Component reference |
+| ◎ | `circle-dotted-line` | Token / variable |
+| @ | `at-symbol` | Mention / email |
+| 🔑 | `key` | API key / auth |
+| 🎪 | `card-sparkle` | AI card |
+| 🧬 | `microchip` | AI / chip |
+| 📐 | `layers-3` | Layered content |
+
+#### Product-Specific
+| Icon | Name | Use case |
+|------|------|----------|
+| 🏳 | `flag-mini` | Feature flag |
+| 🛡 | `lifebuoy` | Help / support |
+| 🎲 | `decision-process` | Decision tree |
+| 🎯 | `adjustments` | Fine-tune |
+| 🔍 | `magnifying-glass` | Search |
+| 🔍m | `magnifying-glass-mini` | Compact search |
+| 👁 | `eye` | View / visible |
+| 👁̸ | `eye-slash` | Hidden |
+| 👁m | `eye-mini` | Compact visible |
+| 👁̸m | `eye-slash-mini` | Compact hidden |
+| ⊞ | `timeline-vertical` | Timeline |
+| 🔽 | `funnel` | Filter |
+| 🔽+ | `funnel-plus` | Add filter |
+| 🔽 | `filter` | Alternate filter |
+| ↗ | `open-rect-arrow-out` | Open externally |
+| 📤 | `flying-box` | Export / ship |
+| 🏷 | `clone-dashed` | Template / clone |
+| 🛒 | `shopping` | Commerce |
+| 🛒 | `shopping-bag` | Order |
+| 🚚 | `truck-fast` | Delivery |
+| 🧳 | `hand-truck` | Logistics |
+| 🔘 | `button` | Button element |
+| 🚧 | `wip` | Work in progress |
+| ☀ | `sun` | Light mode |
+| 🌙 | `moon` | Dark mode |
+| 🎨 | `swatch` | Color / theme |
+| 🎁 | `gift` | Promotion / bonus |
+| 🔗 | `directions` | Navigation flow |
+
+### Fill (Solid) Icon Catalog (136 icons)
+
+> These are the **solid/filled** variants. Use them for active states, selected items, status indicators, and visual emphasis. They pair with the outline versions above.
+
+#### Shapes & Indicators
+| Icon | Name | Use case |
+|------|------|----------|
+| ▲ | `triangles` | Decorative / brand element |
+| ▶ | `triangle-right-mini` | Expand / play indicator |
+| ◀ | `triagnle-left-mini` | Collapse / previous |
+| ▼ | `triangle-down-mini` | Dropdown indicator |
+| ▲ | `triangle-up-mini` | Sort ascending |
+| ● | `circle-solid` | Full status dot |
+| ●m | `circle-mini-solid` | Compact status dot |
+| ●sm | `ellipse-mini-solid` | Tiny status dot |
+| ◐ | `circle-half-solid` | Half-progress indicator |
+| ◔ | `circle-quarter-solid` | Quarter-progress |
+| ◉ | `circle-filled-solid` | Active radio / selected |
+| ○● | `elipse-solid` | Status indicator |
+| ⬡ | `component-solid` | Component symbol (filled) |
+| ⁞ | `dots-six` | Drag handle |
+
+#### Progress Indicators
+| Icon | Name | Use case |
+|------|------|----------|
+| ○ | `progress-0` | 0% progress |
+| ◔ | `progress-15` | 15% progress |
+| ◑ | `progress-30` | 30% progress |
+| ◑ | `progress-45` | 45% progress |
+| ◕ | `progress-60` | 60% progress |
+| ◕ | `progress-75` | 75% progress |
+| ◕ | `progress-90` | 90% progress |
+| ● | `progress-100` | Complete |
+
+#### Actions (Filled)
+| Icon | Name | Use case |
+|------|------|----------|
+| ⋮ | `ellipsis-vertical` | More actions menu (vertical) |
+| ⋯ | `ellipsis-horizontal` | More actions menu (horizontal) |
+| ✓○ | `check-circle-solid` | Success / confirmed state |
+| ✏□ | `pencil-square-solid` | Active edit mode |
+| ⎘ | `square-two-stack-solid` | Active duplicate |
+| ⟳ | `replay-solid` | Replay / retry action |
+| ⏸ | `pause-solid` | Paused state |
+| ▶ | `forward-solid` | Forward / next |
+| ◀ | `backward-solid` | Backward / previous |
+| + ○ | `circle-plus` | Add (circled) |
+| − ○ | `circle-minus` | Remove (circled) |
+
+#### Status & Feedback (Filled)
+| Icon | Name | Use case |
+|------|------|----------|
+| ⓘ | `circle-info-solid` | Info tooltip (filled) |
+| ⚠ | `circle-warning-solid` | Warning indicator (filled) |
+| ⭐ | `star-solid` | Active favorite / rated |
+| ✨ | `sparkles-solid` | AI feature active |
+| ✨m | `sparkles-mini-solid` | Compact AI active |
+| ✨2 | `sparkle-2-solid` | Alternate AI sparkle |
+| 🔥 | `fire-solid` | Trending active |
+| 🚀 | `rocket-launch-solid` | Deployed / launched |
+| 💡 | `light-bulb-solid` | Active tip |
+| 🐛 | `bug-ant-solid` | Bug report (filled) |
+| ❓ | `question-mark` | Help indicator |
+| ❓○ | `question-mark-circle` | Help tooltip |
+| 🎯 | `gauge-sparkle` | Performance gauge |
+| 👆 | `pointer-circle-solid` | Click target (filled) |
+| ⛔ | `stop-circle-solid` | Blocked / stopped |
+| 🛡✓ | `shield-check` | Verified / secure |
+| 🏅 | `badge-check` | Verified badge |
+| 🪄 | `wand-sparkle` | Magic / AI action |
+| 🧹 | `broom-sparkle` | Clean up |
+| 🧹● | `broom-sparkle-solid` | Clean up (active) |
+| 🔔✓ | `bell-alert-done` | Notification cleared |
+| 🔍⚠ | `magnifier-alert` | Search warning |
+| 📚 | `stack-perspective` | Stacked items |
+
+#### Navigation & UI (Filled)
+| Icon | Name | Use case |
+|------|------|----------|
+| ⌂ | `house-filled` | Active home nav |
+| ◧● | `sidebar-left-filled` | Left sidebar active |
+| ◨● | `sidebar-right-filled` | Right sidebar active |
+| ↑○ | `arrow-up-circle-solid` | Upload (filled) |
+| ˄˅ | `chevron-up-down` | Sort toggle / select expand |
+
+#### Communication & Content (Filled)
+| Icon | Name | Use case |
+|------|------|----------|
+| 💬 | `chat-bubble` | Active conversation |
+| 📻 | `channels-solid` | Active channel |
+| 📥 | `inbox-solid` | Active inbox |
+| ✉ | `envelope-solid` | Active email |
+| 📷 | `photo-solid` | Image (filled) |
+| 📷 | `photo` | Image placeholder |
+| 📹 | `camera` | Camera / capture |
+| 📝 | `document-text-solid` | Active document |
+| 💰 | `cash-solid` | Payment (filled) |
+| 💰 | `currency-dollar-solid` | Price (filled) |
+| 💳 | `credit-card-solid` | Card payment (filled) |
+| 🧾 | `receipt-percent` | Discount receipt |
+| 🏷 | `tag-solid` | Active tag |
+| 🎁 | `gift-solid` | Promotion (filled) |
+| 🎨 | `swatch-solid` | Color (filled) |
+| Md | `markdown-solid` | Markdown content |
+
+#### Technology & Infrastructure (Filled)
+| Icon | Name | Use case |
+|------|------|----------|
+| ⚙ | `cog-six-tooth-solid` | Active settings |
+| 🔧 | `tools-solid` | Active tools |
+| ⌨ | `command-line-solid` | Active terminal |
+| 🖥 | `computer-desktop-solid` | Active desktop |
+| 🗄 | `server-solid` | Active server |
+| 🗄🗄 | `server-stack` | Server cluster |
+| 🗄🗄● | `server-stack-solid` | Active server cluster |
+| 💽 | `circle-stack-solid` | Active database |
+| 🧩 | `puzzle-solid` | Active plugin |
+| 🔒 | `lock-closed-solid` | Locked state |
+| 🔒m | `lock-closed-solid-mini` | Compact locked |
+| 🔓 | `lock-open-solid` | Unlocked state |
+| 🔑 | `key-solid` | Active auth / API key |
+| ☁ | `cloud-solid` | Cloud active |
+| ⚡ | `bolt-solid` | Active automation |
+| 🔲 | `cube-solid` | Package / module |
+| 🪟 | `window` | Browser window |
+| ⊞● | `squares-plus-solid` | Active add widget |
+| 🎛✓ | `adjustments-done` | Settings confirmed |
+
+#### People & Organization (Filled)
+| Icon | Name | Use case |
+|------|------|----------|
+| 👥 | `users-solid` | Active team view |
+| 🏢 | `buildings-solid` | Active organization |
+| 🎓 | `academic-cap-solid` | Active training |
+| 🛒 | `shopping-cart` | Cart |
+| 🛒● | `shopping-cart-solid` | Cart with items |
+| ⌨ | `keyboard` | Keyboard shortcut indicator |
+| 🔔 | `bell-alert` | Notification bell |
+| 🔔● | `bell-alert-solid` | Active notifications |
+| ☀ | `sun-solid` | Light mode (active) |
+| 🌙 | `moon-solid` | Dark mode (active) |
+| 🌐 | `globe-europe-solid` | Active locale |
+| 👁 | `eye-solid` | Visible (active) |
+| 👁̸ | `eye-slash-solid` | Hidden (active) |
+| 📅 | `calendar` | Date picker |
+| 📅m | `calendar-mini` | Compact date |
+| 📅● | `calendar-solid` | Active date |
+| ⏱ | `clock-solid` | Active time |
+| ⏱m | `clock-solid-mini` | Compact active time |
+| 💼 | `briefcase-filled` | Active work |
+| 📋 | `clipboard-filled` | Active clipboard |
+| 🔎👤 | `user-search-filled` | User search active |
+| 🪪 | `id-badge` | Identity badge |
+
+#### Financial (Filled)
+| Icon | Name | Use case |
+|------|------|----------|
+| +tax | `tax-inclusive` | Tax included price |
+| −tax | `tax-exclusive` | Tax excluded price |

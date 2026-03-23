@@ -1,0 +1,387 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Inbox – Solidroad Quality</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap" rel="stylesheet" />
+  <style>
+    /* Exact Figma variables from node 1321-9150 (Solidroad Quality) */
+    :root {
+      /* Backgrounds */
+      --bg-base: #ffffff;
+      --bg-subtle: #fafafa;
+      --bg-base-pressed: #efeff0;
+      --bg-component-hover: #f4f4f5;
+      /* Foregrounds */
+      --fg-base: #18181b;
+      --fg-muted: #71717a;
+      --fg-subtle: #52525b;
+      --stone: #343330;
+      /* Borders */
+      --border-subtle: #efeff0;
+      --neutral-150: #efeff0;
+      /* Spacing scale: 1=4px, 1∙5=6px, 2=8px, 3=12px, 6=24px */
+      --space-1: 4px;
+      --space-1_5: 6px;
+      --space-2: 8px;
+      --space-3: 12px;
+      --space-6: 24px;
+      /* Radii */
+      --rounded-sm: 4px;
+      --rounded-md: 6px;
+      --rounded-lg: 8px;
+      --rounded-full: 999px;
+      /* Typography – font/family/ui */
+      --font-ui: Inter, -apple-system, sans-serif;
+      --font-display: Inter, -apple-system, sans-serif;
+      /* text-sm: 13px, leading none 16px, medium 500 */
+      --text-sm: 13px;
+      --leading-none-sm: 16px;
+      --weight-medium: 500;
+      /* leading-tight/text-sm/regular: 13px, regular 400, lineHeight 20 */
+      --leading-tight-sm: 20px;
+      --weight-regular: 400;
+      /* display/text-base: 15px, semibold 600, leading 18 */
+      --text-base: 15px;
+      --leading-base: 18px;
+      --weight-semibold: 600;
+      /* Light/Borders/base + Light/Buttons/neutral */
+      --shadow-border: 0 0 0 1px rgba(0,0,0,0.08), 0 1px 2px rgba(0,0,0,0.12);
+      /* Component */
+      --icon-button-small-radius: 4px;
+      --bg-info-emphasis: #ec4899;
+      /* Empty state from spec */
+      --empty-circle-bg: #f0f0f0;
+      --empty-circle-border: #e0e0e0;
+      --empty-icon-fg: #333333;
+      --empty-title-size: 16px;
+      --empty-desc-size: 14px;
+      --empty-desc-color: #888888;
+    }
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      font-family: var(--font-ui);
+      background: #e5e5e5;
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: var(--space-6);
+    }
+    .app-frame {
+      width: 100%;
+      max-width: 1200px;
+      height: 720px;
+      background: var(--bg-base);
+      border-radius: var(--rounded-lg);
+      box-shadow: var(--shadow-border);
+      overflow: hidden;
+      display: flex;
+    }
+
+    /* ----- Sidebar: 240px, white, 1px right border ----- */
+    .sidebar {
+      width: 240px;
+      min-width: 240px;
+      background: var(--bg-base);
+      border-right: 1px solid var(--border-subtle);
+      display: flex;
+      flex-direction: column;
+    }
+    /* Brand: 24px vertical, 20px horizontal padding */
+    .sidebar-brand {
+      display: flex;
+      align-items: center;
+      gap: var(--space-2);
+      padding: var(--space-6) 20px;
+      min-height: 72px;
+    }
+    .sidebar-brand-icon {
+      width: 24px;
+      height: 24px;
+      flex-shrink: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #eab308;
+    }
+    .sidebar-brand-icon svg { width: 20px; height: 20px; }
+    .sidebar-brand-text {
+      font-size: var(--text-sm);
+      font-weight: var(--weight-medium);
+      line-height: var(--leading-none-sm);
+      color: var(--fg-base);
+    }
+    .sidebar-brand-chevron {
+      margin-left: auto;
+      width: 20px;
+      height: 20px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--fg-subtle);
+    }
+    .sidebar-brand-chevron svg { width: 16px; height: 16px; }
+
+    .sidebar-nav {
+      flex: 1;
+      overflow-y: auto;
+      padding: var(--space-2) 0;
+    }
+    /* Nav link: 8px vertical padding, regular weight by default, core/rounded-md when active */
+    .sidebar-link {
+      display: flex;
+      align-items: center;
+      gap: var(--space-3);
+      padding: var(--space-2) 20px;
+      margin: 0 var(--space-2);
+      font-size: var(--text-sm);
+      font-weight: var(--weight-regular);
+      line-height: var(--leading-none-sm);
+      color: var(--fg-base);
+      text-decoration: none;
+      border-radius: var(--rounded-md);
+      transition: background 0.15s;
+    }
+    .sidebar-link:hover { background: var(--bg-component-hover); }
+    .sidebar-link.is-active {
+      background: var(--bg-base-pressed);
+      color: var(--fg-base);
+      font-weight: var(--weight-medium);
+    }
+    .sidebar-link-icon {
+      width: 20px;
+      height: 20px;
+      flex-shrink: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--fg-subtle);
+    }
+    .sidebar-link.is-active .sidebar-link-icon { color: var(--fg-base); }
+    .sidebar-link-icon svg { width: 100%; height: 100%; }
+    .sidebar-link-icon.icon-green { color: #16a34a; }
+    .sidebar-link-icon.icon-pink { color: var(--bg-info-emphasis); }
+    .sidebar-link-icon.icon-blue { color: #2563eb; }
+
+    /* Section header: dark gray, uppercase, spacing from scale */
+    .sidebar-section-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: var(--space-2) 20px;
+      margin: 0 var(--space-2);
+      font-size: 12px;
+      font-weight: var(--weight-semibold);
+      line-height: var(--leading-none-sm);
+      color: var(--fg-base);
+      text-transform: uppercase;
+      letter-spacing: 0.04em;
+      cursor: pointer;
+      user-select: none;
+      background: none;
+      border: none;
+      width: calc(100% - var(--space-2) * 2);
+      text-align: left;
+      font-family: var(--font-ui);
+    }
+    .sidebar-section-header:hover { color: var(--fg-muted); }
+    .sidebar-section-header .chevron {
+      width: 16px;
+      height: 16px;
+      color: var(--fg-subtle);
+      transition: transform 0.2s;
+    }
+    .sidebar-section.open .sidebar-section-header .chevron { transform: rotate(180deg); }
+    .sidebar-section.collapsed .sidebar-section-header .chevron { transform: rotate(-90deg); }
+    .sidebar-section-items { padding: 0 0 var(--space-2); }
+    .sidebar-section.collapsed .sidebar-section-items { display: none; }
+    /* Sub-links: indented (same horizontal padding 20px, visual indent via margin) */
+    .sidebar-section-items .sidebar-link { margin-left: var(--space-2); margin-right: var(--space-2); }
+
+    .sidebar-footer {
+      padding: var(--space-2) 0 var(--space-6);
+      border-top: 1px solid var(--border-subtle);
+    }
+    .sidebar-footer .sidebar-link { margin: 0 var(--space-2); }
+
+    /* ----- Main: white bg ----- */
+    .main {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      min-width: 0;
+      background: var(--bg-base);
+    }
+    /* Header: 24px vertical, 32px horizontal; border-bottom 1px border-subtle */
+    .main-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: var(--space-6) 32px;
+      min-height: 56px;
+      border-bottom: 1px solid var(--border-subtle);
+    }
+    .main-title {
+      font-family: var(--font-display);
+      font-size: 20px;
+      font-weight: var(--weight-semibold);
+      line-height: var(--leading-base);
+      color: var(--fg-base);
+      margin: 0;
+    }
+    .main-header-actions {
+      display: flex;
+      align-items: center;
+      gap: var(--space-2);
+    }
+    .icon-btn {
+      width: 32px;
+      height: 32px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border: none;
+      background: var(--bg-base);
+      border-radius: var(--icon-button-small-radius);
+      cursor: pointer;
+      color: var(--fg-subtle);
+      box-shadow: var(--shadow-border);
+      transition: background 0.15s, color 0.15s;
+    }
+    .icon-btn:hover { background: var(--bg-component-hover); color: var(--fg-base); }
+    .icon-btn svg { width: 18px; height: 18px; }
+
+    .main-content {
+      flex: 1;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: var(--space-6);
+    }
+    .empty-state {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      max-width: 280px;
+    }
+    /* Empty: circle #F0F0F0, border #E0E0E0; icon #333333 */
+    .empty-state-icon-wrap {
+      width: 64px;
+      height: 64px;
+      border-radius: var(--rounded-full);
+      background: var(--empty-circle-bg);
+      border: 1px solid var(--empty-circle-border);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: var(--space-3);
+      color: var(--empty-icon-fg);
+    }
+    .empty-state-icon-wrap svg { width: 28px; height: 28px; }
+    .empty-state-title {
+      font-size: var(--empty-title-size);
+      font-weight: var(--weight-semibold);
+      line-height: var(--leading-tight-sm);
+      color: var(--fg-base);
+      margin: 0 0 var(--space-1);
+    }
+    .empty-state-desc {
+      font-size: var(--empty-desc-size);
+      font-weight: var(--weight-regular);
+      line-height: var(--leading-tight-sm);
+      color: var(--empty-desc-color);
+      margin: 0;
+    }
+  </style>
+</head>
+<body>
+  <div class="app-frame">
+    <aside class="sidebar" role="navigation">
+      <div class="sidebar-brand">
+        <div class="sidebar-brand-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/></svg>
+        </div>
+        <span class="sidebar-brand-text">Acme, Inc.</span>
+        <span class="sidebar-brand-chevron">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg>
+        </span>
+      </div>
+      <nav class="sidebar-nav">
+        <a href="#" class="sidebar-link">
+          <span class="sidebar-link-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><path d="M9 22V12h6v10"/></svg></span>
+          Home
+        </a>
+        <a href="#" class="sidebar-link is-active">
+          <span class="sidebar-link-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 12h-6l-2 3h-3l-2-3H2"/></svg></span>
+          Inbox
+        </a>
+        <div class="sidebar-section open">
+          <button type="button" class="sidebar-section-header">Quality <span class="chevron"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg></span></button>
+          <div class="sidebar-section-items">
+            <a href="#" class="sidebar-link"><span class="sidebar-link-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg></span> Evaluations</a>
+            <a href="#" class="sidebar-link"><span class="sidebar-link-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/></svg></span> Workflows</a>
+            <a href="#" class="sidebar-link"><span class="sidebar-link-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 6h18M3 12h18m-7 6h7"/></svg></span> Calibrations</a>
+            <a href="#" class="sidebar-link"><span class="sidebar-link-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><path d="M14 2v6h6M16 13H8m8 4H8"/></svg></span> Reviews</a>
+            <a href="#" class="sidebar-link"><span class="sidebar-link-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9"/><path d="M13.73 21a2 2 0 0 1-3.46 0"/></svg></span> Alerts</a>
+            <a href="#" class="sidebar-link"><span class="sidebar-link-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 20V10M12 20V4M6 20v-6"/></svg></span> Reports</a>
+          </div>
+        </div>
+        <div class="sidebar-section collapsed">
+          <button type="button" class="sidebar-section-header">Training <span class="chevron"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg></span></button>
+          <div class="sidebar-section-items"></div>
+        </div>
+        <div class="sidebar-section collapsed">
+          <button type="button" class="sidebar-section-header">Hiring <span class="chevron"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg></span></button>
+          <div class="sidebar-section-items"></div>
+        </div>
+        <div class="sidebar-section open">
+          <button type="button" class="sidebar-section-header">Resources <span class="chevron"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg></span></button>
+          <div class="sidebar-section-items">
+            <a href="#" class="sidebar-link"><span class="sidebar-link-icon icon-green"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2a10 10 0 1 1 0 20 10 10 0 0 1 0-20z"/><path d="M12 6v6l4 2"/></svg></span> Simulations</a>
+            <a href="#" class="sidebar-link"><span class="sidebar-link-icon icon-pink"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 3h7v7H3zM14 3h7v7h-7zM14 14h7v7h-7zM3 14h7v7H3z"/></svg></span> Scorecards</a>
+            <a href="#" class="sidebar-link"><span class="sidebar-link-icon icon-blue"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg></span> Personas</a>
+          </div>
+        </div>
+      </nav>
+      <div class="sidebar-footer">
+        <a href="#" class="sidebar-link"><span class="sidebar-link-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"/><path d="M12 17h.01"/></svg></span> Help</a>
+        <a href="#" class="sidebar-link"><span class="sidebar-link-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="3"/><path d="M12 1v2m0 18v2M4.22 4.22l1.42 1.42m12.72 12.72l1.42 1.42M1 12h2m18 0h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42"/></svg></span> Settings</a>
+      </div>
+    </aside>
+    <main class="main">
+      <header class="main-header">
+        <h1 class="main-title">Inbox</h1>
+        <div class="main-header-actions">
+          <button type="button" class="icon-btn" aria-label="Search"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/></svg></button>
+          <button type="button" class="icon-btn" aria-label="Filter"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="4" y1="6" x2="20" y2="6"/><line x1="4" y1="12" x2="20" y2="12"/><line x1="4" y1="18" x2="20" y2="18"/></svg></button>
+        </div>
+      </header>
+      <div class="main-content">
+        <div class="empty-state">
+          <div class="empty-state-icon-wrap">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/><path d="M8 7h8M8 11h8"/></svg>
+          </div>
+          <p class="empty-state-title">No notifications</p>
+          <p class="empty-state-desc">Take a break!</p>
+        </div>
+      </div>
+    </main>
+  </div>
+  <script>
+    document.querySelectorAll('.sidebar-section-header').forEach(function(btn) {
+      btn.addEventListener('click', function() {
+        var section = btn.closest('.sidebar-section');
+        section.classList.toggle('open');
+        section.classList.toggle('collapsed');
+      });
+    });
+  </script>
+</body>
+</html>

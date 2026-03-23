@@ -1,0 +1,66 @@
+.checkbox {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 18px;
+  height: 18px;
+  border-radius: var(--radius-sm);
+  border: 1.5px solid var(--border-base);
+  background: var(--bg-base);
+  cursor: pointer;
+  flex-shrink: 0;
+  transition: background 120ms ease, border-color 120ms ease;
+  outline: none;
+  padding: 0;
+}
+
+.checkbox:hover {
+  border-color: var(--fg-subtle);
+}
+
+.checkbox:focus-visible {
+  box-shadow: var(--shadow-focus-ring);
+}
+
+.checked {
+  background: var(--button-brand);
+  border-color: var(--button-brand);
+}
+
+.checked:hover {
+  background: var(--button-brand-hover);
+  border-color: var(--button-brand-hover);
+}
+
+.disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.checkmark {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--fg-on-color);
+  transform: scale(0);
+  opacity: 0;
+  transition: transform 150ms ease, opacity 150ms ease;
+}
+
+.checked .checkmark {
+  transform: scale(1);
+  opacity: 1;
+}
+
+.hiddenInput {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}

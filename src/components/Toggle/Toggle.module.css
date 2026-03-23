@@ -1,0 +1,72 @@
+/* Toggle — Design System
+   Variants: default (transparent), outline (1px border)
+   Sizes: sm (28px), default (36px), lg (40px) */
+
+.toggle {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--space-1);
+  margin: 0;
+  border: none;
+  background: transparent;
+  color: var(--fg-muted);
+  font-family: var(--font-family);
+  font-weight: var(--font-weight-medium);
+  cursor: pointer;
+  outline: none;
+  transition: background var(--transition-fast), color var(--transition-fast);
+}
+
+.toggle:hover:not(:disabled):not(.pressed) {
+  background: var(--bg-base-pressed);
+  color: var(--fg-base);
+}
+
+.toggle.pressed {
+  background: var(--bg-component-hover);
+  color: var(--fg-base);
+  box-shadow: var(--shadow-sm);
+}
+
+.toggle:focus-visible {
+  box-shadow: var(--shadow-focus-ring);
+}
+
+/* ── Variants ── */
+
+.outline {
+  border: 1px solid var(--border-base);
+  border-radius: var(--radius-sm);
+}
+
+/* ── Sizes ── */
+
+.sizeSm {
+  height: 28px;
+  padding: 0 var(--space-2);
+  font-size: var(--font-size-xs);
+  border-radius: var(--radius-sm);
+}
+
+.sizeDefault {
+  height: 36px;
+  padding: 0 var(--space-3);
+  font-size: var(--font-size-sm);
+  border-radius: var(--radius-sm);
+}
+
+.sizeLg {
+  height: 40px;
+  padding: 0 var(--space-4);
+  font-size: var(--font-size-sm);
+  border-radius: var(--radius-sm);
+}
+
+/* ── Disabled ── */
+
+.disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+  pointer-events: none;
+}

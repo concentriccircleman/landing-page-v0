@@ -1,0 +1,122 @@
+/* Chat — design system component */
+
+.root {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  font-family: var(--font-family);
+}
+
+.messageList {
+  flex: 1;
+  overflow-y: auto;
+  padding: var(--space-4);
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-4);
+}
+
+.message {
+  display: flex;
+  gap: var(--space-2);
+  max-width: 80%;
+}
+
+.messageUser {
+  align-self: flex-end;
+  flex-direction: row-reverse;
+}
+
+.messageAssistant {
+  align-self: flex-start;
+}
+
+.messageSystem {
+  align-self: center;
+  max-width: 100%;
+}
+
+.bubble {
+  padding: var(--space-2) var(--space-3);
+  border-radius: var(--radius-lg);
+  font-size: var(--font-size-sm);
+  line-height: 1.5;
+}
+
+.bubbleUser {
+  background: var(--button-brand);
+  color: var(--fg-on-color);
+  border-bottom-right-radius: var(--radius-sm);
+  box-shadow: var(--shadow-sm);
+}
+
+.bubbleAssistant {
+  background: var(--bg-subtle);
+  color: var(--fg-base);
+  border-bottom-left-radius: var(--radius-sm);
+  border: 1px solid var(--border-subtle);
+}
+
+.bubbleSystem {
+  background: transparent;
+  color: var(--fg-muted);
+  font-size: var(--font-size-xs);
+  text-align: center;
+}
+
+.avatar {
+  width: 28px;
+  height: 28px;
+  border-radius: var(--radius-full);
+  flex-shrink: 0;
+}
+
+.timestamp {
+  font-size: 10px;
+  color: var(--fg-disabled);
+  margin-top: var(--space-0-5);
+}
+
+.inputBar {
+  display: flex;
+  align-items: flex-end;
+  gap: var(--space-2);
+  padding: var(--space-3) var(--space-4);
+  border-top: 1px solid var(--border-subtle);
+  background: var(--bg-base);
+}
+
+.input {
+  flex: 1;
+  min-height: 36px;
+  padding: var(--space-2) var(--space-3);
+  background: var(--bg-field);
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-md);
+  font-size: var(--font-size-sm);
+  color: var(--fg-base);
+  resize: none;
+  font-family: var(--font-family);
+  outline: none;
+}
+
+.input:focus {
+  box-shadow: var(--shadow-focus-ring);
+  border-color: transparent;
+}
+
+.sendBtn {
+  width: 36px;
+  height: 36px;
+  border-radius: var(--radius-full);
+  background: var(--button-brand);
+  border: none;
+  color: var(--fg-on-color);
+  cursor: pointer;
+  flex-shrink: 0;
+}
+
+.sendBtn:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}

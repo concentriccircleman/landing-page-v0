@@ -1,0 +1,125 @@
+/* ToggleButtonGroup — Sentra Design System
+   Unified segmented control. Outer shell has rounded corners and a
+   neutral border; segments are divided by thin vertical lines.
+   Selected segments use a darker gray inset instead of brand blue. */
+
+/* ── Container: single unified pill ── */
+
+.group {
+  display: inline-flex;
+  align-items: center;
+  border-radius: var(--radius-sm);
+  background: var(--button-neutral);
+  box-shadow: var(--shadow-button-neutral);
+  overflow: hidden;
+}
+
+/* ── Segment base ── */
+
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--space-1);
+  white-space: nowrap;
+  font-family: var(--font-family);
+  font-size: var(--font-size-sm);
+  font-weight: var(--font-weight-medium);
+  line-height: var(--leading-sm);
+  border: none;
+  border-right: 1px solid var(--border-subtle);
+  cursor: pointer;
+  outline: none;
+  user-select: none;
+  border-radius: 0;
+  transition: background var(--transition-fast),
+    color var(--transition-fast),
+    box-shadow var(--transition-fast);
+}
+
+.btn:last-child {
+  border-right: none;
+}
+
+.btn:focus-visible {
+  box-shadow: var(--shadow-focus-ring);
+  z-index: 1;
+  position: relative;
+}
+
+/* ── Size: sm (24px) ── */
+
+.sizeSm {
+  height: 24px;
+  padding: 0 var(--space-2-5);
+}
+
+/* ── Size: default ── */
+
+.sizeDefault {
+  padding: var(--space-1-5) var(--space-3);
+}
+
+/* ── Active state: inset dark gray ── */
+
+.btnActive {
+  background: var(--bg-base-pressed);
+  color: var(--fg-base);
+  box-shadow: var(--shadow-inset);
+  border-right-color: transparent;
+}
+
+.btnActive:hover {
+  filter: brightness(0.97);
+}
+
+.btnActive:active {
+  filter: brightness(0.94);
+}
+
+/* Hide the divider on the segment immediately after an active one */
+.btnActive + .btn {
+  border-left-color: transparent;
+}
+
+/* ── Inactive state: transparent / neutral ── */
+
+.btnInactive {
+  background: transparent;
+  color: var(--fg-subtle);
+  box-shadow: none;
+}
+
+.btnInactive:hover {
+  background: var(--bg-base-hover);
+}
+
+.btnInactive:active {
+  background: var(--bg-base-pressed);
+}
+
+/* ── Colored dot indicator ── */
+
+.dot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  flex-shrink: 0;
+}
+
+/* ── Count suffix ── */
+
+.count {
+  font-weight: var(--font-weight-normal);
+  font-size: 10px;
+  opacity: 0.65;
+  line-height: 1;
+}
+
+/* Dark mode: invert brightness direction for pressed/active states */
+:global([data-theme="dark"]) .itemSelected:active {
+  filter: brightness(1.15);
+}
+:global([data-theme="dark"]) .itemSelected {
+  filter: brightness(1.08);
+}

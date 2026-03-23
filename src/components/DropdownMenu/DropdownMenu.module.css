@@ -1,0 +1,105 @@
+.wrapper {
+  position: relative;
+  display: inline-block;
+}
+
+.trigger {
+  cursor: pointer;
+  display: inline-flex;
+}
+
+.content {
+  position: absolute;
+  z-index: 50;
+  min-width: 192px;
+  max-height: 320px;
+  overflow-y: auto;
+  background: var(--bg-component);
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-flyout);
+  padding: var(--space-1);
+  font-family: var(--font-family);
+  animation: fadeIn 150ms ease;
+}
+
+.alignStart {
+  left: 0;
+}
+.alignCenter {
+  left: 50%;
+  transform: translateX(-50%);
+}
+.alignEnd {
+  right: 0;
+}
+
+.item {
+  display: flex;
+  align-items: center;
+  gap: var(--space-2);
+  padding: var(--space-1-5) var(--space-2);
+  border-radius: var(--radius-sm);
+  font-size: var(--font-size-sm);
+  color: var(--fg-base);
+  cursor: pointer;
+  outline: none;
+  transition: background var(--transition-fast);
+  user-select: none;
+}
+
+.item:hover:not(.itemDisabled) {
+  background: var(--bg-component-hover);
+}
+
+.item:focus-visible {
+  background: var(--bg-component-hover);
+}
+
+.item svg {
+  width: var(--space-4);
+  height: var(--space-4);
+  flex-shrink: 0;
+  color: var(--fg-muted);
+}
+
+.itemDestructive {
+  color: var(--fg-error);
+}
+
+.itemDestructive:hover:not(.itemDisabled) {
+  background: var(--bg-error-subtle);
+}
+
+.itemDestructive svg {
+  color: var(--fg-error);
+}
+
+.itemDisabled {
+  opacity: 0.5;
+  pointer-events: none;
+}
+
+.separator {
+  height: 1px;
+  background: var(--border-subtle);
+  margin: var(--space-1) calc(-1 * var(--space-1));
+}
+
+.label {
+  padding: var(--space-1-5) var(--space-2);
+  font-size: var(--font-size-sm);
+  font-weight: var(--font-weight-medium);
+  color: var(--fg-muted);
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(-4px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}

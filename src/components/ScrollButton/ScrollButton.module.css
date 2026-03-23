@@ -1,0 +1,41 @@
+/* ScrollButton — floating button, appears when container scrolled past threshold */
+
+.button {
+  position: absolute;
+  bottom: 16px;
+  right: 16px;
+  width: 32px;
+  height: 32px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0;
+  padding: 0;
+  border: 1px solid var(--border-base);
+  border-radius: var(--radius-full);
+  background: var(--bg-base);
+  color: var(--fg-base);
+  box-shadow: var(--shadow-md);
+  cursor: pointer;
+  outline: none;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity var(--transition-fast), background var(--transition-fast);
+}
+
+.button.visible {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+.button:hover {
+  background: var(--bg-base-pressed);
+}
+
+.button:focus-visible {
+  box-shadow: var(--shadow-focus-ring);
+}
+
+.button svg {
+  flex-shrink: 0;
+}
